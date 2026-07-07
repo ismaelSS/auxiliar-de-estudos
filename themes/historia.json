@@ -1,0 +1,27 @@
+[
+  {
+    "question": "Em que ano o Brasil foi descoberto pelos portugueses?",
+    "options": ["1492", "1500", "1502", "1498", "1510"],
+    "correct": 1
+  },
+  {
+    "question": "Quem foi o primeiro presidente do Brasil?",
+    "options": ["Getúlio Vargas", "Dom Pedro I", "Deodoro da Fonseca", "Marechal Rondon", "Juscelino Kubitschek"],
+    "correct": 2
+  },
+  {
+    "question": "Em que ano terminou a Segunda Guerra Mundial?",
+    "options": ["1943", "1944", "1945", "1946", "1947"],
+    "correct": 2
+  },
+  {
+    "question": "Qual império construiu o Coliseu de Roma?",
+    "options": ["Grego", "Egípcio", "Romano", "Persa", "Macedônico"],
+    "correct": 2
+  },
+  {
+    "question": "Quem foi o autor da Declaração de Independência dos EUA?",
+    "options": ["George Washington", "Benjamin Franklin", "Thomas Jefferson", "John Adams", "James Madison"],
+    "correct": 2
+  }
+]

@@ -1,0 +1,248 @@
+[
+  {
+    "question": "Qual modificador permite que um membro seja acessado de qualquer classe em qualquer pacote?",
+    "options": ["private", "protected", "default", "public", "static"],
+    "correct": 3
+  },
+  {
+    "question": "Qual modificador restringe o acesso de um membro apenas à própria classe?",
+    "options": ["public", "protected", "private", "final", "static"],
+    "correct": 2
+  },
+  {
+    "question": "Quando nenhum modificador de acesso é declarado, qual é o nível de acesso aplicado?",
+    "options": ["private", "public", "protected", "package-private", "module-private"],
+    "correct": 3
+  },
+  {
+    "question": "Um membro protected pode ser acessado por:",
+    "options": [
+      "Apenas a própria classe",
+      "Qualquer classe do projeto",
+      "Classes do mesmo pacote e subclasses",
+      "Apenas subclasses",
+      "Somente classes do mesmo módulo"
+    ],
+    "correct": 2
+  },
+  {
+    "question": "Qual modificador torna um atributo pertencente à classe em vez de a cada instância?",
+    "options": ["final", "abstract", "static", "volatile", "native"],
+    "correct": 2
+  },
+  {
+    "question": "O modificador final aplicado a uma variável significa que:",
+    "options": [
+      "Ela pode ser alterada apenas uma vez",
+      "Ela não pode ser acessada",
+      "Sua referência não pode ser reatribuída",
+      "Ela se torna estática",
+      "Ela só pode ser usada em métodos"
+    ],
+    "correct": 2
+  },
+  {
+    "question": "O que acontece quando um método é declarado como final?",
+    "options": [
+      "Não pode ser chamado",
+      "Não pode ser sobrescrito",
+      "Não pode retornar valores",
+      "Só pode ser usado por subclasses",
+      "Torna-se estático"
+    ],
+    "correct": 1
+  },
+  {
+    "question": "Uma classe declarada como final:",
+    "options": [
+      "Não pode ter atributos",
+      "Não pode ser instanciada",
+      "Não pode ser herdada",
+      "Não pode conter métodos",
+      "Só pode conter métodos estáticos"
+    ],
+    "correct": 2
+  },
+  {
+    "question": "Qual modificador indica que um método não possui implementação e deve ser implementado por subclasses?",
+    "options": ["native", "final", "static", "abstract", "volatile"],
+    "correct": 3
+  },
+  {
+    "question": "Uma classe abstract:",
+    "options": [
+      "Não pode possuir métodos concretos",
+      "Não pode ser herdada",
+      "Não pode ser instanciada diretamente",
+      "Deve possuir apenas métodos abstratos",
+      "É implicitamente final"
+    ],
+    "correct": 2
+  },
+  {
+    "question": "É permitido declarar uma classe como abstract e final ao mesmo tempo?",
+    "options": [
+      "Sim",
+      "Somente em interfaces",
+      "Somente em records",
+      "Depende da versão do Java",
+      "Não"
+    ],
+    "correct": 4
+  },
+  {
+    "question": "Qual modificador indica que um método pertence à classe e não ao objeto?",
+    "options": ["abstract", "final", "private", "static", "protected"],
+    "correct": 3
+  },
+  {
+    "question": "Métodos static podem acessar diretamente atributos de instância?",
+    "options": [
+      "Sempre",
+      "Nunca",
+      "Apenas se forem public",
+      "Apenas se forem final",
+      "Apenas em subclasses"
+    ],
+    "correct": 1
+  },
+  {
+    "question": "Qual palavra-chave impede a sobrescrita de um método?",
+    "options": ["private", "static", "abstract", "final", "sealed"],
+    "correct": 3
+  },
+  {
+    "question": "Qual modificador é usado para declarar constantes em Java?",
+    "options": [
+      "const",
+      "immutable",
+      "readonly",
+      "final",
+      "constant"
+    ],
+    "correct": 3
+  },
+  {
+    "question": "Um atributo public static final normalmente representa:",
+    "options": [
+      "Uma variável local",
+      "Uma constante",
+      "Um construtor",
+      "Uma interface",
+      "Uma anotação"
+    ],
+    "correct": 1
+  },
+  {
+    "question": "Qual modificador permite acesso por subclasses mesmo que estejam em outro pacote?",
+    "options": ["private", "default", "public", "protected", "final"],
+    "correct": 3
+  },
+  {
+    "question": "Construtores podem ser declarados como static?",
+    "options": [
+      "Sempre",
+      "Não",
+      "Apenas em classes final",
+      "Apenas em classes abstratas",
+      "Apenas se forem private"
+    ],
+    "correct": 1
+  },
+  {
+    "question": "Construtores podem ser declarados como private?",
+    "options": [
+      "Não",
+      "Somente em records",
+      "Sim",
+      "Somente em enums",
+      "Apenas em interfaces"
+    ],
+    "correct": 2
+  },
+  {
+    "question": "Qual modificador é frequentemente utilizado em construtores para implementar Singleton?",
+    "options": ["public", "protected", "private", "abstract", "static"],
+    "correct": 2
+  },
+  {
+    "question": "Qual modificador é utilizado para indicar que um campo pode ser modificado por múltiplas threads e deve ter visibilidade garantida?",
+    "options": ["static", "volatile", "native", "final", "strictfp"],
+    "correct": 1
+  },
+  {
+    "question": "Qual modificador indica que a implementação de um método é fornecida em código nativo, fora da JVM?",
+    "options": ["abstract", "volatile", "transient", "native", "sealed"],
+    "correct": 3
+  },
+  {
+    "question": "O modificador transient é utilizado para:",
+    "options": [
+      "Impedir herança",
+      "Excluir um campo da serialização",
+      "Tornar um método mais rápido",
+      "Criar variáveis temporárias",
+      "Permitir acesso concorrente"
+    ],
+    "correct": 1
+  },
+  {
+    "question": "Qual modificador foi criado para limitar quais classes podem herdar de uma determinada classe?",
+    "options": ["restricted", "sealed", "final", "protected", "module"],
+    "correct": 1
+  },
+  {
+    "question": "Qual palavra-chave é usada para indicar uma classe permitida por uma classe sealed?",
+    "options": ["extends", "permits", "allow", "grant", "accept"],
+    "correct": 1
+  },
+  {
+    "question": "Uma classe que herda de uma sealed class pode ser declarada como:",
+    "options": [
+      "final, sealed ou non-sealed",
+      "Apenas final",
+      "Apenas sealed",
+      "Apenas non-sealed",
+      "Nenhuma das anteriores"
+    ],
+    "correct": 0
+  },
+  {
+    "question": "Interfaces podem possuir métodos static?",
+    "options": [
+      "Não",
+      "Sim",
+      "Somente desde Java 21",
+      "Somente interfaces funcionais",
+      "Somente interfaces sealed"
+    ],
+    "correct": 1
+  },
+  {
+    "question": "Métodos private em interfaces foram introduzidos para:",
+    "options": [
+      "Permitir herança múltipla",
+      "Melhorar encapsulamento de código compartilhado",
+      "Substituir métodos default",
+      "Evitar polimorfismo",
+      "Permitir serialização"
+    ],
+    "correct": 1
+  },
+  {
+    "question": "Qual modificador de acesso possui a maior restrição?",
+    "options": ["public", "protected", "default", "private", "final"],
+    "correct": 3
+  },
+  {
+    "question": "Qual é a ordem correta do mais restritivo para o menos restritivo?",
+    "options": [
+      "private → default → protected → public",
+      "private → protected → default → public",
+      "default → private → protected → public",
+      "private → public → protected → default",
+      "protected → private → default → public"
+    ],
+    "correct": 0
+  }
+]

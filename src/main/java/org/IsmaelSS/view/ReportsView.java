@@ -1,0 +1,74 @@
+package org.IsmaelSS.view;
+
+import javafx.geometry.Insets;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.ScrollPane;
+import javafx.scene.control.Separator;
+import javafx.scene.layout.VBox;
+
+public class ReportsView {
+    private final Scene scene;
+    private final VBox root;
+    private final VBox overallBox;
+    private final VBox themeBox;
+    private final VBox errorBox;
+    private final Button voltarButton;
+
+    public ReportsView() {
+        VBox content = new VBox(10);
+        content.setPadding(new Insets(20));
+
+        Label title = new Label("Relatórios de Desempenho");
+        title.setStyle("-fx-font-size: 20px; -fx-font-weight: bold;");
+        content.getChildren().add(title);
+
+        Label section1 = new Label("Resumo Geral");
+        section1.setStyle("-fx-font-size: 16px; -fx-font-weight: bold;");
+        content.getChildren().addAll(section1, new Separator());
+
+        overallBox = new VBox(5);
+        overallBox.setPadding(new Insets(5, 0, 10, 10));
+        content.getChildren().add(overallBox);
+
+        Label section2 = new Label("Desempenho por Tema");
+        section2.setStyle("-fx-font-size: 16px; -fx-font-weight: bold;");
+        content.getChildren().addAll(section2, new Separator());
+
+        themeBox = new VBox(5);
+        themeBox.setPadding(new Insets(5, 0, 10, 10));
+        content.getChildren().add(themeBox);
+
+        Label section3 = new Label("Questões com Maior Taxa de Erro");
+        section3.setStyle("-fx-font-size: 16px; -fx-font-weight: bold;");
+        content.getChildren().addAll(section3, new Separator());
+
+        errorBox = new VBox(5);
+        errorBox.setPadding(new Insets(5, 0, 10, 10));
+        content.getChildren().add(errorBox);
+
+        voltarButton = new Button("Voltar");
+        content.getChildren().add(voltarButton);
+
+        ScrollPane scrollPane = new ScrollPane(content);
+        scrollPane.setFitToWidth(true);
+        scrollPane.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
+        scrollPane.setVbarPolicy(ScrollPane.ScrollBarPolicy.AS_NEEDED);
+
+        root = new VBox(scrollPane);
+        scene = new Scene(root, 600, 500);
+    }
+
+    public Scene getScene() { return scene; }
+    public VBox getOverallBox() { return overallBox; }
+    public VBox getThemeBox() { return themeBox; }
+    public VBox getErrorBox() { return errorBox; }
+    public Button getVoltarButton() { return voltarButton; }
+
+    public void clearContent() {
+        overallBox.getChildren().clear();
+        themeBox.getChildren().clear();
+        errorBox.getChildren().clear();
+    }
+}
