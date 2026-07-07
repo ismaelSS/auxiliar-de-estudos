@@ -47,9 +47,14 @@ Plans:
 
 ## Phase 5: Error Handling & UX Refinements
 **Goal:** Handle edge cases — malformed JSON, empty themes, file I/O errors, and general UX polish.
-**Requirements:** (Derived from quality concerns across all phases)
+**Requirements:** UX-05, UX-06, ERR-01, ERR-02, ERR-03, ERR-04
+**Plans:** 2 plans (Wave 1 → Wave 2)
 **Success Criteria:**
 1. Malformed JSON files show graceful error messages and are skipped
 2. Empty themes folder shows appropriate message
 3. File I/O errors handled without crashes
 4. All screens have consistent styling and responsive layout
+
+Plans:
+- [ ] 05-01-PLAN.md — External CSS styling + ErrorUtil helper class (Wave 1)
+- [ ] 05-02-PLAN.md — Error handling integration for ThemeLoader, StatsService, Main (Wave 2)
