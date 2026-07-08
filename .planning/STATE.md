@@ -1,3 +1,17 @@
+---
+gsd_state_version: 1.0
+milestone: v1.0
+milestone_name: milestone
+status: Phase 06 complete
+last_updated: "2026-07-08T16:16:01.162Z"
+progress:
+  total_phases: 6
+  completed_phases: 4
+  total_plans: 12
+  completed_plans: 6
+  percent: 50
+---
+
 # State: FlashCard JavaFX
 
 ## Project Reference
@@ -16,19 +30,24 @@ See: .planning/PROJECT.md (updated 2026-07-07)
 | 3 | Performance Tracking & Reports | Complete ✓ |
 | 4 | Reinforcement Mode & Navigation Polish | Complete ✓ |
 | 5 | Error Handling & UX Refinements | Planned |
+| 6 | Scoring System & Question ID Rework | Complete ✓ |
 
 ## Completed Phases
 
 ### Phase 1: Project Scaffold & Theme Loading ✓
+
 **Outcome:** JavaFX app launches with theme selection screen. Themes auto-detected from `themes/` JSON files. Models, data access, and UI infrastructure built. Compiles and packages with Maven.
 
 ### Phase 2: Study Round Engine ✓
+
 **Outcome:** Core study round implemented. Questions displayed with 5 shuffled alternatives. Correct (green) / wrong (red) feedback on click. Questions randomly ordered without repeats. Options shuffled per round. Exit button and round-complete summary screen. Compiles and packages with Maven.
 
 ### Phase 3: Performance Tracking & Reports ✓
+
 **Outcome:** Performance persisted to `flashcard-stats.json` across sessions. Reports screen shows overall hit rate, per-theme breakdown, and top-5 highest-error questions. Stats survive app restart via `StatsService` (Jackson load/save). Hit rates update live on theme selection after each round. Reports accessible via "Relatórios" button with lazy-init plus refresh on subsequent visits. Compiles and packages with Maven.
 
 ### Phase 4: Reinforcement Mode & Navigation Polish ✓
+
 **Outcome:** "Modo Reforço" checkbox added to theme selection screen. When enabled, `RoundState.createReinforcementRound()` factory selects highest-error questions first via `StatsService.getHighestErrorQuestions()`, fills remaining slots with fresh questions. `ThemeSelectionController` checks `view.isReinforcementMode()` and chooses the appropriate constructor. All 17 existing tests still pass.
 
 ---
@@ -56,9 +75,14 @@ See: .planning/PROJECT.md (updated 2026-07-07)
 | Round result collection via List<RoundResult> | Accumulates during round, flushed on completion or exit | Decided |
 | Post-round callback refreshes hit rates | Ensures theme selection shows updated stats after round | Decided |
 
+## Quick Tasks Completed
+
+| # | Description | Date | Commit | Directory |
+|---|-------------|------|--------|-----------|
+| 260708-ij0 | Change question IDs from descriptive strings to sequential integers | 2026-07-08 | 3e202f0 | [260708-ij0-o-id-de-questoes-deve-ser-um-numero-incr](./quick/260708-ij0-o-id-de-questoes-deve-ser-um-numero-incr/) |
+
 ## Open Questions
 
 - (None)
 
-
-*Last updated: 2026-07-07 after Phase 5 planning*
+*Last updated: 2026-07-08 after Phase 6 & quick task*
