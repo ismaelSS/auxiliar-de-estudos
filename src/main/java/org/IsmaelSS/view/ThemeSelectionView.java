@@ -69,7 +69,7 @@ public class ThemeSelectionView {
             themeMap.put(theme.getName(), theme);
 
             CheckBox checkBox = new CheckBox();
-            Label info = new Label(theme.getName() + " (" + theme.getQuestionCount() + " perguntas) — Hit rate: N/A");
+            Label info = new Label(theme.getName() + " (" + theme.getQuestionCount() + " perguntas) — Pontuação: N/A");
 
             themeCheckboxes.put(theme.getName(), checkBox);
             themeLabels.put(theme.getName(), info);
@@ -118,12 +118,13 @@ public class ThemeSelectionView {
         feedbackLabel.setText(message);
     }
 
-    public void updateHitRate(String themeName, String hitRate) {
+    public void updateAproveitamento(String themeName, String score) {
         Label info = themeLabels.get(themeName);
         if (info != null) {
             Theme theme = themeMap.get(themeName);
             if (theme != null) {
-                info.setText(theme.getName() + " (" + theme.getQuestionCount() + " perguntas) — Hit rate: " + hitRate);
+                info.setText(theme.getName() + " (" + theme.getQuestionCount()
+                        + " perguntas) — Pontuação: " + score);
             }
         }
     }

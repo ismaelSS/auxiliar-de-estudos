@@ -29,7 +29,7 @@ public class ThemeSelectionController {
     public void initialize() {
         themes = themeLoader.loadAllThemes();
         view.setThemes(themes);
-        refreshHitRates();
+        refreshScores();
 
         int maxQuestions = themes.stream()
                 .mapToInt(Theme::getQuestionCount)
@@ -45,10 +45,10 @@ public class ThemeSelectionController {
         screenController.switchTo("themeSelection");
     }
 
-    public void refreshHitRates() {
+    public void refreshScores() {
         for (Theme theme : themes) {
-            String hitRate = statsService.getHitRate(theme.getName());
-            view.updateHitRate(theme.getName(), hitRate);
+            String score = statsService.getAproveitamento(theme.getName());
+            view.updateAproveitamento(theme.getName(), score);
         }
     }
 
@@ -72,7 +72,7 @@ public class ThemeSelectionController {
         StudyRoundView studyRoundView = new StudyRoundView();
         StudyRoundController studyRoundController = new StudyRoundController(roundState, studyRoundView, screenController, statsService);
         studyRoundController.setOnRoundEndCallback(() -> {
-            refreshHitRates();
+        refreshScores();
             screenController.switchTo("themeSelection");
         });
         studyRoundController.initialize();
