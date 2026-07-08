@@ -9,7 +9,9 @@ import java.io.File;
 import java.io.FilenameFilter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import java.util.logging.Logger;
 
 public class ThemeLoader {
@@ -62,6 +64,7 @@ public class ThemeLoader {
             return null;
         }
 
+        Set<String> seenIds = new HashSet<>();
         for (int i = 0; i < questions.size(); i++) {
             Question q = questions.get(i);
             if (q.getQuestion() == null || q.getOptions() == null || q.getOptions().size() != 5) {
@@ -70,6 +73,14 @@ public class ThemeLoader {
             }
             if (q.getCorrect() < 0 || q.getCorrect() >= q.getOptions().size()) {
                 LOG.warning("Invalid correct answer index at question " + i + " in file: " + file.getName());
+                return null;
+            }
+            if (q.getId() == null || q.getId().isEmpty()) {
+                LOG.warning("Question at index " + i + " in file: " + file.getName() + " has no id");
+                return null;
+            }
+            if (!seenIds.add(q.getId())) {
+                LOG.warning("Duplicate question id '" + q.getId() + "' at index " + i + " in file: " + file.getName());
                 return null;
             }
         }
