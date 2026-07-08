@@ -1,5 +1,6 @@
 [
   {
+    "id": "record-primary-purpose",
     "question": "Qual é o principal objetivo de um record em Java?",
     "options": [
       "Criar classes abstratas",
@@ -11,6 +12,7 @@
     "correct": 1
   },
   {
+    "id": "record-component-visibility",
     "question": "Os componentes declarados em um record tornam-se automaticamente:",
     "options": [
       "public e mutáveis",
@@ -22,6 +24,7 @@
     "correct": 2
   },
   {
+    "id": "record-accessor-method",
     "question": "Qual método é gerado automaticamente para cada componente de um record?",
     "options": [
       "getNome()",
@@ -33,6 +36,7 @@
     "correct": 1
   },
   {
+    "id": "record-generated-methods",
     "question": "Além dos métodos de acesso, quais métodos são gerados automaticamente em um record?",
     "options": [
       "clone(), finalize() e compareTo()",
@@ -44,6 +48,7 @@
     "correct": 1
   },
   {
+    "id": "record-superclass",
     "question": "Qual é a superclasse direta de todo record?",
     "options": [
       "Object",
@@ -55,6 +60,7 @@
     "correct": 3
   },
   {
+    "id": "record-extend-class",
     "question": "Um record pode estender outra classe além de Record?",
     "options": [
       "Sim",
@@ -66,6 +72,7 @@
     "correct": 4
   },
   {
+    "id": "record-implement-interface",
     "question": "Um record pode implementar interfaces?",
     "options": [
       "Não",
@@ -77,6 +84,7 @@
     "correct": 2
   },
   {
+    "id": "record-canonical-constructor",
     "question": "Qual construtor é gerado automaticamente caso nenhum seja declarado?",
     "options": [
       "Construtor vazio",
@@ -88,6 +96,7 @@
     "correct": 2
   },
   {
+    "id": "record-canonical-params",
     "question": "O construtor canônico possui como parâmetros:",
     "options": [
       "Nenhum parâmetro",
@@ -99,6 +108,7 @@
     "correct": 2
   },
   {
+    "id": "record-compact-constructor",
     "question": "Qual característica diferencia o construtor compacto do construtor canônico?",
     "options": [
       "Não possui corpo",
@@ -110,6 +120,7 @@
     "correct": 1
   },
   {
+    "id": "record-compact-assignment",
     "question": "No construtor compacto, a atribuição aos campos é:",
     "options": [
       "Obrigatória",
@@ -121,6 +132,7 @@
     "correct": 1
   },
   {
+    "id": "record-custom-canonical-init",
     "question": "Em um construtor canônico personalizado, quem é responsável por inicializar os componentes?",
     "options": [
       "A JVM",
@@ -132,6 +144,7 @@
     "correct": 3
   },
   {
+    "id": "record-modify-component",
     "question": "É permitido modificar diretamente um componente de um record após sua criação?",
     "options": [
       "Sim",
@@ -143,6 +156,7 @@
     "correct": 3
   },
   {
+    "id": "record-own-methods",
     "question": "Um record pode declarar métodos próprios?",
     "options": [
       "Não",
@@ -154,6 +168,7 @@
     "correct": 3
   },
   {
+    "id": "record-override-equals",
     "question": "Um record pode sobrescrever equals(), hashCode() e toString()?",
     "options": [
       "Não",
@@ -165,6 +180,7 @@
     "correct": 3
   },
   {
+    "id": "record-extra-fields",
     "question": "Um record pode declarar campos de instância adicionais?",
     "options": [
       "Sim",
@@ -176,6 +192,7 @@
     "correct": 3
   },
   {
+    "id": "record-static-field",
     "question": "Qual tipo de campo adicional um record pode declarar?",
     "options": [
       "Qualquer campo",
@@ -187,6 +204,7 @@
     "correct": 2
   },
   {
+    "id": "record-instance-init",
     "question": "Um record pode declarar blocos de inicialização de instância?",
     "options": [
       "Sim",
@@ -198,6 +216,7 @@
     "correct": 2
   },
   {
+    "id": "record-static-init",
     "question": "Um record pode declarar blocos de inicialização static?",
     "options": [
       "Não",
@@ -209,6 +228,7 @@
     "correct": 1
   },
   {
+    "id": "record-annotations",
     "question": "Os componentes de um record podem possuir anotações?",
     "options": [
       "Não",
@@ -220,6 +240,7 @@
     "correct": 3
   },
   {
+    "id": "record-implicit-final",
     "question": "Records são implicitamente:",
     "options": [
       "abstract",
@@ -231,6 +252,7 @@
     "correct": 2
   },
   {
+    "id": "record-inherit",
     "question": "É possível herdar de um record?",
     "options": [
       "Sim",
@@ -242,6 +264,7 @@
     "correct": 3
   },
   {
+    "id": "record-declare-keyword",
     "question": "Qual palavra-chave é utilizada para declarar um record?",
     "options": [
       "class",
@@ -253,6 +276,7 @@
     "correct": 1
   },
   {
+    "id": "record-accessor-idade",
     "question": "Qual das opções representa corretamente um acessador de um componente chamado idade?",
     "options": [
       "getIdade()",
@@ -264,6 +288,7 @@
     "correct": 1
   },
   {
+    "id": "record-boilerplate-reduction",
     "question": "Records foram introduzidos para reduzir principalmente:",
     "options": [
       "Uso de memória",
@@ -275,6 +300,7 @@
     "correct": 1
   },
   {
+    "id": "record-static-methods",
     "question": "Um record pode possuir métodos estáticos?",
     "options": [
       "Não",
@@ -286,6 +312,7 @@
     "correct": 2
   },
   {
+    "id": "record-private-methods",
     "question": "É permitido declarar métodos privados em um record?",
     "options": [
       "Não",
@@ -297,6 +324,7 @@
     "correct": 2
   },
   {
+    "id": "record-overloaded-constructors",
     "question": "Um record pode possuir construtores sobrecarregados?",
     "options": [
       "Não",
@@ -308,6 +336,7 @@
     "correct": 1
   },
   {
+    "id": "record-additional-constructor-call",
     "question": "Todo construtor adicional de um record deve:",
     "options": [
       "Inicializar diretamente os campos",
@@ -319,6 +348,7 @@
     "correct": 1
   },
   {
+    "id": "record-shallow-immutability",
     "question": "Qual afirmação sobre records é verdadeira?",
     "options": [
       "São totalmente imutáveis, inclusive os objetos referenciados.",
@@ -330,6 +360,7 @@
     "correct": 1
   },
   {
+    "id": "record-list-mutability",
     "question": "Se um componente de um record for uma List, o conteúdo da lista poderá ser alterado?",
     "options": [
       "Não",
@@ -341,6 +372,7 @@
     "correct": 1
   },
   {
+    "id": "record-compact-validation",
     "question": "Qual construtor é mais indicado quando apenas valida os parâmetros antes da inicialização automática?",
     "options": [
       "Construtor vazio",
@@ -352,6 +384,7 @@
     "correct": 2
   },
   {
+    "id": "record-canonical-transformation",
     "question": "Qual construtor é mais indicado quando é necessário transformar os valores antes de atribuí-los aos componentes?",
     "options": [
       "Construtor compacto",
@@ -363,6 +396,7 @@
     "correct": 1
   },
   {
+    "id": "record-inner-class",
     "question": "Um record pode ser declarado dentro de outra classe?",
     "options": [
       "Não",
@@ -374,6 +408,7 @@
     "correct": 1
   },
   {
+    "id": "record-base-class-name",
     "question": "Qual é o nome da classe base que todos os records estendem implicitamente?",
     "options": [
       "Object",

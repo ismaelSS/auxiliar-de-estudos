@@ -1,20 +1,24 @@
 [
   {
+    "id": "mod-public-access",
     "question": "Qual modificador permite que um membro seja acessado de qualquer classe em qualquer pacote?",
     "options": ["private", "protected", "default", "public", "static"],
     "correct": 3
   },
   {
+    "id": "mod-private-access",
     "question": "Qual modificador restringe o acesso de um membro apenas à própria classe?",
     "options": ["public", "protected", "private", "final", "static"],
     "correct": 2
   },
   {
+    "id": "mod-package-private",
     "question": "Quando nenhum modificador de acesso é declarado, qual é o nível de acesso aplicado?",
     "options": ["private", "public", "protected", "package-private", "module-private"],
     "correct": 3
   },
   {
+    "id": "mod-protected-access",
     "question": "Um membro protected pode ser acessado por:",
     "options": [
       "Apenas a própria classe",
@@ -26,11 +30,13 @@
     "correct": 2
   },
   {
+    "id": "mod-static-field",
     "question": "Qual modificador torna um atributo pertencente à classe em vez de a cada instância?",
     "options": ["final", "abstract", "static", "volatile", "native"],
     "correct": 2
   },
   {
+    "id": "mod-final-variable",
     "question": "O modificador final aplicado a uma variável significa que:",
     "options": [
       "Ela pode ser alterada apenas uma vez",
@@ -42,6 +48,7 @@
     "correct": 2
   },
   {
+    "id": "mod-final-method",
     "question": "O que acontece quando um método é declarado como final?",
     "options": [
       "Não pode ser chamado",
@@ -53,6 +60,7 @@
     "correct": 1
   },
   {
+    "id": "mod-final-class",
     "question": "Uma classe declarada como final:",
     "options": [
       "Não pode ter atributos",
@@ -64,11 +72,13 @@
     "correct": 2
   },
   {
+    "id": "mod-abstract-method",
     "question": "Qual modificador indica que um método não possui implementação e deve ser implementado por subclasses?",
     "options": ["native", "final", "static", "abstract", "volatile"],
     "correct": 3
   },
   {
+    "id": "mod-abstract-class",
     "question": "Uma classe abstract:",
     "options": [
       "Não pode possuir métodos concretos",
@@ -80,6 +90,7 @@
     "correct": 2
   },
   {
+    "id": "mod-abstract-final-conflict",
     "question": "É permitido declarar uma classe como abstract e final ao mesmo tempo?",
     "options": [
       "Sim",
@@ -91,11 +102,13 @@
     "correct": 4
   },
   {
+    "id": "mod-static-method",
     "question": "Qual modificador indica que um método pertence à classe e não ao objeto?",
     "options": ["abstract", "final", "private", "static", "protected"],
     "correct": 3
   },
   {
+    "id": "mod-static-instance-access",
     "question": "Métodos static podem acessar diretamente atributos de instância?",
     "options": [
       "Sempre",
@@ -107,11 +120,13 @@
     "correct": 1
   },
   {
+    "id": "mod-final-override",
     "question": "Qual palavra-chave impede a sobrescrita de um método?",
     "options": ["private", "static", "abstract", "final", "sealed"],
     "correct": 3
   },
   {
+    "id": "mod-constant-declaration",
     "question": "Qual modificador é usado para declarar constantes em Java?",
     "options": [
       "const",
@@ -123,6 +138,7 @@
     "correct": 3
   },
   {
+    "id": "mod-public-static-final",
     "question": "Um atributo public static final normalmente representa:",
     "options": [
       "Uma variável local",
@@ -134,11 +150,13 @@
     "correct": 1
   },
   {
+    "id": "mod-protected-subclass",
     "question": "Qual modificador permite acesso por subclasses mesmo que estejam em outro pacote?",
     "options": ["private", "default", "public", "protected", "final"],
     "correct": 3
   },
   {
+    "id": "mod-constructor-static",
     "question": "Construtores podem ser declarados como static?",
     "options": [
       "Sempre",
@@ -150,6 +168,7 @@
     "correct": 1
   },
   {
+    "id": "mod-constructor-private",
     "question": "Construtores podem ser declarados como private?",
     "options": [
       "Não",
@@ -161,21 +180,25 @@
     "correct": 2
   },
   {
+    "id": "mod-singleton-constructor",
     "question": "Qual modificador é frequentemente utilizado em construtores para implementar Singleton?",
     "options": ["public", "protected", "private", "abstract", "static"],
     "correct": 2
   },
   {
+    "id": "mod-volatile-field",
     "question": "Qual modificador é utilizado para indicar que um campo pode ser modificado por múltiplas threads e deve ter visibilidade garantida?",
     "options": ["static", "volatile", "native", "final", "strictfp"],
     "correct": 1
   },
   {
+    "id": "mod-native-method",
     "question": "Qual modificador indica que a implementação de um método é fornecida em código nativo, fora da JVM?",
     "options": ["abstract", "volatile", "transient", "native", "sealed"],
     "correct": 3
   },
   {
+    "id": "mod-transient-field",
     "question": "O modificador transient é utilizado para:",
     "options": [
       "Impedir herança",
@@ -187,16 +210,19 @@
     "correct": 1
   },
   {
+    "id": "mod-sealed-class",
     "question": "Qual modificador foi criado para limitar quais classes podem herdar de uma determinada classe?",
     "options": ["restricted", "sealed", "final", "protected", "module"],
     "correct": 1
   },
   {
+    "id": "mod-permits-keyword",
     "question": "Qual palavra-chave é usada para indicar uma classe permitida por uma classe sealed?",
     "options": ["extends", "permits", "allow", "grant", "accept"],
     "correct": 1
   },
   {
+    "id": "mod-sealed-inheritance",
     "question": "Uma classe que herda de uma sealed class pode ser declarada como:",
     "options": [
       "final, sealed ou non-sealed",
@@ -208,6 +234,7 @@
     "correct": 0
   },
   {
+    "id": "mod-interface-static",
     "question": "Interfaces podem possuir métodos static?",
     "options": [
       "Não",
@@ -219,6 +246,7 @@
     "correct": 1
   },
   {
+    "id": "mod-interface-private",
     "question": "Métodos private em interfaces foram introduzidos para:",
     "options": [
       "Permitir herança múltipla",
@@ -230,11 +258,13 @@
     "correct": 1
   },
   {
+    "id": "mod-most-restrictive",
     "question": "Qual modificador de acesso possui a maior restrição?",
     "options": ["public", "protected", "default", "private", "final"],
     "correct": 3
   },
   {
+    "id": "mod-access-order",
     "question": "Qual é a ordem correta do mais restritivo para o menos restritivo?",
     "options": [
       "private → default → protected → public",
