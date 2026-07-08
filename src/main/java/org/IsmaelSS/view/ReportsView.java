@@ -13,6 +13,7 @@ public class ReportsView {
     private final VBox root;
     private final VBox overallBox;
     private final VBox themeBox;
+    // Holds lowest-score questions list
     private final VBox errorBox;
     private final Button voltarButton;
 
@@ -40,7 +41,7 @@ public class ReportsView {
         themeBox.setPadding(new Insets(5, 0, 10, 10));
         content.getChildren().add(themeBox);
 
-        Label section3 = new Label("Questões com Maior Taxa de Erro");
+        Label section3 = new Label("Questões com Menor Pontuação");
         section3.setStyle("-fx-font-size: 16px; -fx-font-weight: bold;");
         content.getChildren().addAll(section3, new Separator());
 

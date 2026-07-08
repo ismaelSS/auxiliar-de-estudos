@@ -34,20 +34,18 @@ public class ReportsController {
                 new Label("Total de questões respondidas: " + overall.getTotalAnswered()));
         view.getOverallBox().getChildren().add(
                 new Label("Total de acertos: " + overall.getTotalCorrect()));
-        view.getOverallBox().getChildren().add(
-                new Label("Taxa de acerto geral: " + statsService.getOverallHitRate()));
 
         List<String> themesWithData = statsService.getAllThemesWithData();
         if (themesWithData.isEmpty()) {
             view.getThemeBox().getChildren().add(new Label("Nenhum dado disponível ainda."));
         } else {
             for (String themeName : themesWithData) {
-                String hitRate = statsService.getHitRate(themeName);
+                String score = statsService.getAproveitamento(themeName);
                 ThemeStats ts = statsService.getThemeStats(themeName);
                 if (ts != null) {
                     view.getThemeBox().getChildren().add(
                             new Label("Tema: " + themeName + " — Acertos: " + ts.getTotalCorrect()
-                                    + "/" + ts.getTotalAnswered() + " (" + hitRate + ")"));
+                                    + "/" + ts.getTotalAnswered() + " (Pontuação: " + score + ")"));
                 } else {
                     view.getThemeBox().getChildren().add(
                             new Label("Tema: " + themeName + " — Nenhum dado ainda."));
@@ -55,14 +53,13 @@ public class ReportsController {
             }
         }
 
-        List<Map.Entry<String, Double>> topErrors = statsService.getHighestErrorQuestions(5);
-        if (topErrors.isEmpty()) {
+        List<Map.Entry<String, Integer>> lowestScores = statsService.getLowestScoreQuestions(5);
+        if (lowestScores.isEmpty()) {
             view.getErrorBox().getChildren().add(new Label("Nenhum dado disponível ainda."));
         } else {
-            for (Map.Entry<String, Double> entry : topErrors) {
-                double errorPct = entry.getValue() * 100;
+            for (Map.Entry<String, Integer> entry : lowestScores) {
                 view.getErrorBox().getChildren().add(
-                        new Label(entry.getKey() + " — Taxa de erro: " + String.format("%.0f%%", errorPct)));
+                        new Label(entry.getKey() + " — Pontuação: " + entry.getValue()));
             }
         }
     }
