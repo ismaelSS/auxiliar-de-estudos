@@ -17,7 +17,7 @@ public class StatsData {
     public static class ThemeStats {
         private int totalAnswered;
         private int totalCorrect;
-        private Map<String, QuestionStats> questions = new HashMap<>();
+        private Map<String, QuestionScore> questions = new HashMap<>();
 
         public ThemeStats() {}
 
@@ -25,20 +25,35 @@ public class StatsData {
         public void setTotalAnswered(int totalAnswered) { this.totalAnswered = totalAnswered; }
         public int getTotalCorrect() { return totalCorrect; }
         public void setTotalCorrect(int totalCorrect) { this.totalCorrect = totalCorrect; }
-        public Map<String, QuestionStats> getQuestions() { return questions; }
-        public void setQuestions(Map<String, QuestionStats> questions) { this.questions = questions; }
+        public Map<String, QuestionScore> getQuestions() { return questions; }
+        public void setQuestions(Map<String, QuestionScore> questions) { this.questions = questions; }
     }
 
-    public static class QuestionStats {
-        private int answered;
-        private int correct;
+    public static class QuestionScore {
+        private int score;  // bounded -10..+5, defaults to 0
 
-        public QuestionStats() {}
+        public QuestionScore() {}
 
-        public int getAnswered() { return answered; }
-        public void setAnswered(int answered) { this.answered = answered; }
-        public int getCorrect() { return correct; }
-        public void setCorrect(int correct) { this.correct = correct; }
+        public int getScore() { return score; }
+        public void setScore(int score) { this.score = score; }
+
+        /**
+         * Correct answer: +2, capped at +5.
+         * @return the new score (for testing convenience)
+         */
+        public int recordCorrect() {
+            this.score = Math.min(5, this.score + 2);
+            return this.score;
+        }
+
+        /**
+         * Wrong answer: -3, floored at -10.
+         * @return the new score (for testing convenience)
+         */
+        public int recordWrong() {
+            this.score = Math.max(-10, this.score - 3);
+            return this.score;
+        }
     }
 
     public static class OverallStats {
