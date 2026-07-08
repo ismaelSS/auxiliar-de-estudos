@@ -33,7 +33,8 @@ public class RoundState {
     private static List<RoundQuestion> buildQuestions(List<Theme> themes, int questionsPerTheme) {
         List<RoundQuestion> questions = new ArrayList<>();
         for (Theme theme : themes) {
-            List<Question> themeQuestions = theme.getQuestions();
+            List<Question> themeQuestions = new ArrayList<>(theme.getQuestions());
+            Collections.shuffle(themeQuestions);
             int take = Math.min(questionsPerTheme, themeQuestions.size());
             for (int i = 0; i < take; i++) {
                 Question q = themeQuestions.get(i);

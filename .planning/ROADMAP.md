@@ -58,3 +58,19 @@ Plans:
 Plans:
 - [ ] 05-01-PLAN.md — External CSS styling + ErrorUtil helper class (Wave 1)
 - [ ] 05-02-PLAN.md — Error handling integration for ThemeLoader, StatsService, Main (Wave 2)
+
+## Phase 6: Scoring System & Question ID Rework ✓ [2026-07-08]
+**Goal:** Replace current reinforcement scoring with a robust per-question scoring system. Questions get IDs, wrong answers score negatively (-3 per miss, floor -10), right answers score positively (+2 per hit, cap +5). Theme selection screen replaces hit rate with aproveitamento score (negative -3 weight, neutral 0, positive +2 weight).
+**Requirements:** SCORE-01, SCORE-02, SCORE-03, SCORE-04, SCORE-05
+**Plans:** 3 plans (Wave 1 → Wave 3)
+**Success Criteria:**
+1. ✓ All questions in theme JSON files have a unique `id` field
+2. ✓ Wrong answer reduces question score by -3 (min -10)
+3. ✓ Correct answer increases question score by +2 (max +5)
+4. ✓ Theme selection shows "aproveitamento" score instead of hit rate percentage
+5. ✓ Aproveitamento formula: negative questions × -3, neutral × 0, positive × 2
+
+Plans:
+- [x] 06-01-PLAN.md — Question identity layer (Question id, RoundResult questionId, JSON IDs, ID validation, ID matching in RoundState)
+- [x] 06-02-PLAN.md — StatsData/StatsService rewrite (QuestionScore, score deltas, migration, aproveitamento, lowest-score query, RoundState update)
+- [x] 06-03-PLAN.md — Views, controllers, tests (aproveitamento display, reports update, all 3 test files rewritten)
