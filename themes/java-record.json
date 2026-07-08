@@ -1,0 +1,387 @@
+[
+  {
+    "question": "Qual é o principal objetivo de um record em Java?",
+    "options": [
+      "Criar classes abstratas",
+      "Representar dados de forma concisa e imutável",
+      "Substituir interfaces",
+      "Criar classes utilitárias",
+      "Melhorar o desempenho da JVM"
+    ],
+    "correct": 1
+  },
+  {
+    "question": "Os componentes declarados em um record tornam-se automaticamente:",
+    "options": [
+      "public e mutáveis",
+      "private e mutáveis",
+      "private e final",
+      "protected e final",
+      "static e final"
+    ],
+    "correct": 2
+  },
+  {
+    "question": "Qual método é gerado automaticamente para cada componente de um record?",
+    "options": [
+      "getNome()",
+      "nome()",
+      "get()",
+      "value()",
+      "component()"
+    ],
+    "correct": 1
+  },
+  {
+    "question": "Além dos métodos de acesso, quais métodos são gerados automaticamente em um record?",
+    "options": [
+      "clone(), finalize() e compareTo()",
+      "equals(), hashCode() e toString()",
+      "wait(), notify() e notifyAll()",
+      "readObject() e writeObject()",
+      "compare(), sort() e copy()"
+    ],
+    "correct": 1
+  },
+  {
+    "question": "Qual é a superclasse direta de todo record?",
+    "options": [
+      "Object",
+      "Serializable",
+      "Enum",
+      "Record",
+      "AbstractRecord"
+    ],
+    "correct": 3
+  },
+  {
+    "question": "Um record pode estender outra classe além de Record?",
+    "options": [
+      "Sim",
+      "Somente classes abstratas",
+      "Somente classes finais",
+      "Depende da JVM",
+      "Não"
+    ],
+    "correct": 4
+  },
+  {
+    "question": "Um record pode implementar interfaces?",
+    "options": [
+      "Não",
+      "Apenas Serializable",
+      "Sim",
+      "Apenas interfaces funcionais",
+      "Apenas Cloneable"
+    ],
+    "correct": 2
+  },
+  {
+    "question": "Qual construtor é gerado automaticamente caso nenhum seja declarado?",
+    "options": [
+      "Construtor vazio",
+      "Construtor protegido",
+      "Construtor canônico",
+      "Construtor compacto",
+      "Construtor privado"
+    ],
+    "correct": 2
+  },
+  {
+    "question": "O construtor canônico possui como parâmetros:",
+    "options": [
+      "Nenhum parâmetro",
+      "Apenas os campos final",
+      "Todos os componentes do record",
+      "Somente componentes primitivos",
+      "Somente componentes públicos"
+    ],
+    "correct": 2
+  },
+  {
+    "question": "Qual característica diferencia o construtor compacto do construtor canônico?",
+    "options": [
+      "Não possui corpo",
+      "Não declara explicitamente os parâmetros",
+      "Não inicializa componentes",
+      "É sempre privado",
+      "Só pode lançar exceções"
+    ],
+    "correct": 1
+  },
+  {
+    "question": "No construtor compacto, a atribuição aos campos é:",
+    "options": [
+      "Obrigatória",
+      "Feita automaticamente pelo compilador",
+      "Proibida",
+      "Realizada apenas pelo programador",
+      "Opcional"
+    ],
+    "correct": 1
+  },
+  {
+    "question": "Em um construtor canônico personalizado, quem é responsável por inicializar os componentes?",
+    "options": [
+      "A JVM",
+      "O compilador",
+      "O garbage collector",
+      "O programador",
+      "A classe Record"
+    ],
+    "correct": 3
+  },
+  {
+    "question": "É permitido modificar diretamente um componente de um record após sua criação?",
+    "options": [
+      "Sim",
+      "Somente dentro da mesma classe",
+      "Somente usando reflection",
+      "Não",
+      "Apenas em subclasses"
+    ],
+    "correct": 3
+  },
+  {
+    "question": "Um record pode declarar métodos próprios?",
+    "options": [
+      "Não",
+      "Apenas métodos static",
+      "Apenas métodos privados",
+      "Sim",
+      "Somente métodos abstratos"
+    ],
+    "correct": 3
+  },
+  {
+    "question": "Um record pode sobrescrever equals(), hashCode() e toString()?",
+    "options": [
+      "Não",
+      "Somente equals()",
+      "Somente toString()",
+      "Sim",
+      "Somente hashCode()"
+    ],
+    "correct": 3
+  },
+  {
+    "question": "Um record pode declarar campos de instância adicionais?",
+    "options": [
+      "Sim",
+      "Somente se forem final",
+      "Somente se forem private",
+      "Não",
+      "Somente em Java 21"
+    ],
+    "correct": 3
+  },
+  {
+    "question": "Qual tipo de campo adicional um record pode declarar?",
+    "options": [
+      "Qualquer campo",
+      "Somente campos protected",
+      "Somente campos static",
+      "Somente campos volatile",
+      "Nenhum campo"
+    ],
+    "correct": 2
+  },
+  {
+    "question": "Um record pode declarar blocos de inicialização de instância?",
+    "options": [
+      "Sim",
+      "Somente se possuir construtor compacto",
+      "Não",
+      "Somente em Java 21",
+      "Apenas se implementar Serializable"
+    ],
+    "correct": 2
+  },
+  {
+    "question": "Um record pode declarar blocos de inicialização static?",
+    "options": [
+      "Não",
+      "Sim",
+      "Somente se possuir campos static",
+      "Somente em records locais",
+      "Depende da JVM"
+    ],
+    "correct": 1
+  },
+  {
+    "question": "Os componentes de um record podem possuir anotações?",
+    "options": [
+      "Não",
+      "Somente @Override",
+      "Somente @Deprecated",
+      "Sim",
+      "Somente anotações de serialização"
+    ],
+    "correct": 3
+  },
+  {
+    "question": "Records são implicitamente:",
+    "options": [
+      "abstract",
+      "sealed",
+      "final",
+      "private",
+      "protected"
+    ],
+    "correct": 2
+  },
+  {
+    "question": "É possível herdar de um record?",
+    "options": [
+      "Sim",
+      "Somente usando sealed",
+      "Somente classes abstratas",
+      "Não",
+      "Depende da versão do Java"
+    ],
+    "correct": 3
+  },
+  {
+    "question": "Qual palavra-chave é utilizada para declarar um record?",
+    "options": [
+      "class",
+      "record",
+      "data",
+      "struct",
+      "value"
+    ],
+    "correct": 1
+  },
+  {
+    "question": "Qual das opções representa corretamente um acessador de um componente chamado idade?",
+    "options": [
+      "getIdade()",
+      "idade()",
+      "valueIdade()",
+      "componentIdade()",
+      "readIdade()"
+    ],
+    "correct": 1
+  },
+  {
+    "question": "Records foram introduzidos para reduzir principalmente:",
+    "options": [
+      "Uso de memória",
+      "Código repetitivo (boilerplate)",
+      "Tempo de compilação",
+      "Consumo de CPU",
+      "Tempo de execução"
+    ],
+    "correct": 1
+  },
+  {
+    "question": "Um record pode possuir métodos estáticos?",
+    "options": [
+      "Não",
+      "Somente um",
+      "Sim",
+      "Somente se forem privados",
+      "Somente se forem públicos"
+    ],
+    "correct": 2
+  },
+  {
+    "question": "É permitido declarar métodos privados em um record?",
+    "options": [
+      "Não",
+      "Somente desde Java 21",
+      "Sim",
+      "Somente se houver construtor compacto",
+      "Somente métodos auxiliares estáticos"
+    ],
+    "correct": 2
+  },
+  {
+    "question": "Um record pode possuir construtores sobrecarregados?",
+    "options": [
+      "Não",
+      "Sim",
+      "Somente um",
+      "Somente privados",
+      "Apenas compactos"
+    ],
+    "correct": 1
+  },
+  {
+    "question": "Todo construtor adicional de um record deve:",
+    "options": [
+      "Inicializar diretamente os campos",
+      "Chamar outro construtor do próprio record",
+      "Ser private",
+      "Ser static",
+      "Ser final"
+    ],
+    "correct": 1
+  },
+  {
+    "question": "Qual afirmação sobre records é verdadeira?",
+    "options": [
+      "São totalmente imutáveis, inclusive os objetos referenciados.",
+      "Garantem imutabilidade superficial (shallow immutability).",
+      "Não podem conter objetos como componentes.",
+      "Não podem implementar interfaces.",
+      "Sempre são serializáveis."
+    ],
+    "correct": 1
+  },
+  {
+    "question": "Se um componente de um record for uma List, o conteúdo da lista poderá ser alterado?",
+    "options": [
+      "Não",
+      "Sim, pois apenas a referência é final",
+      "Somente usando reflection",
+      "Somente dentro do record",
+      "Apenas se a lista for ArrayList"
+    ],
+    "correct": 1
+  },
+  {
+    "question": "Qual construtor é mais indicado quando apenas valida os parâmetros antes da inicialização automática?",
+    "options": [
+      "Construtor vazio",
+      "Construtor personalizado",
+      "Construtor compacto",
+      "Construtor privado",
+      "Construtor estático"
+    ],
+    "correct": 2
+  },
+  {
+    "question": "Qual construtor é mais indicado quando é necessário transformar os valores antes de atribuí-los aos componentes?",
+    "options": [
+      "Construtor compacto",
+      "Construtor canônico personalizado",
+      "Construtor vazio",
+      "Construtor default",
+      "Construtor estático"
+    ],
+    "correct": 1
+  },
+  {
+    "question": "Um record pode ser declarado dentro de outra classe?",
+    "options": [
+      "Não",
+      "Sim",
+      "Somente como classe local",
+      "Somente como classe anônima",
+      "Somente se for static"
+    ],
+    "correct": 1
+  },
+  {
+    "question": "Qual é o nome da classe base que todos os records estendem implicitamente?",
+    "options": [
+      "Object",
+      "AbstractRecord",
+      "Record",
+      "DataObject",
+      "BaseRecord"
+    ],
+    "correct": 2
+  }
+]

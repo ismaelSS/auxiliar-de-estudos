@@ -14,7 +14,7 @@ public class Main extends Application {
     public void start(Stage stage) {
         stage.setTitle("FlashCard Java");
         stage.setMinWidth(600);
-        stage.setMinHeight(400);
+        stage.setMinHeight(500);
 
         ThemeLoader themeLoader = new ThemeLoader();
         StatsService statsService = new StatsService();

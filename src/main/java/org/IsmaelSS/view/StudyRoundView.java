@@ -1,6 +1,7 @@
 package org.IsmaelSS.view;
 
 import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -25,16 +26,23 @@ public class StudyRoundView {
     private Runnable onVoltar;
 
     public StudyRoundView() {
-        root = new VBox(10);
-        root.setPadding(new Insets(20));
+        root = new VBox(15);
+        root.setPadding(new Insets(20)); // Reativado e ajustado para melhor espaçamento
+        root.setAlignment(Pos.CENTER);
 
         progressLabel = new Label();
         progressLabel.setStyle("-fx-font-size: 14px;");
 
         questionContent = new VBox(10);
+        questionContent.setAlignment(Pos.CENTER);
+        // Faz com que o contêiner não ocupe espaço físico na tela quando estiver invisível
+        questionContent.managedProperty().bind(questionContent.visibleProperty());
+
         questionLabel = new Label();
         questionLabel.setStyle("-fx-font-size: 16px; -fx-font-weight: bold;");
         questionLabel.setWrapText(true);
+        questionLabel.setMaxWidth(Double.MAX_VALUE);
+        questionLabel.setAlignment(Pos.CENTER);
 
         optionButtons = new Button[5];
         for (int i = 0; i < 5; i++) {
@@ -49,6 +57,7 @@ public class StudyRoundView {
         }
 
         exitButton = new Button("Sair");
+        exitButton.setStyle("-fx-padding: 8 20 8 20;");
         exitButton.setOnAction(e -> {
             if (onExit != null) onExit.run();
         });
@@ -58,11 +67,16 @@ public class StudyRoundView {
         questionContent.getChildren().addAll(optionButtons);
         questionContent.getChildren().add(exitButton);
 
-        completionContent = new VBox(10);
+        completionContent = new VBox(15);
+        completionContent.setAlignment(Pos.CENTER);
+        // Faz com que o contêiner não ocupe espaço físico na tela quando estiver invisível
+        completionContent.managedProperty().bind(completionContent.visibleProperty());
+
         completionLabel = new Label();
-        completionLabel.setStyle("-fx-font-size: 18px; -fx-font-weight: bold;");
+        completionLabel.setStyle("-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-alignment: center;");
 
         voltarButton = new Button("Voltar");
+        voltarButton.setStyle("-fx-padding: 8 20 8 20;");
         voltarButton.setOnAction(e -> {
             if (onVoltar != null) onVoltar.run();
         });
@@ -71,7 +85,9 @@ public class StudyRoundView {
         completionContent.setVisible(false);
 
         root.getChildren().addAll(questionContent, completionContent);
-        scene = new Scene(root, 600, 400);
+
+        // Ajustado para se adaptar dinamicamente ao tamanho do conteúdo interno
+        scene = new Scene(root);
     }
 
     public Scene getScene() {
