@@ -64,7 +64,7 @@ public class ThemeLoader {
             return null;
         }
 
-        Set<String> seenIds = new HashSet<>();
+        Set<Integer> seenIds = new HashSet<>();
         for (int i = 0; i < questions.size(); i++) {
             Question q = questions.get(i);
             if (q.getQuestion() == null || q.getOptions() == null || q.getOptions().size() != 5) {
@@ -75,12 +75,12 @@ public class ThemeLoader {
                 LOG.warning("Invalid correct answer index at question " + i + " in file: " + file.getName());
                 return null;
             }
-            if (q.getId() == null || q.getId().isEmpty()) {
-                LOG.warning("Question at index " + i + " in file: " + file.getName() + " has no id");
+            if (q.getId() < 0) {
+                LOG.warning("Question at index " + i + " in file: " + file.getName() + " has invalid id: " + q.getId());
                 return null;
             }
             if (!seenIds.add(q.getId())) {
-                LOG.warning("Duplicate question id '" + q.getId() + "' at index " + i + " in file: " + file.getName());
+                LOG.warning("Duplicate question id " + q.getId() + " at index " + i + " in file: " + file.getName());
                 return null;
             }
         }

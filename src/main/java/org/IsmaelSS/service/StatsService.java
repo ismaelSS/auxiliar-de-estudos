@@ -96,7 +96,7 @@ public class StatsService {
             }
 
             QuestionScore qScore = themeStats.getQuestions()
-                    .computeIfAbsent(result.questionId(), k -> new QuestionScore());
+                    .computeIfAbsent(String.valueOf(result.questionId()), k -> new QuestionScore());
             if (result.wasCorrect()) {
                 qScore.recordCorrect();
             } else {

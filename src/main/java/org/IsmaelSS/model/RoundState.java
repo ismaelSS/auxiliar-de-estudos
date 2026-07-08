@@ -66,7 +66,7 @@ public class RoundState {
             List<Question> freshQuestions = new ArrayList<>();
 
             for (Question q : themeQuestions) {
-                if (errorIds.contains(q.getId())) {
+                if (errorIds.contains(String.valueOf(q.getId()))) {
                     errorQuestions.add(q);
                 } else {
                     freshQuestions.add(q);
@@ -74,8 +74,8 @@ public class RoundState {
             }
 
             errorQuestions.sort((a, b) -> Integer.compare(
-                    scoreMap.getOrDefault(a.getId(), 0),
-                    scoreMap.getOrDefault(b.getId(), 0)
+                    scoreMap.getOrDefault(String.valueOf(a.getId()), 0),
+                    scoreMap.getOrDefault(String.valueOf(b.getId()), 0)
             ));
 
             int take = Math.min(questionsPerTheme, themeQuestions.size());
