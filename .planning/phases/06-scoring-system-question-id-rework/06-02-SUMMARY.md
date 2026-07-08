@@ -112,5 +112,15 @@ Each task was committed atomically:
 
 ---
 
+## Self-Check: PASSED
+
+- [x] `StatsData.java` — exists, contains QuestionScore, ThemeStats uses `Map<String, QuestionScore>`, QuestionStats removed
+- [x] `StatsService.java` — exists, contains migration, new recordRound(), getAproveitamento(), getLowestScoreQuestions()
+- [x] `RoundState.java` — exists, createReinforcementRound() uses getLowestScoreQuestions()
+- [x] `06-02-SUMMARY.md` — exists with substantive content
+- [x] 5 atomic commits (4 feat + 1 docs) all referencing 06-02
+
+---
+
 *Phase: 06-scoring-system-question-id-rework*
 *Completed: 2026-07-08*
