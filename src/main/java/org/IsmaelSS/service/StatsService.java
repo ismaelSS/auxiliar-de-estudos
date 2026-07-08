@@ -118,20 +118,6 @@ public class StatsService {
         data.getOverall().setTotalCorrect(totalCorrect);
     }
 
-    public String getHitRate(String themeName) {
-        ThemeStats ts = data.getThemes().get(themeName);
-        if (ts == null || ts.getTotalAnswered() == 0) return "N/A";
-        double rate = (double) ts.getTotalCorrect() / ts.getTotalAnswered() * 100;
-        return String.format("%.0f%%", rate);
-    }
-
-    public String getOverallHitRate() {
-        OverallStats o = data.getOverall();
-        if (o.getTotalAnswered() == 0) return "N/A";
-        double rate = (double) o.getTotalCorrect() / o.getTotalAnswered() * 100;
-        return String.format("%.0f%%", rate);
-    }
-
     public OverallStats getOverallStats() {
         return data.getOverall();
     }
@@ -140,17 +126,30 @@ public class StatsService {
         return data.getThemes().get(themeName);
     }
 
-    public List<Map.Entry<String, Double>> getHighestErrorQuestions(int limit) {
-        List<Map.Entry<String, Double>> entries = new ArrayList<>();
+    public String getAproveitamento(String themeName) {
+        ThemeStats ts = data.getThemes().get(themeName);
+        if (ts == null || ts.getQuestions().isEmpty()) return "N/A";
+        int weightSum = 0;
+        for (QuestionScore qs : ts.getQuestions().values()) {
+            int score = qs.getScore();
+            if (score < 0) weightSum += -3;
+            else if (score > 0) weightSum += 2;
+        }
+        return String.valueOf(weightSum);
+    }
+
+    public List<Map.Entry<String, Integer>> getLowestScoreQuestions(int limit) {
+        List<Map.Entry<String, Integer>> entries = new ArrayList<>();
         for (Map.Entry<String, ThemeStats> themeEntry : data.getThemes().entrySet()) {
-            for (Map.Entry<String, QuestionStats> questionEntry : themeEntry.getValue().getQuestions().entrySet()) {
-                QuestionStats qs = questionEntry.getValue();
-                if (qs.getAnswered() == 0) continue;
-                double errorRate = 1.0 - ((double) qs.getCorrect() / qs.getAnswered());
-                entries.add(Map.entry(questionEntry.getKey(), errorRate));
+            for (Map.Entry<String, QuestionScore> questionEntry :
+                    themeEntry.getValue().getQuestions().entrySet()) {
+                entries.add(Map.entry(
+                        questionEntry.getKey(),
+                        questionEntry.getValue().getScore()
+                ));
             }
         }
-        entries.sort(Map.Entry.comparingByValue(Comparator.reverseOrder()));
+        entries.sort(Map.Entry.comparingByValue());
         return entries.subList(0, Math.min(limit, entries.size()));
     }
 
