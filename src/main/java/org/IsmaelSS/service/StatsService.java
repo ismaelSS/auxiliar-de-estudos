@@ -1,18 +1,17 @@
 package org.IsmaelSS.service;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import org.IsmaelSS.model.RoundResult;
 import org.IsmaelSS.model.StatsData;
 import org.IsmaelSS.model.StatsData.OverallStats;
-import org.IsmaelSS.model.StatsData.QuestionStats;
+import org.IsmaelSS.model.StatsData.QuestionScore;
 import org.IsmaelSS.model.StatsData.ThemeStats;
 
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Comparator;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.logging.Logger;
@@ -21,6 +20,11 @@ public class StatsService {
     private static final Logger LOG = Logger.getLogger(StatsService.class.getName());
     private static final String STATS_FILE = System.getProperty("user.dir")
             + File.separator + "flashcard-stats.json";
+
+    private static final int SCORE_CORRECT_DELTA = 2;
+    private static final int SCORE_MAX = 5;
+    private static final int SCORE_WRONG_DELTA = -3;
+    private static final int SCORE_MIN = -10;
 
     private final ObjectMapper mapper;
     private StatsData data;
@@ -37,11 +41,41 @@ public class StatsService {
             return new StatsData();
         }
         try {
-            return mapper.readValue(file, StatsData.class);
+            StatsData data = mapper.readValue(file, StatsData.class);
+            if (isOldFormat(data)) {
+                LOG.info("Detected old stats format — migrating to new format...");
+                data = migrateOldFormat(data);
+                mapper.writerWithDefaultPrettyPrinter().writeValue(file, data);
+            }
+            return data;
         } catch (IOException e) {
             LOG.warning("Could not read stats file, starting fresh: " + e.getMessage());
             return new StatsData();
         }
+    }
+
+    private boolean isOldFormat(StatsData data) {
+        for (StatsData.ThemeStats ts : data.getThemes().values()) {
+            for (String key : ts.getQuestions().keySet()) {
+                return key.length() > 20 || key.contains(" ");
+            }
+        }
+        return false;
+    }
+
+    private StatsData migrateOldFormat(StatsData oldData) {
+        StatsData newData = new StatsData();
+        for (Map.Entry<String, StatsData.ThemeStats> themeEntry : oldData.getThemes().entrySet()) {
+            StatsData.ThemeStats oldTs = themeEntry.getValue();
+            StatsData.ThemeStats newTs = new StatsData.ThemeStats();
+            newTs.setTotalAnswered(oldTs.getTotalAnswered());
+            newTs.setTotalCorrect(oldTs.getTotalCorrect());
+            newTs.setQuestions(new HashMap<>());
+            newData.getThemes().put(themeEntry.getKey(), newTs);
+        }
+        newData.getOverall().setTotalAnswered(oldData.getOverall().getTotalAnswered());
+        newData.getOverall().setTotalCorrect(oldData.getOverall().getTotalCorrect());
+        return newData;
     }
 
     private void save() {
@@ -60,11 +94,13 @@ public class StatsService {
             if (result.wasCorrect()) {
                 themeStats.setTotalCorrect(themeStats.getTotalCorrect() + 1);
             }
-            QuestionStats qStats = themeStats.getQuestions()
-                    .computeIfAbsent(result.questionText(), k -> new QuestionStats());
-            qStats.setAnswered(qStats.getAnswered() + 1);
+
+            QuestionScore qScore = themeStats.getQuestions()
+                    .computeIfAbsent(result.questionId(), k -> new QuestionScore());
             if (result.wasCorrect()) {
-                qStats.setCorrect(qStats.getCorrect() + 1);
+                qScore.recordCorrect();
+            } else {
+                qScore.recordWrong();
             }
         }
         recalculateOverall();
