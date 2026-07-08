@@ -66,6 +66,7 @@ public class StudyRoundController {
         results.add(new RoundResult(
                 roundState.getCurrentThemeName(),
                 roundState.getCurrentQuestion().getQuestion(),
+                roundState.getCurrentQuestion().getId(),
                 correct
         ));
 
