@@ -29,6 +29,7 @@ public class StatsData {
         public void setQuestions(Map<String, QuestionScore> questions) { this.questions = questions; }
     }
 
+    @com.fasterxml.jackson.annotation.JsonIgnoreProperties(ignoreUnknown = true)
     public static class QuestionScore {
         private int score;  // bounded -10..+5, defaults to 0
 

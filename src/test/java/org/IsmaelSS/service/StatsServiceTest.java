@@ -35,85 +35,110 @@ class StatsServiceTest {
     }
 
     @Test
-    void recordRoundSingleAnswer() {
+    void recordRoundSingleCorrectAnswer() {
         StatsService service = new StatsService();
         service.recordRound(List.of(
-                new RoundResult("matematica", "2+2?", true)
+                new RoundResult("t1", "q1 text?", "q1", true)
         ));
-
         assertEquals(1, service.getOverallStats().getTotalAnswered());
         assertEquals(1, service.getOverallStats().getTotalCorrect());
-        assertEquals("100%", service.getHitRate("matematica"));
-        assertEquals("100%", service.getOverallHitRate());
+        assertEquals("2", service.getAproveitamento("t1"));  // +2 for one correct
     }
 
     @Test
-    void recordRoundMultipleAnswers() {
+    void recordRoundSingleWrongAnswer() {
         StatsService service = new StatsService();
         service.recordRound(List.of(
-                new RoundResult("matematica", "2+2?", true),
-                new RoundResult("matematica", "3+3?", false),
-                new RoundResult("historia", "Ano do Brasil?", true),
-                new RoundResult("historia", "Capital do Brasil?", false)
+                new RoundResult("t1", "q1 text?", "q1", false)
         ));
-
-        assertEquals(4, service.getOverallStats().getTotalAnswered());
-        assertEquals(2, service.getOverallStats().getTotalCorrect());
-        assertEquals("50%", service.getHitRate("matematica"));
-        assertEquals("50%", service.getHitRate("historia"));
+        assertEquals(1, service.getOverallStats().getTotalAnswered());
+        assertEquals(0, service.getOverallStats().getTotalCorrect());
+        assertEquals("-3", service.getAproveitamento("t1"));  // -3 for one wrong
     }
 
     @Test
-    void hitRateReturnsNAForNoData() {
+    void scoreCapsAtFive() {
         StatsService service = new StatsService();
-        assertEquals("N/A", service.getHitRate("nonexistent"));
+        // 10 correct answers → score should cap at +5
+        for (int i = 0; i < 10; i++) {
+            service.recordRound(List.of(
+                    new RoundResult("t1", "q1 text?", "q1", true)
+            ));
+        }
+        List<Map.Entry<String, Integer>> lowest = service.getLowestScoreQuestions(10);
+        assertEquals(1, lowest.size());
+        assertEquals(5, lowest.get(0).getValue());  // capped at +5
     }
 
     @Test
-    void hitRateReturnsNAForZeroAnswers() {
+    void scoreFloorsAtMinusTen() {
         StatsService service = new StatsService();
-        StatsData.ThemeStats ts = new StatsData.ThemeStats();
-        service.getOverallStats().setTotalAnswered(0);
-        service.getOverallStats().setTotalCorrect(0);
-        assertEquals("N/A", service.getOverallHitRate());
+        // 10 wrong answers → score should floor at -10
+        for (int i = 0; i < 10; i++) {
+            service.recordRound(List.of(
+                    new RoundResult("t1", "q1 text?", "q1", false)
+            ));
+        }
+        List<Map.Entry<String, Integer>> lowest = service.getLowestScoreQuestions(10);
+        assertEquals(1, lowest.size());
+        assertEquals(-10, lowest.get(0).getValue());  // floored at -10
     }
 
     @Test
-    void highestErrorQuestionsRanking() {
+    void aproveitamentoCalculation() {
+        StatsService service = new StatsService();
+        // q1: correct (+2) → score=+2 → weight +2
+        service.recordRound(List.of(new RoundResult("t1", "q1?", "q1", true)));
+        // q2: wrong (-3) → score=-3 → weight -3
+        service.recordRound(List.of(new RoundResult("t1", "q2?", "q2", false)));
+        // q3: no answers → score=0 → weight 0
+        // Total weight: +2 + (-3) + 0 = -1
+        assertEquals("-1", service.getAproveitamento("t1"));
+    }
+
+    @Test
+    void aproveitamentoReturnsNAForNoData() {
+        StatsService service = new StatsService();
+        assertEquals("N/A", service.getAproveitamento("nonexistent"));
+    }
+
+    @Test
+    void lowestScoreQuestionsRanking() {
+        StatsService service = new StatsService();
+        // q1: correct (+2)
+        service.recordRound(List.of(new RoundResult("t1", "q1?", "q1", true)));
+        // q2: wrong (-3)
+        service.recordRound(List.of(new RoundResult("t1", "q2?", "q2", false)));
+        // q3: wrong twice (-3, -3 = -6)
+        service.recordRound(List.of(new RoundResult("t1", "q3?", "q3", false)));
+        service.recordRound(List.of(new RoundResult("t1", "q3?", "q3", false)));
+
+        List<Map.Entry<String, Integer>> lowest = service.getLowestScoreQuestions(5);
+        assertEquals(3, lowest.size());
+        // q3 should be lowest (-6), then q2 (-3), then q1 (+2)
+        assertEquals("q3", lowest.get(0).getKey());
+        assertEquals(-6, lowest.get(0).getValue());
+        assertEquals("q2", lowest.get(1).getKey());
+        assertEquals(-3, lowest.get(1).getValue());
+        assertEquals("q1", lowest.get(2).getKey());
+        assertEquals(2, lowest.get(2).getValue());
+    }
+
+    @Test
+    void lowestScoreQuestionsRespectsLimit() {
         StatsService service = new StatsService();
         service.recordRound(List.of(
-                new RoundResult("matematica", "q1", true),
-                new RoundResult("matematica", "q2", false),
-                new RoundResult("matematica", "q3", false),
-                new RoundResult("matematica", "q3", false)
+                new RoundResult("t1", "q1?", "q1", false),
+                new RoundResult("t1", "q2?", "q2", false),
+                new RoundResult("t1", "q3?", "q3", false)
         ));
-
-        List<Map.Entry<String, Double>> top = service.getHighestErrorQuestions(5);
-        assertEquals(3, top.size());
-        assertEquals(1.0, top.get(0).getValue(), 0.001);
-        assertEquals(1.0, top.get(1).getValue(), 0.001);
-        assertEquals(0.0, top.get(2).getValue(), 0.001);
-        assertTrue(top.get(0).getKey().equals("q2") || top.get(0).getKey().equals("q3"));
-        assertTrue(top.get(1).getKey().equals("q2") || top.get(1).getKey().equals("q3"));
+        assertEquals(2, service.getLowestScoreQuestions(2).size());
     }
 
     @Test
-    void highestErrorQuestionsRespectsLimit() {
+    void lowestScoreQuestionsEmptyWhenNoData() {
         StatsService service = new StatsService();
-        service.recordRound(List.of(
-                new RoundResult("matematica", "q1", false),
-                new RoundResult("matematica", "q2", false),
-                new RoundResult("matematica", "q3", false)
-        ));
-
-        List<Map.Entry<String, Double>> top = service.getHighestErrorQuestions(2);
-        assertEquals(2, top.size());
-    }
-
-    @Test
-    void highestErrorQuestionsEmptyWhenNoData() {
-        StatsService service = new StatsService();
-        assertTrue(service.getHighestErrorQuestions(5).isEmpty());
+        assertTrue(service.getLowestScoreQuestions(5).isEmpty());
     }
 
     @Test
@@ -127,24 +152,22 @@ class StatsServiceTest {
     void getAllThemesWithData() {
         StatsService service = new StatsService();
         service.recordRound(List.of(
-                new RoundResult("matematica", "q1", true),
-                new RoundResult("historia", "q1", false)
+                new RoundResult("t1", "q1?", "q1", true),
+                new RoundResult("t2", "q2?", "q2", false)
         ));
-
         List<String> themes = service.getAllThemesWithData();
         assertEquals(2, themes.size());
-        assertTrue(themes.contains("matematica"));
-        assertTrue(themes.contains("historia"));
+        assertTrue(themes.contains("t1"));
+        assertTrue(themes.contains("t2"));
     }
 
     @Test
     void getThemeStats() {
         StatsService service = new StatsService();
         service.recordRound(List.of(
-                new RoundResult("matematica", "q1", true)
+                new RoundResult("t1", "q1?", "q1", true)
         ));
-
-        StatsData.ThemeStats ts = service.getThemeStats("matematica");
+        StatsData.ThemeStats ts = service.getThemeStats("t1");
         assertNotNull(ts);
         assertEquals(1, ts.getTotalAnswered());
         assertEquals(1, ts.getTotalCorrect());
@@ -155,9 +178,8 @@ class StatsServiceTest {
     void persistDataAcrossInstances() {
         StatsService writer = new StatsService();
         writer.recordRound(List.of(
-                new RoundResult("matematica", "q1", true)
+                new RoundResult("t1", "q1?", "q1", true)
         ));
-
         StatsService reader = new StatsService();
         assertEquals(1, reader.getOverallStats().getTotalAnswered());
         assertEquals(1, reader.getOverallStats().getTotalCorrect());
@@ -166,12 +188,32 @@ class StatsServiceTest {
     @Test
     void multipleRoundsAccumulate() {
         StatsService service = new StatsService();
-        service.recordRound(List.of(new RoundResult("matematica", "q1", true)));
-        service.recordRound(List.of(new RoundResult("matematica", "q2", false)));
-        service.recordRound(List.of(new RoundResult("matematica", "q3", true)));
-
+        service.recordRound(List.of(new RoundResult("t1", "q1?", "q1", true)));
+        service.recordRound(List.of(new RoundResult("t1", "q2?", "q2", false)));
+        service.recordRound(List.of(new RoundResult("t1", "q3?", "q3", true)));
         assertEquals(3, service.getOverallStats().getTotalAnswered());
         assertEquals(2, service.getOverallStats().getTotalCorrect());
-        assertEquals("67%", service.getHitRate("matematica"));
+        // q1=+2, q2=-3, q3=+2 → weights: +2, -3, +2 = +1
+        assertEquals("1", service.getAproveitamento("t1"));
+    }
+
+    @Test
+    void migrationFromOldFormatPreservesThemeTotals() throws Exception {
+        // Write old-format JSON
+        String oldJson = "{"
+                + "\"themes\":{\"t1\":{\"totalAnswered\":5,\"totalCorrect\":3,"
+                + "\"questions\":{\"A long question text with spaces?\":" 
+                + "{\"answered\":2,\"correct\":1}}}},"
+                + "\"overall\":{\"totalAnswered\":5,\"totalCorrect\":3}}";
+        java.nio.file.Files.writeString(
+                java.nio.file.Paths.get(STATS_FILE), oldJson);
+
+        StatsService service = new StatsService();
+        assertEquals(5, service.getOverallStats().getTotalAnswered());
+        assertEquals(3, service.getOverallStats().getTotalCorrect());
+        // Per-question stats reset — score is 0 for any new round
+        StatsData.ThemeStats ts = service.getThemeStats("t1");
+        assertNotNull(ts);
+        assertEquals(0, ts.getQuestions().size());  // old per-question data was reset
     }
 }

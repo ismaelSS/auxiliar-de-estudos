@@ -74,8 +74,8 @@ public class RoundState {
             }
 
             errorQuestions.sort((a, b) -> Integer.compare(
-                    scoreMap.getOrDefault(b.getId(), 0),
-                    scoreMap.getOrDefault(a.getId(), 0)
+                    scoreMap.getOrDefault(a.getId(), 0),
+                    scoreMap.getOrDefault(b.getId(), 0)
             ));
 
             int take = Math.min(questionsPerTheme, themeQuestions.size());

@@ -12,14 +12,13 @@ class StatsDataTest {
     @Test
     void roundTripSerialization() throws Exception {
         StatsData original = new StatsData();
-        StatsData.ThemeStats matematica = new StatsData.ThemeStats();
-        matematica.setTotalAnswered(10);
-        matematica.setTotalCorrect(7);
-        StatsData.QuestionStats q1 = new StatsData.QuestionStats();
-        q1.setAnswered(3);
-        q1.setCorrect(2);
-        matematica.getQuestions().put("2+2?", q1);
-        original.getThemes().put("matematica", matematica);
+        StatsData.ThemeStats t1 = new StatsData.ThemeStats();
+        t1.setTotalAnswered(10);
+        t1.setTotalCorrect(7);
+        StatsData.QuestionScore q1 = new StatsData.QuestionScore();
+        q1.setScore(2);
+        t1.getQuestions().put("q1-id", q1);
+        original.getThemes().put("t1", t1);
         original.getOverall().setTotalAnswered(10);
         original.getOverall().setTotalCorrect(7);
 
@@ -28,13 +27,12 @@ class StatsDataTest {
 
         assertNotNull(deserialized.getThemes());
         assertEquals(1, deserialized.getThemes().size());
-        StatsData.ThemeStats loaded = deserialized.getThemes().get("matematica");
+        StatsData.ThemeStats loaded = deserialized.getThemes().get("t1");
         assertEquals(10, loaded.getTotalAnswered());
         assertEquals(7, loaded.getTotalCorrect());
         assertNotNull(loaded.getQuestions());
-        StatsData.QuestionStats loadedQ = loaded.getQuestions().get("2+2?");
-        assertEquals(3, loadedQ.getAnswered());
-        assertEquals(2, loadedQ.getCorrect());
+        StatsData.QuestionScore loadedQ = loaded.getQuestions().get("q1-id");
+        assertEquals(2, loadedQ.getScore());
         assertEquals(10, deserialized.getOverall().getTotalAnswered());
         assertEquals(7, deserialized.getOverall().getTotalCorrect());
     }
@@ -56,11 +54,35 @@ class StatsDataTest {
     }
 
     @Test
-    void questionStatsIncrements() {
-        StatsData.QuestionStats qs = new StatsData.QuestionStats();
-        qs.setAnswered(5);
-        qs.setCorrect(3);
-        assertEquals(5, qs.getAnswered());
-        assertEquals(3, qs.getCorrect());
+    void questionScoreRecordCorrectCapsAtFive() {
+        StatsData.QuestionScore qs = new StatsData.QuestionScore();
+        for (int i = 0; i < 10; i++) {
+            qs.recordCorrect();
+        }
+        assertEquals(5, qs.getScore());
+    }
+
+    @Test
+    void questionScoreRecordWrongFloorsAtMinusTen() {
+        StatsData.QuestionScore qs = new StatsData.QuestionScore();
+        for (int i = 0; i < 10; i++) {
+            qs.recordWrong();
+        }
+        assertEquals(-10, qs.getScore());
+    }
+
+    @Test
+    void questionScoreMixedAnswers() {
+        StatsData.QuestionScore qs = new StatsData.QuestionScore();
+        qs.recordCorrect();  // +2 → 2
+        qs.recordCorrect();  // +2 → 4
+        qs.recordWrong();    // -3 → 1
+        assertEquals(1, qs.getScore());
+    }
+
+    @Test
+    void questionScoreDefaultsToZero() {
+        StatsData.QuestionScore qs = new StatsData.QuestionScore();
+        assertEquals(0, qs.getScore());
     }
 }
