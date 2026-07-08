@@ -5,7 +5,6 @@ import org.IsmaelSS.service.StatsService;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -51,13 +50,13 @@ public class RoundState {
     }
 
     public static RoundState createReinforcementRound(List<Theme> themes, int questionsPerTheme, StatsService statsService) {
-        List<Map.Entry<String, Double>> topErrors = statsService.getHighestErrorQuestions(50);
-        Set<String> errorTexts = topErrors.stream()
+        List<Map.Entry<String, Integer>> lowestScores = statsService.getLowestScoreQuestions(50);
+        Set<String> errorIds = lowestScores.stream()
                 .map(Map.Entry::getKey)
                 .collect(Collectors.toSet());
-        Map<String, Double> errorMap = new HashMap<>();
-        for (Map.Entry<String, Double> e : topErrors) {
-            errorMap.put(e.getKey(), e.getValue());
+        Map<String, Integer> scoreMap = new HashMap<>();
+        for (Map.Entry<String, Integer> e : lowestScores) {
+            scoreMap.put(e.getKey(), e.getValue());
         }
 
         List<RoundQuestion> questions = new ArrayList<>();
@@ -67,16 +66,16 @@ public class RoundState {
             List<Question> freshQuestions = new ArrayList<>();
 
             for (Question q : themeQuestions) {
-                if (errorTexts.contains(q.getId())) {
+                if (errorIds.contains(q.getId())) {
                     errorQuestions.add(q);
                 } else {
                     freshQuestions.add(q);
                 }
             }
 
-            errorQuestions.sort((a, b) -> Double.compare(
-                    errorMap.getOrDefault(b.getId(), 0.0),
-                    errorMap.getOrDefault(a.getId(), 0.0)
+            errorQuestions.sort((a, b) -> Integer.compare(
+                    scoreMap.getOrDefault(b.getId(), 0),
+                    scoreMap.getOrDefault(a.getId(), 0)
             ));
 
             int take = Math.min(questionsPerTheme, themeQuestions.size());
