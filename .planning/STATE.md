@@ -3,13 +3,13 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: Executing Phase 07
-last_updated: "2026-07-10T12:01:16Z"
+last_updated: "2026-07-10T15:05:57Z"
 progress:
   total_phases: 7
   completed_phases: 4
   total_plans: 16
-  completed_plans: 8
-  percent: 50
+  completed_plans: 9
+  percent: 56
 ---
 
 # State: FlashCard JavaFX
@@ -76,6 +76,8 @@ See: .planning/PROJECT.md (updated 2026-07-07)
 | Post-round callback refreshes hit rates | Ensures theme selection shows updated stats after round | Decided |
 | getDominio uses score > 0 (not >= 0) | DOM-01 spec: zero = never answered/balanced, not positive | Decided |
 | Dual-state label tracking for dominio | Separate HashMaps so updateAproveitamento and updateDominio don't overwrite each other | Decided |
+| Accordion replaces flat VBoxes in ReportsView | Cleaner UX for per-theme exploration, collapsible drawers | Decided |
+| AI prompt copies directly to clipboard | No preview dialog — auto-generated per plan D-01 | Decided |
 
 ## Quick Tasks Completed
 
@@ -87,7 +89,7 @@ See: .planning/PROJECT.md (updated 2026-07-07)
 
 - (None)
 
-*Last updated: 2026-07-10 after Phase 7 Plan 02*
+*Last updated: 2026-07-10 after Phase 7 Plan 03*
 
 ## Performance Metrics
 
@@ -95,3 +97,4 @@ See: .planning/PROJECT.md (updated 2026-07-07)
 |-------|------|----------|-------|
 | Phase 07-reports-ai-assisted-review P01 | 2min | 2 tasks | 2 files |
 | Phase 07-reports-ai-assisted-review P02 | 1min | 2 tasks | 2 files |
+| Phase 07-reports-ai-assisted-review P03 | 2min | 2 tasks | 2 files |

@@ -108,4 +108,4 @@ Plans:
 
 - [x] 07-01-PLAN.md — StatsService extension: getDominio() + getLowestScoreQuestionsByTheme() + tests (Wave 1)
 - [x] 07-02-PLAN.md — ThemeSelectionView dominio display + controller wiring (Wave 2)
-- [ ] 07-03-PLAN.md — ReportsView Accordion drawers + ReportsController AI prompt copy (Wave 2)
+- [x] 07-03-PLAN.md — ReportsView Accordion drawers + ReportsController AI prompt copy (Wave 2)
