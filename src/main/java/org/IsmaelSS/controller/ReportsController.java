@@ -8,11 +8,15 @@ import javafx.scene.control.TitledPane;
 import javafx.scene.input.Clipboard;
 import javafx.scene.input.ClipboardContent;
 import javafx.scene.layout.VBox;
+import org.IsmaelSS.model.Question;
 import org.IsmaelSS.model.StatsData.OverallStats;
 import org.IsmaelSS.model.StatsData.ThemeStats;
+import org.IsmaelSS.model.Theme;
 import org.IsmaelSS.service.StatsService;
+import org.IsmaelSS.service.ThemeLoader;
 import org.IsmaelSS.view.ReportsView;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -20,11 +24,23 @@ public class ReportsController {
     private final StatsService statsService;
     private final ReportsView view;
     private final ScreenController screenController;
+    private final Map<String, String> questionTextById;
 
-    public ReportsController(StatsService statsService, ReportsView view, ScreenController screenController) {
+    public ReportsController(StatsService statsService, ReportsView view, ScreenController screenController, ThemeLoader themeLoader) {
         this.statsService = statsService;
         this.view = view;
         this.screenController = screenController;
+        this.questionTextById = buildQuestionTextMap(themeLoader);
+    }
+
+    private static Map<String, String> buildQuestionTextMap(ThemeLoader themeLoader) {
+        Map<String, String> map = new HashMap<>();
+        for (Theme theme : themeLoader.loadAllThemes()) {
+            for (Question q : theme.getQuestions()) {
+                map.put(String.valueOf(q.getId()), q.getQuestion());
+            }
+        }
+        return map;
     }
 
     public void initialize() {
@@ -91,10 +107,12 @@ public class ReportsController {
 
     private void copyAIPrompt(String themeName, List<Map.Entry<String, Integer>> lowestQuestions) {
         StringBuilder sb = new StringBuilder();
-        sb.append("Explique os seguintes tópicos de ").append(themeName).append(" em detalhes:\n\n");
+        sb.append("estou estudando ").append(themeName)
+          .append(", apresentei dificuldade ao responder as seguintes perguntas")
+          .append(" me explique os pontos que regem essas questões em detalhes:\n");
         for (Map.Entry<String, Integer> entry : lowestQuestions) {
-            sb.append("- Questão ").append(entry.getKey())
-              .append(" (pontuação: ").append(entry.getValue()).append(")\n");
+            String text = questionTextById.getOrDefault(entry.getKey(), "Questão " + entry.getKey());
+            sb.append("- Questão: ").append(text).append("\n");
         }
 
         ClipboardContent content = new ClipboardContent();

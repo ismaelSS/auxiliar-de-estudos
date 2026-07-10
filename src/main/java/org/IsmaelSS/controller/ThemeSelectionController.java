@@ -84,7 +84,7 @@ public class ThemeSelectionController {
     private void handleRelatorios() {
         if (reportsController == null) {
             ReportsView reportsView = new ReportsView();
-            reportsController = new ReportsController(statsService, reportsView, screenController);
+            reportsController = new ReportsController(statsService, reportsView, screenController, themeLoader);
             reportsController.initialize();
         } else {
             reportsController.refresh();
