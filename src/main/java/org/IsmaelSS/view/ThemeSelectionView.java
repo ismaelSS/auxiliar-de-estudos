@@ -27,6 +27,8 @@ public class ThemeSelectionView {
     private final Map<String, CheckBox> themeCheckboxes = new HashMap<>();
     private final Map<String, Label> themeLabels = new HashMap<>();
     private final Map<String, Theme> themeMap = new HashMap<>();
+    private final Map<String, String> themeScores = new HashMap<>();
+    private final Map<String, String> themeDominioText = new HashMap<>();
 
     public ThemeSelectionView() {
         root = new VBox(10);
@@ -64,12 +66,14 @@ public class ThemeSelectionView {
         themeCheckboxes.clear();
         themeLabels.clear();
         themeMap.clear();
+        themeScores.clear();
+        themeDominioText.clear();
 
         for (Theme theme : themes) {
             themeMap.put(theme.getName(), theme);
 
             CheckBox checkBox = new CheckBox();
-            Label info = new Label(theme.getName() + " (" + theme.getQuestionCount() + " perguntas) — Pontuação: N/A");
+            Label info = new Label(theme.getName() + " (" + theme.getQuestionCount() + " perguntas) — Pontuação: N/A | Domínio: N/A");
 
             themeCheckboxes.put(theme.getName(), checkBox);
             themeLabels.put(theme.getName(), info);
@@ -119,12 +123,27 @@ public class ThemeSelectionView {
     }
 
     public void updateAproveitamento(String themeName, String score) {
+        themeScores.put(themeName, score);
         Label info = themeLabels.get(themeName);
         if (info != null) {
             Theme theme = themeMap.get(themeName);
             if (theme != null) {
+                String dominio = themeDominioText.getOrDefault(themeName, "N/A");
                 info.setText(theme.getName() + " (" + theme.getQuestionCount()
-                        + " perguntas) — Pontuação: " + score);
+                        + " perguntas) — Pontuação: " + score + " | Domínio: " + dominio);
+            }
+        }
+    }
+
+    public void updateDominio(String themeName, String dominio) {
+        themeDominioText.put(themeName, dominio);
+        Label info = themeLabels.get(themeName);
+        if (info != null) {
+            Theme theme = themeMap.get(themeName);
+            if (theme != null) {
+                String score = themeScores.getOrDefault(themeName, "N/A");
+                info.setText(theme.getName() + " (" + theme.getQuestionCount()
+                        + " perguntas) — Pontuação: " + score + " | Domínio: " + dominio);
             }
         }
     }
