@@ -31,6 +31,8 @@ See: .planning/PROJECT.md (updated 2026-07-07)
 | 4 | Reinforcement Mode & Navigation Polish | Complete ✓ |
 | 5 | Error Handling & UX Refinements | Planned |
 | 6 | Scoring System & Question ID Rework | Complete ✓ |
+| 7 | Reports & AI-Assisted Review | Complete ✓ |
+| 8 | Resizable Window & Ctrl+Scroll Zoom | Complete ✓ |
 
 ## Completed Phases
 
@@ -49,6 +51,22 @@ See: .planning/PROJECT.md (updated 2026-07-07)
 ### Phase 4: Reinforcement Mode & Navigation Polish ✓
 
 **Outcome:** "Modo Reforço" checkbox added to theme selection screen. When enabled, `RoundState.createReinforcementRound()` factory selects highest-error questions first via `StatsService.getHighestErrorQuestions()`, fills remaining slots with fresh questions. `ThemeSelectionController` checks `view.isReinforcementMode()` and chooses the appropriate constructor. All 17 existing tests still pass.
+
+### Phase 5: Error Handling & UX Refinements ○
+
+**Outcome:** *Not yet executed.*
+
+### Phase 6: Scoring System & Question ID Rework ✓
+
+**Outcome:** Question IDs changed from descriptive strings to sequential integers. Theme stats schema updated with `lastAccessTime` and `sortByLastAccessTime`. Score tracking thresholds (3x review, 6x confidence, 10x mastery). `getDominio()` returns percentage score across all questions. Reports view shows "Domínio" per theme. All 30+ tests pass.
+
+### Phase 7: Reports & AI-Assisted Review ✓
+
+**Outcome:** Accordion-style ReportsView with per-theme TitledPane drawers showing ≤10 lowest-score questions. "Copiar prompt IA" button per drawer copies formatted AI review prompt with question text. StatsService.getLowestScoreQuestionsByTheme(). All 38 tests pass.
+
+### Phase 8: Resizable Window & Ctrl+Scroll Zoom ✓
+
+**Outcome:** Ctrl+scroll zoom (10-30px range, 1px steps) via ScreenController capture-phase event filter. Zoom applied as `-fx-font-size` on root node, inherited by all views. ThemeSelectionView and ReportsView scenes are now responsive (no hardcoded dimensions). StudyRoundView inline `-fx-font-size` removed. All 38 tests pass, app packages successfully.
 
 ---
 
@@ -78,6 +96,10 @@ See: .planning/PROJECT.md (updated 2026-07-07)
 | Dual-state label tracking for dominio | Separate HashMaps so updateAproveitamento and updateDominio don't overwrite each other | Decided |
 | Accordion replaces flat VBoxes in ReportsView | Cleaner UX for per-theme exploration, collapsible drawers | Decided |
 | AI prompt copies directly to clipboard | No preview dialog — auto-generated per plan D-01 | Decided |
+| Zoom via root CSS -fx-font-size | Children inherit automatically, no per-label styles | Confirmed |
+| ScreenController owns zoom state | Single source of truth across all screens | Confirmed |
+| Session-only zoom persistence | No disk write per D-04 | Confirmed |
+| Capture-phase event filter for Ctrl+scroll | Prevents ScrollPane double-scroll in ReportsView | Confirmed |
 
 ## Quick Tasks Completed
 
@@ -89,7 +111,7 @@ See: .planning/PROJECT.md (updated 2026-07-07)
 
 - (None)
 
-*Last updated: 2026-07-10 after Phase 7 Plan 03*
+*Last updated: 2026-07-10 after Phase 8*
 
 ## Performance Metrics
 
