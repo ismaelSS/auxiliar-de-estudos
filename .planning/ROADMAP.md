@@ -115,7 +115,7 @@ Plans:
 **Goal:** Make the entire application window resizable and add Ctrl+scroll wheel zoom to adjust text size across all screens.
 **Requirements:** ZOOM-01, ZOOM-02, ZOOM-03
 **Depends on:** Phase 7
-**Plans:** 1 plan
+**Plans:** 1/1 plans complete
 
 **Success Criteria:**
 
@@ -127,4 +127,4 @@ Plans:
 
 Plans:
 
-- [ ] 08-01-PLAN.md — Zoom infrastructure + responsive views (Wave 1)
+- [x] 08-01-PLAN.md — Zoom infrastructure + responsive views (Wave 1)
