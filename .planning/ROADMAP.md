@@ -109,3 +109,22 @@ Plans:
 - [x] 07-01-PLAN.md — StatsService extension: getDominio() + getLowestScoreQuestionsByTheme() + tests (Wave 1)
 - [x] 07-02-PLAN.md — ThemeSelectionView dominio display + controller wiring (Wave 2)
 - [x] 07-03-PLAN.md — ReportsView Accordion drawers + ReportsController AI prompt copy (Wave 2)
+
+### Phase 8: Resizable Window & Ctrl+Scroll Zoom
+
+**Goal:** Make the entire application window resizable and add Ctrl+scroll wheel zoom to adjust text size across all screens.
+**Requirements:** ZOOM-01, ZOOM-02, ZOOM-03
+**Depends on:** Phase 7
+**Plans:** 1 plan
+
+**Success Criteria:**
+
+1. Window can be freely resized (no fixed scene dimensions)
+2. Ctrl+scroll up increases text size across all screens
+3. Ctrl+scroll down decreases text size across all screens
+4. Zoom level persists across screen switches
+5. All existing tests still pass
+
+Plans:
+
+- [ ] 08-01-PLAN.md — Zoom infrastructure + responsive views (Wave 1)
