@@ -22,11 +22,11 @@ public class ReportsView {
         content.setPadding(new Insets(20));
 
         Label title = new Label("Relatórios de Desempenho");
-        title.setStyle("-fx-font-size: 20px; -fx-font-weight: bold;");
+        title.setStyle("-fx-font-weight: bold;");
         content.getChildren().add(title);
 
         Label section1 = new Label("Resumo Geral");
-        section1.setStyle("-fx-font-size: 16px; -fx-font-weight: bold;");
+        section1.setStyle("-fx-font-weight: bold;");
         content.getChildren().addAll(section1, new Separator());
 
         overallBox = new VBox(5);
@@ -34,7 +34,7 @@ public class ReportsView {
         content.getChildren().add(overallBox);
 
         Label section2 = new Label("Questões de Menor Pontuação por Tema");
-        section2.setStyle("-fx-font-size: 16px; -fx-font-weight: bold;");
+        section2.setStyle("-fx-font-weight: bold;");
         content.getChildren().addAll(section2, new Separator());
 
         accordion = new Accordion();
@@ -50,7 +50,7 @@ public class ReportsView {
         scrollPane.setVbarPolicy(ScrollPane.ScrollBarPolicy.AS_NEEDED);
 
         root = new VBox(scrollPane);
-        scene = new Scene(root, 600, 500);
+        scene = new Scene(root);
     }
 
     public Scene getScene() { return scene; }

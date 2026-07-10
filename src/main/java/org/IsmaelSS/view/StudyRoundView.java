@@ -33,14 +33,14 @@ public class StudyRoundView {
         root.setAlignment(Pos.CENTER);
 
         progressLabel = new Label();
-        progressLabel.setStyle("-fx-font-size: 14px;");
+        progressLabel.setStyle("");
 
         questionContent = new VBox(10);
         questionContent.setAlignment(Pos.CENTER);
         questionContent.managedProperty().bind(questionContent.visibleProperty());
 
         questionLabel = new Label();
-        questionLabel.setStyle("-fx-font-size: 16px; -fx-font-weight: bold;");
+        questionLabel.setStyle("-fx-font-weight: bold;");
         questionLabel.setWrapText(true);
         questionLabel.setMaxWidth(Double.MAX_VALUE);
         questionLabel.setAlignment(Pos.CENTER);
@@ -90,7 +90,7 @@ public class StudyRoundView {
         completionContent.managedProperty().bind(completionContent.visibleProperty());
 
         completionLabel = new Label();
-        completionLabel.setStyle("-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-alignment: center;");
+        completionLabel.setStyle("-fx-font-weight: bold; -fx-text-alignment: center;");
 
         voltarButton = new Button("Voltar");
         voltarButton.setStyle("-fx-padding: 8 20 8 20;");
