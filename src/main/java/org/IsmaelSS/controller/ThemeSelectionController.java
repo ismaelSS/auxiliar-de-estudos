@@ -49,6 +49,9 @@ public class ThemeSelectionController {
         for (Theme theme : themes) {
             String score = statsService.getAproveitamento(theme.getName());
             view.updateAproveitamento(theme.getName(), score);
+            String dominio = statsService.getDominio(theme.getName());
+            String dominioDisplay = "N/A".equals(dominio) ? "N/A" : dominio + "%";
+            view.updateDominio(theme.getName(), dominioDisplay);
         }
     }
 
