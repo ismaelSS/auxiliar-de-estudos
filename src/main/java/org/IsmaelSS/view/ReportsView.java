@@ -2,19 +2,19 @@ package org.IsmaelSS.view;
 
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
+import javafx.scene.control.Accordion;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.Separator;
+import javafx.scene.control.TitledPane;
 import javafx.scene.layout.VBox;
 
 public class ReportsView {
     private final Scene scene;
     private final VBox root;
     private final VBox overallBox;
-    private final VBox themeBox;
-    // Holds lowest-score questions list
-    private final VBox errorBox;
+    private final Accordion accordion;
     private final Button voltarButton;
 
     public ReportsView() {
@@ -33,21 +33,13 @@ public class ReportsView {
         overallBox.setPadding(new Insets(5, 0, 10, 10));
         content.getChildren().add(overallBox);
 
-        Label section2 = new Label("Desempenho por Tema");
+        Label section2 = new Label("Questões de Menor Pontuação por Tema");
         section2.setStyle("-fx-font-size: 16px; -fx-font-weight: bold;");
         content.getChildren().addAll(section2, new Separator());
 
-        themeBox = new VBox(5);
-        themeBox.setPadding(new Insets(5, 0, 10, 10));
-        content.getChildren().add(themeBox);
-
-        Label section3 = new Label("Questões com Menor Pontuação");
-        section3.setStyle("-fx-font-size: 16px; -fx-font-weight: bold;");
-        content.getChildren().addAll(section3, new Separator());
-
-        errorBox = new VBox(5);
-        errorBox.setPadding(new Insets(5, 0, 10, 10));
-        content.getChildren().add(errorBox);
+        accordion = new Accordion();
+        accordion.setMaxHeight(Double.MAX_VALUE);
+        content.getChildren().add(accordion);
 
         voltarButton = new Button("Voltar");
         content.getChildren().add(voltarButton);
@@ -63,13 +55,11 @@ public class ReportsView {
 
     public Scene getScene() { return scene; }
     public VBox getOverallBox() { return overallBox; }
-    public VBox getThemeBox() { return themeBox; }
-    public VBox getErrorBox() { return errorBox; }
+    public Accordion getAccordion() { return accordion; }
     public Button getVoltarButton() { return voltarButton; }
 
     public void clearContent() {
         overallBox.getChildren().clear();
-        themeBox.getChildren().clear();
-        errorBox.getChildren().clear();
+        accordion.getPanes().clear();
     }
 }
