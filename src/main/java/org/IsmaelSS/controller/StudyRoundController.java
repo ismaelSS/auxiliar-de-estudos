@@ -1,7 +1,5 @@
 package org.IsmaelSS.controller;
 
-import javafx.animation.PauseTransition;
-import javafx.util.Duration;
 import org.IsmaelSS.model.RoundResult;
 import org.IsmaelSS.model.RoundState;
 import org.IsmaelSS.service.StatsService;
@@ -34,6 +32,7 @@ public class StudyRoundController {
         screenController.registerScreen("studyRound", view.getScene());
 
         view.setOnOptionClick(this::handleOptionClick);
+        view.setOnProximaClick(this::handleProximaClick);
         view.setOnExit(this::handleExit);
         view.setOnVoltar(this::handleExit);
 
@@ -71,13 +70,12 @@ public class StudyRoundController {
         ));
 
         view.disableOptions(true);
+        view.showProximaButton();
+    }
 
-        PauseTransition pause = new PauseTransition(Duration.seconds(1));
-        pause.setOnFinished(e -> {
-            roundState.advanceToNext();
-            showCurrentQuestion();
-        });
-        pause.play();
+    private void handleProximaClick() {
+        roundState.advanceToNext();
+        showCurrentQuestion();
     }
 
     private void showRoundComplete() {

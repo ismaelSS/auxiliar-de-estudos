@@ -5,6 +5,7 @@ import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
 import java.util.List;
@@ -19,6 +20,7 @@ public class StudyRoundView {
     private final Label questionLabel;
     private final Button[] optionButtons;
     private final Button exitButton;
+    private final Button proximaButton;
     private final Label completionLabel;
     private final Button voltarButton;
     private Consumer<Integer> onOptionClick;
@@ -27,7 +29,7 @@ public class StudyRoundView {
 
     public StudyRoundView() {
         root = new VBox(15);
-        root.setPadding(new Insets(20)); // Reativado e ajustado para melhor espaçamento
+        root.setPadding(new Insets(20));
         root.setAlignment(Pos.CENTER);
 
         progressLabel = new Label();
@@ -35,7 +37,6 @@ public class StudyRoundView {
 
         questionContent = new VBox(10);
         questionContent.setAlignment(Pos.CENTER);
-        // Faz com que o contêiner não ocupe espaço físico na tela quando estiver invisível
         questionContent.managedProperty().bind(questionContent.visibleProperty());
 
         questionLabel = new Label();
@@ -56,20 +57,36 @@ public class StudyRoundView {
             optionButtons[i] = btn;
         }
 
+        // Criando o HBox para os botões
+        HBox buttonBox = new HBox(20); // 20 é o espaçamento entre os botões
+        buttonBox.setAlignment(Pos.CENTER);
+        buttonBox.setMaxWidth(Double.MAX_VALUE);
+
         exitButton = new Button("Sair");
         exitButton.setStyle("-fx-padding: 8 20 8 20;");
         exitButton.setOnAction(e -> {
             if (onExit != null) onExit.run();
         });
+        exitButton.setAlignment(Pos.CENTER_LEFT);
 
+
+        proximaButton = new Button("Próxima");
+        proximaButton.setStyle("-fx-background-color: #2196F3; -fx-text-fill: white; -fx-padding: 8 20 8 20; -fx-cursor: hand;");
+        proximaButton.setVisible(false);
+        proximaButton.setManaged(false);
+        proximaButton.setAlignment(Pos.CENTER_RIGHT);
+
+        // Adicionando os botões ao HBox
+        buttonBox.getChildren().addAll(exitButton, proximaButton);
+
+        // Adicionando todos os componentes ao questionContent
         questionContent.getChildren().add(progressLabel);
         questionContent.getChildren().add(questionLabel);
         questionContent.getChildren().addAll(optionButtons);
-        questionContent.getChildren().add(exitButton);
+        questionContent.getChildren().add(buttonBox); // Adiciona o HBox com os botões
 
         completionContent = new VBox(15);
         completionContent.setAlignment(Pos.CENTER);
-        // Faz com que o contêiner não ocupe espaço físico na tela quando estiver invisível
         completionContent.managedProperty().bind(completionContent.visibleProperty());
 
         completionLabel = new Label();
@@ -86,7 +103,6 @@ public class StudyRoundView {
 
         root.getChildren().addAll(questionContent, completionContent);
 
-        // Ajustado para se adaptar dinamicamente ao tamanho do conteúdo interno
         scene = new Scene(root);
     }
 
@@ -104,6 +120,8 @@ public class StudyRoundView {
             optionButtons[i].setDisable(false);
         }
         exitButton.setDisable(false);
+        proximaButton.setVisible(false);
+        proximaButton.setManaged(false);
     }
 
     public void highlightCorrect(int correctIndex) {
@@ -142,5 +160,16 @@ public class StudyRoundView {
 
     public void setOnVoltar(Runnable handler) {
         this.onVoltar = handler;
+    }
+
+    public void showProximaButton() {
+        proximaButton.setVisible(true);
+        proximaButton.setManaged(true);
+    }
+
+    public void setOnProximaClick(Runnable handler) {
+        proximaButton.setOnAction(e -> {
+            if (handler != null) handler.run();
+        });
     }
 }
