@@ -97,6 +97,7 @@ Plans:
 **Requirements:** DOM-01, DOM-02, DOM-03, DOM-04, DOM-05
 **Depends on:** Phase 6
 **Success Criteria:**
+
 1. Theme selection screen shows "Domínio: X%" (percentage of questions with positive score)
 2. Reports tab focused on lowest-scoring questions per theme
 3. Each theme in reports has drawer-style expandable section with up to 10 lowest-scoring questions
@@ -105,6 +106,6 @@ Plans:
 
 Plans:
 
-- [ ] 07-01-PLAN.md — StatsService extension: getDominio() + getLowestScoreQuestionsByTheme() + tests (Wave 1)
-- [ ] 07-02-PLAN.md — ThemeSelectionView dominio display + controller wiring (Wave 2)
+- [x] 07-01-PLAN.md — StatsService extension: getDominio() + getLowestScoreQuestionsByTheme() + tests (Wave 1)
+- [x] 07-02-PLAN.md — ThemeSelectionView dominio display + controller wiring (Wave 2)
 - [ ] 07-03-PLAN.md — ReportsView Accordion drawers + ReportsController AI prompt copy (Wave 2)
