@@ -153,6 +153,40 @@ public class StatsService {
         return entries.subList(0, Math.min(limit, entries.size()));
     }
 
+    /**
+     * Returns the percentage of questions with a positive score (score > 0)
+     * for the given theme, as an integer string like "80".
+     * Returns "N/A" if the theme has no data or no questions.
+     */
+    public String getDominio(String themeName) {
+        ThemeStats ts = data.getThemes().get(themeName);
+        if (ts == null || ts.getQuestions().isEmpty()) return "N/A";
+        long positiveCount = ts.getQuestions().values().stream()
+                .filter(qs -> qs.getScore() > 0)
+                .count();
+        int percentage = (int) ((positiveCount * 100) / ts.getQuestions().size());
+        return String.valueOf(percentage);
+    }
+
+    /**
+     * Returns up to {@code limit} questions from the specified theme,
+     * sorted by score ascending (lowest first).
+     * Returns an empty list if the theme is unknown or has no questions.
+     */
+    public List<Map.Entry<String, Integer>> getLowestScoreQuestionsByTheme(String themeName, int limit) {
+        ThemeStats ts = data.getThemes().get(themeName);
+        if (ts == null) return new ArrayList<>();
+        List<Map.Entry<String, Integer>> entries = new ArrayList<>();
+        for (Map.Entry<String, QuestionScore> questionEntry : ts.getQuestions().entrySet()) {
+            entries.add(Map.entry(
+                    questionEntry.getKey(),
+                    questionEntry.getValue().getScore()
+            ));
+        }
+        entries.sort(Map.Entry.comparingByValue());
+        return entries.subList(0, Math.min(limit, entries.size()));
+    }
+
     public List<String> getAllThemesWithData() {
         return new ArrayList<>(data.getThemes().keySet());
     }
