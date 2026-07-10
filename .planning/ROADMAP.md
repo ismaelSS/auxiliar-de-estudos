@@ -128,3 +128,20 @@ Plans:
 Plans:
 
 - [x] 08-01-PLAN.md — Zoom infrastructure + responsive views (Wave 1)
+
+## Phase 9: Navigation Overhaul
+
+**Goal:** Improve navigation between screens with back/forward support, breadcrumb indicators, keyboard shortcuts, and smooth screen transitions.
+**Requirements:** NAV-01, NAV-02, NAV-03, NAV-04, NAV-05
+**Depends on:** Phase 8
+**Success Criteria:**
+
+1. Back navigation button visible on study round and reports screens
+2. Breadcrumb or screen indicator shows user's current position
+3. Smooth transitions (fade/slide) between screens
+4. Keyboard shortcuts: Escape to go back, Ctrl+H for history
+5. Screen history prevents going back past the main theme selection
+
+Plans:
+
+- [ ] 09-01-PLAN.md — Screen navigation history stack + back button (Wave 1)
