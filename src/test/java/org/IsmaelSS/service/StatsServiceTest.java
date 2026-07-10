@@ -197,6 +197,98 @@ class StatsServiceTest {
         assertEquals("1", service.getAproveitamento("t1"));
     }
 
+    // --- getDominio() tests ---
+
+    @Test
+    void dominioReturnsNAForNoData() {
+        StatsService service = new StatsService();
+        assertEquals("N/A", service.getDominio("nonexistent"));
+    }
+
+    @Test
+    void dominioReturns100WhenAllCorrect() {
+        StatsService service = new StatsService();
+        service.recordRound(List.of(
+                new RoundResult("t1", "q1?", 0, true),
+                new RoundResult("t1", "q2?", 1, true),
+                new RoundResult("t1", "q3?", 2, true)
+        ));
+        assertEquals("100", service.getDominio("t1"));
+    }
+
+    @Test
+    void dominioReturns0WhenAllWrong() {
+        StatsService service = new StatsService();
+        service.recordRound(List.of(
+                new RoundResult("t1", "q1?", 0, false),
+                new RoundResult("t1", "q2?", 1, false),
+                new RoundResult("t1", "q3?", 2, false)
+        ));
+        assertEquals("0", service.getDominio("t1"));
+    }
+
+    @Test
+    void dominioCalculationWithMixedScores() {
+        StatsService service = new StatsService();
+        service.recordRound(List.of(
+                new RoundResult("t1", "q1?", 0, true),   // score=2 (>0)
+                new RoundResult("t1", "q2?", 1, true),   // score=2 (>0)
+                new RoundResult("t1", "q3?", 2, false)   // score=-3 (<0)
+        ));
+        // 2 out of 3 positive → (2*100)/3 = 66
+        assertEquals("66", service.getDominio("t1"));
+    }
+
+    // --- getLowestScoreQuestionsByTheme() tests ---
+
+    @Test
+    void lowestByThemeReturnsOnlyThemeQuestions() {
+        StatsService service = new StatsService();
+        service.recordRound(List.of(
+                new RoundResult("t1", "q1?", 0, true),
+                new RoundResult("t1", "q2?", 1, false),
+                new RoundResult("t2", "q3?", 0, true)
+        ));
+        List<Map.Entry<String, Integer>> result = service.getLowestScoreQuestionsByTheme("t1", 10);
+        // t1 has 2 questions, t2 has 1 — result should only contain t1's 2 questions
+        assertEquals(2, result.size());
+        // Verify all returned entries have t1's question IDs (0 and 1)
+        assertTrue(result.stream().anyMatch(e -> e.getKey().equals("0")));
+        assertTrue(result.stream().anyMatch(e -> e.getKey().equals("1")));
+    }
+
+    @Test
+    void lowestByThemeRespectsLimit() {
+        StatsService service = new StatsService();
+        service.recordRound(List.of(
+                new RoundResult("t1", "q1?", 0, false),
+                new RoundResult("t1", "q2?", 1, false),
+                new RoundResult("t1", "q3?", 2, false)
+        ));
+        List<Map.Entry<String, Integer>> result = service.getLowestScoreQuestionsByTheme("t1", 2);
+        assertEquals(2, result.size());
+    }
+
+    @Test
+    void lowestByThemeReturnsEmptyForUnknownTheme() {
+        StatsService service = new StatsService();
+        List<Map.Entry<String, Integer>> result = service.getLowestScoreQuestionsByTheme("nonexistent", 10);
+        assertTrue(result.isEmpty());
+    }
+
+    @Test
+    void lowestByThemeReturnsEmptyForEmptyTheme() {
+        StatsService service = new StatsService();
+        // Record data for t1 only — theme with no questions doesn't exist in data
+        service.recordRound(List.of(
+                new RoundResult("t1", "q1?", 0, true)
+        ));
+        List<Map.Entry<String, Integer>> result = service.getLowestScoreQuestionsByTheme("t1", 10);
+        // t1 has questions, so this won't be empty — let's test a theme that's not recorded
+        List<Map.Entry<String, Integer>> emptyResult = service.getLowestScoreQuestionsByTheme("t2", 10);
+        assertTrue(emptyResult.isEmpty());
+    }
+
     @Test
     void migrationFromOldFormatPreservesThemeTotals() throws Exception {
         // Write old-format JSON
