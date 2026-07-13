@@ -325,17 +325,15 @@ public ReportsView() {
 
 **If this table is empty:** Not applicable — 5 assumptions identified.
 
-## Open Questions
+## Open Questions (RESOLVED)
 
-1. **Should hardcoded inline font sizes be removed from titles?**
-   - What we know: Titles use 18px, 20px, 16px via inline styles. These won't respond to root-level `-fx-font-size` zoom.
-   - What's unclear: Whether user wants titles to zoom proportionally with body text, or stay fixed as visual anchors.
-   - Recommendation: Remove hardcoded font sizes from titles. Instead, use relative sizing (e.g., titles default to 18px via the base 14px + CSS). If titles should be larger than body text, they can use `style="-fx-font-weight: bold"` without explicit size, or use `lookup()` to get the inherited size and multiply.
+1. **Should hardcoded inline font sizes be removed from titles?** (RESOLVED)
+   - **Decision:** Remove all hardcoded `-fx-font-size` from titles per plan 08-01 Task 2. Titles will inherit root zoom level. Bold styling retained via `-fx-font-weight: bold`.
+   - Rationale: Consistent with requirement ZOOM-02 (zoom applies to all text). Titles not zooming would be a confusing UX gap.
 
-2. **What happens to StudyRoundView option buttons at very large zoom?**
-   - What we know: Option buttons use `setMaxWidth(Double.MAX_VALUE)` and have inline padding.
-   - What's unclear: At 30px font size, buttons may overflow or become too tall.
-   - Recommendation: Accept natural layout overflow; the VBox will push content down. If needed, add a ScrollPane wrapper later.
+2. **What happens to StudyRoundView option buttons at very large zoom?** (RESOLVED)
+   - **Decision:** Accept natural layout overflow; VBox pushes content down. No immediate mitigation — existing ScrollPane in ReportsView already handled via event.consume().
+   - Rationale: 30px font size is an extreme case; typical usage at 14-22px range is well within bounds. Can add ScrollPane wrapper if users report issues.
 
 ## Environment Availability
 
