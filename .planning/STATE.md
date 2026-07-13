@@ -117,6 +117,7 @@ See: .planning/PROJECT.md (updated 2026-07-07)
 | # | Description | Date | Commit | Directory |
 |---|-------------|------|--------|-----------|
 | 260708-ij0 | Change question IDs from descriptive strings to sequential integers | 2026-07-08 | 3e202f0 | [260708-ij0-o-id-de-questoes-deve-ser-um-numero-incr](./quick/260708-ij0-o-id-de-questoes-deve-ser-um-numero-incr/) |
+| 2 | Dark theme for TabPane + input fields (CSS); replace inline surface-card style | 2026-07-13 | 20a6338 | — |
 
 ## Open Questions
 
