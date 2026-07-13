@@ -44,6 +44,20 @@
                 <configuration>
                     <mainClass>org.IsmaelSS.Main</mainClass>
                 </configuration>
+                <executions>
+                    <execution>
+                        <id>jlink</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>jlink</goal>
+                        </goals>
+                        <configuration>
+                            <launcher>flashCardJava</launcher>
+                            <jlinkImageName>flashCardJava-runtime</jlinkImageName>
+                            <jlinkZipName>flashCardJava-dist.zip</jlinkZipName>
+                        </configuration>
+                    </execution>
+                </executions>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<launch4jConfig>
+  <headerType>gui</headerType>
+  <outfile>dist\FlashCardJava\FlashCardJava.exe</outfile>
+  <jar>dist\FlashCardJava\flashCardJava-1.0-SNAPSHOT.jar</jar>
+  <errTitle>FlashCard Java</errTitle>
+  <icon>src\main\resources\icon.ico</icon>
+  <chdir>.</chdir>
+  <customProcName>true</customProcName>
+  <jre>
+    <path>runtime</path>
+    <bundledJre64Bit>true</bundledJre64Bit>
+    <bundledJreAsFallback>false</bundledJreAsFallback>
+    <minVersion>25</minVersion>
+    <maxVersion>25</maxVersion>
+    <jdkPreference>preferJre</jdkPreference>
+    <runtimeBits>64</runtimeBits>
+  </jre>
+  <versionInfo>
+    <fileVersion>1.0.0.0</fileVersion>
+    <txtFileVersion>1.0.0</txtFileVersion>
+    <fileDescription>FlashCard Java - Aplicativo de flashcards</fileDescription>
+    <copyright>IsmaelSS</copyright>
+    <productVersion>1.0.0.0</productVersion>
+    <txtProductVersion>1.0.0</txtProductVersion>
+    <productName>FlashCard Java</productName>
+    <internalName>FlashCardJava</internalName>
+    <originalFilename>FlashCardJava.exe</originalFilename>
+  </versionInfo>
+</launch4jConfig>
