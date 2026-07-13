@@ -6,6 +6,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.Spinner;
+import javafx.scene.control.Tab;
+import javafx.scene.control.TabPane;
 import javafx.scene.layout.VBox;
 import org.IsmaelSS.model.Theme;
 
@@ -16,12 +18,14 @@ import java.util.Map;
 
 public class ThemeSelectionView {
     private final Scene scene;
-    private final VBox root;
+    private final TabPane root;
+    private final Tab jogarTab;
+    private final Tab relatoriosTab;
+    private final Tab gerenciarTab;
     private final VBox themeListContainer;
     private final Spinner<Integer> questionCountSpinner;
     private final CheckBox reforcoCheckBox;
     private final Button startButton;
-    private final Button relatoriosButton;
     private final Label feedbackLabel;
 
     private final Map<String, CheckBox> themeCheckboxes = new HashMap<>();
@@ -31,9 +35,7 @@ public class ThemeSelectionView {
     private final Map<String, String> themeDominioText = new HashMap<>();
 
     public ThemeSelectionView() {
-        root = new VBox(10);
-        root.setPadding(new Insets(20));
-
+        // Jogar tab content
         Label title = new Label("Selecione os temas");
         title.getStyleClass().add("title");
 
@@ -47,18 +49,46 @@ public class ThemeSelectionView {
 
         startButton = new Button("Iniciar");
 
-        relatoriosButton = new Button("Relatórios");
-
         feedbackLabel = new Label();
         feedbackLabel.getStyleClass().add("error-text");
 
-        root.getChildren().addAll(title, themeListContainer, countLabel, questionCountSpinner, reforcoCheckBox, startButton, relatoriosButton, feedbackLabel);
+        VBox jogarContent = new VBox(10);
+        jogarContent.setPadding(new Insets(20));
+        jogarContent.getChildren().addAll(title, themeListContainer, countLabel, questionCountSpinner, reforcoCheckBox, startButton, feedbackLabel);
+
+        jogarTab = new Tab("Jogar", jogarContent);
+        jogarTab.setClosable(false);
+
+        relatoriosTab = new Tab("Relatórios");
+        relatoriosTab.setClosable(false);
+
+        gerenciarTab = new Tab("Gerenciar");
+        gerenciarTab.setClosable(false);
+
+        root = new TabPane(jogarTab, relatoriosTab, gerenciarTab);
+        root.setTabClosingPolicy(TabPane.TabClosingPolicy.UNAVAILABLE);
 
         scene = new Scene(root);
     }
 
     public Scene getScene() {
         return scene;
+    }
+
+    public TabPane getTabPane() {
+        return root;
+    }
+
+    public Tab getJogarTab() {
+        return jogarTab;
+    }
+
+    public Tab getRelatoriosTab() {
+        return relatoriosTab;
+    }
+
+    public Tab getGerenciarTab() {
+        return gerenciarTab;
     }
 
     public void setThemes(List<Theme> themes) {
@@ -112,10 +142,6 @@ public class ThemeSelectionView {
 
     public Button getStartButton() {
         return startButton;
-    }
-
-    public Button getRelatoriosButton() {
-        return relatoriosButton;
     }
 
     public void setFeedback(String message) {
