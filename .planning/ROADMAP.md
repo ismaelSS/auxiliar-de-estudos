@@ -161,4 +161,5 @@ Plans:
 
 Plans:
 
-- [ ] 10-01-PLAN.md — External CSS stylesheet + global theme colors (Wave 1)
+- [ ] 10-01-PLAN.md — External CSS stylesheet + ScreenController wiring + ThemeSelectionView + ReportsView refactoring (Wave 1)
+- [ ] 10-02-PLAN.md — StudyRoundView dynamic theming + class toggling for correct/wrong states (Wave 2)
