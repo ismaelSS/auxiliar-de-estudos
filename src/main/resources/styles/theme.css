@@ -102,7 +102,14 @@
 
 .titled-pane > .title {
     -fx-background-color: #1a1a2e;
-    -fx-text-fill: #ffffff;
+}
+
+.titled-pane > .title > .arrow-button .arrow {
+    -fx-background-color: #ffffff;
+}
+
+.titled-pane > .title > .text {
+    -fx-fill: #ffffff;
 }
 
 .titled-pane .content {

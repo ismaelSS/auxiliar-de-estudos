@@ -19,6 +19,7 @@ public class ReportsView {
 
     public ReportsView() {
         VBox content = new VBox(10);
+        content.getStyleClass().add("background");
         content.setPadding(new Insets(20));
 
         Label title = new Label("Relatórios de Desempenho");
@@ -42,6 +43,7 @@ public class ReportsView {
         content.getChildren().add(accordion);
 
         voltarButton = new Button("Voltar");
+        voltarButton.getStyleClass().add("button-primary");
         content.getChildren().add(voltarButton);
 
         ScrollPane scrollPane = new ScrollPane(content);
