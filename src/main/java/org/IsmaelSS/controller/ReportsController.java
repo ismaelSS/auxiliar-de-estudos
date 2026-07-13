@@ -47,7 +47,6 @@ public class ReportsController {
     public void initialize() {
         refresh();
         screenController.registerScreen("reports", view.getScene());
-        view.getVoltarButton().setOnAction(e -> screenController.switchTo("themeSelection"));
     }
 
     public void refresh() {

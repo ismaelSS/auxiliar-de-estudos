@@ -3,7 +3,6 @@ package org.IsmaelSS.view;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.Accordion;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.Separator;
@@ -15,8 +14,6 @@ public class ReportsView {
     private final VBox root;
     private final VBox overallBox;
     private final Accordion accordion;
-    private final Button voltarButton;
-
     public ReportsView() {
         VBox content = new VBox(10);
         content.getStyleClass().add("background");
@@ -42,10 +39,6 @@ public class ReportsView {
         accordion.setMaxHeight(Double.MAX_VALUE);
         content.getChildren().add(accordion);
 
-        voltarButton = new Button("Voltar");
-        voltarButton.getStyleClass().add("button-primary");
-        content.getChildren().add(voltarButton);
-
         ScrollPane scrollPane = new ScrollPane(content);
         scrollPane.setFitToWidth(true);
         scrollPane.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
@@ -59,7 +52,6 @@ public class ReportsView {
     public VBox getContent() { return root; }
     public VBox getOverallBox() { return overallBox; }
     public Accordion getAccordion() { return accordion; }
-    public Button getVoltarButton() { return voltarButton; }
 
     public void clearContent() {
         overallBox.getChildren().clear();
