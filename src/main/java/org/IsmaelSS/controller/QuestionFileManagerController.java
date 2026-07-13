@@ -3,16 +3,16 @@ package org.IsmaelSS.controller;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
-import javafx.scene.control.TextInputDialog;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import org.IsmaelSS.model.Question;
 import org.IsmaelSS.service.ThemeLoader;
 import org.IsmaelSS.view.QuestionFileManagerView;
 
+import java.awt.Desktop;
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 /**
  * Controller for the QuestionFileManagerView.
@@ -82,21 +82,20 @@ public class QuestionFileManagerController {
     }
 
     private void handleNewFile() {
-        TextInputDialog dialog = new TextInputDialog("");
-        dialog.setTitle("Novo Arquivo");
-        dialog.setHeaderText("Digite o título do novo arquivo:");
-        dialog.setContentText("Título:");
-
-        Optional<String> result = dialog.showAndWait();
-        if (result.isPresent()) {
-            String title = result.get().trim();
-            if (title.isEmpty()) {
-                return;
+        try {
+            File themesDir = new File(System.getProperty("user.dir"), "themes");
+            if (!themesDir.exists()) {
+                themesDir.mkdirs();
             }
-            String sanitizedName = sanitizeTitle(title);
-            themeLoader.saveTheme(sanitizedName, new ArrayList<>());
+            Desktop.getDesktop().open(themesDir);
             loadFileList();
-            themeSelectionController.refreshScores();
+        } catch (Exception ex) {
+            javafx.scene.control.Alert alert = new javafx.scene.control.Alert(
+                    javafx.scene.control.Alert.AlertType.ERROR);
+            alert.setTitle("Erro");
+            alert.setHeaderText("Não foi possível abrir a pasta de arquivos.");
+            alert.setContentText(ex.getMessage());
+            alert.showAndWait();
         }
     }
 
