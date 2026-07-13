@@ -54,6 +54,38 @@ public class ThemeLoader {
         return themes;
     }
 
+    /**
+     * Writes a list of questions to themes/{name}.json.
+     * Creates the themes directory if it does not exist.
+     */
+    public void saveTheme(String name, List<Question> questions) {
+        File themesDir = new File(THEMES_DIR);
+        if (!themesDir.exists()) {
+            themesDir.mkdirs();
+        }
+        File file = new File(themesDir, name + ".json");
+        try {
+            mapper.writerWithDefaultPrettyPrinter().writeValue(file, questions);
+            LOG.info("Saved theme: " + file.getAbsolutePath());
+        } catch (IOException e) {
+            LOG.warning("Failed to save theme: " + file.getName() + " - " + e.getMessage());
+        }
+    }
+
+    /**
+     * Deletes themes/{name}.json if it exists.
+     */
+    public void deleteTheme(String name) {
+        File file = new File(THEMES_DIR, name + ".json");
+        if (file.exists()) {
+            if (file.delete()) {
+                LOG.info("Deleted theme: " + file.getName());
+            } else {
+                LOG.warning("Failed to delete theme: " + file.getName());
+            }
+        }
+    }
+
     private Theme loadTheme(File file) throws IOException {
         String name = file.getName().replaceAll("\\.json$", "");
 
