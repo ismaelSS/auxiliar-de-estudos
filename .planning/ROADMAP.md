@@ -145,3 +145,20 @@ Plans:
 Plans:
 
 - [ ] 09-01-PLAN.md — Screen navigation history stack + back button (Wave 1)
+
+## Phase 10: Visual Theming & Color Identity
+
+**Goal:** Aplicar identidade visual com fundo escuro (#020817), destaque laranja (#fe9a00), texto branco/preto e consistência visual em todas as telas via CSS externo.
+**Requirements:** VIZ-01, VIZ-02, VIZ-03, VIZ-04, VIZ-05
+**Depends on:** Phase 8
+**Success Criteria:**
+
+1. All inline styles replaced by external CSS stylesheet loaded in each Scene
+2. Dark background (#020817) applied consistently across all screens
+3. Orange accent (#fe9a00) used for buttons, highlights, and interactive elements
+4. White text (#ffffff) on dark backgrounds, black text (#000000) on light surfaces
+5. Consistent padding, border-radius, font sizes, and hover effects throughout
+
+Plans:
+
+- [ ] 10-01-PLAN.md — External CSS stylesheet + global theme colors (Wave 1)
