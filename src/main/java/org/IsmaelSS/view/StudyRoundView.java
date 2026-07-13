@@ -33,14 +33,13 @@ public class StudyRoundView {
         root.setAlignment(Pos.CENTER);
 
         progressLabel = new Label();
-        progressLabel.setStyle("");
 
         questionContent = new VBox(10);
         questionContent.setAlignment(Pos.CENTER);
         questionContent.managedProperty().bind(questionContent.visibleProperty());
 
         questionLabel = new Label();
-        questionLabel.setStyle("-fx-font-weight: bold;");
+        questionLabel.getStyleClass().add("title");
         questionLabel.setWrapText(true);
         questionLabel.setMaxWidth(Double.MAX_VALUE);
         questionLabel.setAlignment(Pos.CENTER);
@@ -50,7 +49,7 @@ public class StudyRoundView {
             int index = i;
             Button btn = new Button();
             btn.setMaxWidth(Double.MAX_VALUE);
-            btn.setStyle("-fx-background-color: #E0E0E0; -fx-text-fill: black; -fx-cursor: hand; -fx-padding: 8;");
+            btn.getStyleClass().add("option-default");
             btn.setOnAction(e -> {
                 if (onOptionClick != null) onOptionClick.accept(index);
             });
@@ -63,7 +62,7 @@ public class StudyRoundView {
         buttonBox.setMaxWidth(Double.MAX_VALUE);
 
         exitButton = new Button("Sair");
-        exitButton.setStyle("-fx-padding: 8 20 8 20;");
+        exitButton.getStyleClass().add("button-secondary");
         exitButton.setOnAction(e -> {
             if (onExit != null) onExit.run();
         });
@@ -71,7 +70,7 @@ public class StudyRoundView {
 
 
         proximaButton = new Button("Próxima");
-        proximaButton.setStyle("-fx-background-color: #2196F3; -fx-text-fill: white; -fx-padding: 8 20 8 20; -fx-cursor: hand;");
+        proximaButton.getStyleClass().add("button-primary");
         proximaButton.setVisible(false);
         proximaButton.setManaged(false);
         proximaButton.setAlignment(Pos.CENTER_RIGHT);
@@ -90,10 +89,10 @@ public class StudyRoundView {
         completionContent.managedProperty().bind(completionContent.visibleProperty());
 
         completionLabel = new Label();
-        completionLabel.setStyle("-fx-font-weight: bold; -fx-text-alignment: center;");
+        completionLabel.getStyleClass().add("title");
 
         voltarButton = new Button("Voltar");
-        voltarButton.setStyle("-fx-padding: 8 20 8 20;");
+        voltarButton.getStyleClass().add("button-secondary");
         voltarButton.setOnAction(e -> {
             if (onVoltar != null) onVoltar.run();
         });
@@ -116,7 +115,7 @@ public class StudyRoundView {
         questionLabel.setText(question);
         for (int i = 0; i < 5; i++) {
             optionButtons[i].setText(options.get(i));
-            optionButtons[i].setStyle("-fx-background-color: #E0E0E0; -fx-text-fill: black; -fx-cursor: hand; -fx-padding: 8;");
+            optionButtons[i].getStyleClass().setAll("option-default");
             optionButtons[i].setDisable(false);
         }
         exitButton.setDisable(false);
@@ -125,12 +124,12 @@ public class StudyRoundView {
     }
 
     public void highlightCorrect(int correctIndex) {
-        optionButtons[correctIndex].setStyle("-fx-background-color: #4CAF50; -fx-text-fill: white; -fx-cursor: hand; -fx-padding: 8;");
+        optionButtons[correctIndex].getStyleClass().setAll("option-correct");
     }
 
     public void highlightWrong(int wrongIndex, int correctIndex) {
-        optionButtons[wrongIndex].setStyle("-fx-background-color: #F44336; -fx-text-fill: white; -fx-cursor: hand; -fx-padding: 8;");
-        optionButtons[correctIndex].setStyle("-fx-background-color: #4CAF50; -fx-text-fill: white; -fx-cursor: hand; -fx-padding: 8;");
+        optionButtons[wrongIndex].getStyleClass().setAll("option-wrong");
+        optionButtons[correctIndex].getStyleClass().setAll("option-correct");
     }
 
     public void disableOptions(boolean disabled) {
