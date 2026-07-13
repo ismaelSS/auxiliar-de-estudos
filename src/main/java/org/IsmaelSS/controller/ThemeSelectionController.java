@@ -1,11 +1,11 @@
 package org.IsmaelSS.controller;
 
-import javafx.scene.control.Label;
 import javafx.scene.control.Tab;
 import org.IsmaelSS.model.RoundState;
 import org.IsmaelSS.model.Theme;
 import org.IsmaelSS.service.StatsService;
 import org.IsmaelSS.service.ThemeLoader;
+import org.IsmaelSS.view.QuestionFileManagerView;
 import org.IsmaelSS.view.ReportsView;
 import org.IsmaelSS.view.StudyRoundView;
 import org.IsmaelSS.view.ThemeSelectionView;
@@ -19,6 +19,7 @@ public class ThemeSelectionController {
     private final StatsService statsService;
     private List<Theme> themes;
     private ReportsController reportsController;
+    private QuestionFileManagerController questionFileManagerController;
 
     public ThemeSelectionController(ThemeLoader themeLoader, ThemeSelectionView view,
                                     ScreenController screenController, StatsService statsService) {
@@ -29,15 +30,7 @@ public class ThemeSelectionController {
     }
 
     public void initialize() {
-        themes = themeLoader.loadAllThemes();
-        view.setThemes(themes);
         refreshScores();
-
-        int maxQuestions = themes.stream()
-                .mapToInt(Theme::getQuestionCount)
-                .max()
-                .orElse(1);
-        view.updateQuestionCountRange(maxQuestions);
 
         screenController.registerScreen("themeSelection", view.getScene());
 
@@ -49,7 +42,20 @@ public class ThemeSelectionController {
         screenController.switchTo("themeSelection");
     }
 
+    /**
+     * Reloads themes from disk and refreshes score displays.
+     * Called after file create/delete to update the Jogar tab.
+     */
     public void refreshScores() {
+        themes = themeLoader.loadAllThemes();
+        view.setThemes(themes);
+
+        int maxQuestions = themes.stream()
+                .mapToInt(Theme::getQuestionCount)
+                .max()
+                .orElse(1);
+        view.updateQuestionCountRange(maxQuestions);
+
         for (Theme theme : themes) {
             String score = statsService.getAproveitamento(theme.getName());
             view.updateAproveitamento(theme.getName(), score);
@@ -93,11 +99,11 @@ public class ThemeSelectionController {
             }
             reportsController.refreshAndShow(tab);
         } else if (tab == view.getGerenciarTab()) {
-            // Lazy-init placeholder for QuestionFileManagerView (future plan)
             if (tab.getContent() == null) {
-                Label placeholder = new Label("Gerenciar - Em breve");
-                placeholder.getStyleClass().add("section-title");
-                tab.setContent(placeholder);
+                QuestionFileManagerView qfmView = new QuestionFileManagerView();
+                questionFileManagerController = new QuestionFileManagerController(themeLoader, this, qfmView);
+                questionFileManagerController.initialize();
+                tab.setContent(qfmView.getRoot());
             }
         }
     }
