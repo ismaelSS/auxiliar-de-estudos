@@ -35,7 +35,7 @@ public class ThemeSelectionView {
         root.setPadding(new Insets(20));
 
         Label title = new Label("Selecione os temas");
-        title.setStyle("-fx-font-weight: bold;");
+        title.getStyleClass().add("title");
 
         themeListContainer = new VBox(5);
 
@@ -50,7 +50,7 @@ public class ThemeSelectionView {
         relatoriosButton = new Button("Relatórios");
 
         feedbackLabel = new Label();
-        feedbackLabel.setStyle("-fx-text-fill: red;");
+        feedbackLabel.getStyleClass().add("error-text");
 
         root.getChildren().addAll(title, themeListContainer, countLabel, questionCountSpinner, reforcoCheckBox, startButton, relatoriosButton, feedbackLabel);
 

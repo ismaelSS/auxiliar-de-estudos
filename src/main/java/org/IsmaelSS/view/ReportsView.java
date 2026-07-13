@@ -22,11 +22,11 @@ public class ReportsView {
         content.setPadding(new Insets(20));
 
         Label title = new Label("Relatórios de Desempenho");
-        title.setStyle("-fx-font-weight: bold;");
+        title.getStyleClass().add("title");
         content.getChildren().add(title);
 
         Label section1 = new Label("Resumo Geral");
-        section1.setStyle("-fx-font-weight: bold;");
+        section1.getStyleClass().add("section-title");
         content.getChildren().addAll(section1, new Separator());
 
         overallBox = new VBox(5);
@@ -34,7 +34,7 @@ public class ReportsView {
         content.getChildren().add(overallBox);
 
         Label section2 = new Label("Questões de Menor Pontuação por Tema");
-        section2.setStyle("-fx-font-weight: bold;");
+        section2.getStyleClass().add("section-title");
         content.getChildren().addAll(section2, new Separator());
 
         accordion = new Accordion();

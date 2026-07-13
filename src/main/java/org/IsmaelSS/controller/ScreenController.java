@@ -4,6 +4,7 @@ import javafx.scene.Scene;
 import javafx.scene.input.ScrollEvent;
 import javafx.stage.Stage;
 
+import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -20,6 +21,7 @@ public class ScreenController {
 
     public void registerScreen(String name, Scene scene) {
         screens.put(name, scene);
+        loadTheme(scene);
         installZoomFilter(scene);
         applyCurrentFontSize(scene);
     }
@@ -30,6 +32,15 @@ public class ScreenController {
             applyCurrentFontSize(scene);
             stage.setScene(scene);
             stage.show();
+        }
+    }
+
+    private void loadTheme(Scene scene) {
+        URL cssUrl = getClass().getResource("/styles/theme.css");
+        if (cssUrl != null) {
+            scene.getStylesheets().add(cssUrl.toExternalForm());
+        } else {
+            System.err.println("Warning: theme.css not found on classpath");
         }
     }
 

@@ -1,0 +1,127 @@
+.root {
+    -fx-background-color: #020817;
+    -fx-font-family: "System";
+}
+
+.background {
+    -fx-background-color: #020817;
+}
+
+.surface {
+    -fx-background-color: #1a1a2e;
+}
+
+.title {
+    -fx-font-weight: bold;
+    -fx-text-fill: #ffffff;
+    -fx-font-size: 1.4em;
+}
+
+.section-title {
+    -fx-font-weight: bold;
+    -fx-text-fill: #ffffff;
+}
+
+.label {
+    -fx-text-fill: #e0e0e0;
+}
+
+.error-text {
+    -fx-text-fill: #e74c3c;
+}
+
+.button-primary {
+    -fx-background-color: #fe9a00;
+    -fx-text-fill: #ffffff;
+    -fx-cursor: hand;
+    -fx-padding: 8 20 8 20;
+    -fx-background-radius: 4;
+}
+
+.button-primary:hover {
+    -fx-background-color: #ffb340;
+}
+
+.button-primary:pressed {
+    -fx-background-color: #cc7c00;
+}
+
+.button-secondary {
+    -fx-background-color: transparent;
+    -fx-text-fill: #e0e0e0;
+    -fx-border-color: #333355;
+    -fx-border-radius: 4;
+    -fx-padding: 8 20 8 20;
+    -fx-cursor: hand;
+}
+
+.button-secondary:hover {
+    -fx-background-color: #1a1a2e;
+}
+
+.option-default {
+    -fx-background-color: #e0e0e0;
+    -fx-text-fill: #000000;
+    -fx-cursor: hand;
+    -fx-padding: 8;
+    -fx-background-radius: 4;
+}
+
+.option-correct {
+    -fx-background-color: #27ae60;
+    -fx-text-fill: #ffffff;
+    -fx-cursor: hand;
+    -fx-padding: 8;
+    -fx-background-radius: 4;
+}
+
+.option-wrong {
+    -fx-background-color: #e74c3c;
+    -fx-text-fill: #ffffff;
+    -fx-cursor: hand;
+    -fx-padding: 8;
+    -fx-background-radius: 4;
+}
+
+.check-box {
+    -fx-text-fill: #e0e0e0;
+}
+
+.spinner {
+    -fx-background-color: #1a1a2e;
+}
+
+.spinner .text-field {
+    -fx-background-color: #1a1a2e;
+    -fx-text-fill: #e0e0e0;
+}
+
+.accordion {
+    -fx-background-color: transparent;
+}
+
+.titled-pane > .title {
+    -fx-background-color: #1a1a2e;
+    -fx-text-fill: #ffffff;
+}
+
+.titled-pane .content {
+    -fx-background-color: #020817;
+    -fx-border-color: #333355;
+}
+
+.separator .line {
+    -fx-border-color: #333355;
+}
+
+.scroll-pane {
+    -fx-background-color: #020817;
+}
+
+.scroll-bar {
+    -fx-background-color: #1a1a2e;
+}
+
+.scroll-bar .thumb {
+    -fx-background-color: #333355;
+}
