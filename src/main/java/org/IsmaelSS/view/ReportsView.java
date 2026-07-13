@@ -11,6 +11,7 @@ import javafx.scene.control.TitledPane;
 import javafx.scene.layout.VBox;
 
 public class ReportsView {
+    private final VBox content;
     private final Scene scene;
     private final VBox root;
     private final VBox overallBox;
@@ -18,7 +19,7 @@ public class ReportsView {
     private final Button voltarButton;
 
     public ReportsView() {
-        VBox content = new VBox(10);
+        content = new VBox(10);
         content.getStyleClass().add("background");
         content.setPadding(new Insets(20));
 
@@ -59,6 +60,18 @@ public class ReportsView {
     public VBox getOverallBox() { return overallBox; }
     public Accordion getAccordion() { return accordion; }
     public Button getVoltarButton() { return voltarButton; }
+
+    /**
+     * Returns the embeddable content node (ScrollPane wrapping the VBox content tree).
+     * Used when ReportsView is embedded as a tab in the TabPane.
+     */
+    public ScrollPane getContent() {
+        ScrollPane scrollPane = new ScrollPane(content);
+        scrollPane.setFitToWidth(true);
+        scrollPane.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
+        scrollPane.setVbarPolicy(ScrollPane.ScrollBarPolicy.AS_NEEDED);
+        return scrollPane;
+    }
 
     public void clearContent() {
         overallBox.getChildren().clear();
