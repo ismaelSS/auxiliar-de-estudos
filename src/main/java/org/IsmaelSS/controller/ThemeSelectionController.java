@@ -1,5 +1,7 @@
 package org.IsmaelSS.controller;
 
+import javafx.scene.control.Label;
+import javafx.scene.control.Tab;
 import org.IsmaelSS.model.RoundState;
 import org.IsmaelSS.model.Theme;
 import org.IsmaelSS.service.StatsService;
@@ -40,7 +42,9 @@ public class ThemeSelectionController {
         screenController.registerScreen("themeSelection", view.getScene());
 
         view.getStartButton().setOnAction(e -> handleStart());
-        view.getRelatoriosButton().setOnAction(e -> handleRelatorios());
+
+        view.getTabPane().getSelectionModel().selectedItemProperty().addListener(
+                (obs, oldTab, newTab) -> handleTabSelection(newTab));
 
         screenController.switchTo("themeSelection");
     }
@@ -81,14 +85,20 @@ public class ThemeSelectionController {
         studyRoundController.initialize();
     }
 
-    private void handleRelatorios() {
-        if (reportsController == null) {
-            ReportsView reportsView = new ReportsView();
-            reportsController = new ReportsController(statsService, reportsView, screenController, themeLoader);
-            reportsController.initialize();
-        } else {
-            reportsController.refresh();
-            screenController.switchTo("reports");
+    private void handleTabSelection(Tab tab) {
+        if (tab == view.getRelatoriosTab()) {
+            if (reportsController == null) {
+                ReportsView reportsView = new ReportsView();
+                reportsController = new ReportsController(statsService, reportsView, screenController, themeLoader);
+            }
+            reportsController.refreshAndShow(tab);
+        } else if (tab == view.getGerenciarTab()) {
+            // Lazy-init placeholder for QuestionFileManagerView (future plan)
+            if (tab.getContent() == null) {
+                Label placeholder = new Label("Gerenciar - Em breve");
+                placeholder.getStyleClass().add("section-title");
+                tab.setContent(placeholder);
+            }
         }
     }
 }
