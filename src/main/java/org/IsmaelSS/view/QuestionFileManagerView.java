@@ -55,7 +55,7 @@ public class QuestionFileManagerView {
         selectedFileLabel.getStyleClass().add("section-title");
 
         questionCountLabel = new Label("");
-        questionCountLabel.getStyleClass().add("label");
+        questionCountLabel.getStyleClass().add("title");
 
         questionListContainer = new VBox(10);
 
@@ -63,10 +63,12 @@ public class QuestionFileManagerView {
         adicionarQuestaoButton.getStyleClass().add("button-primary");
 
         editorSection = new VBox(8, selectedFileLabel, questionCountLabel, questionListContainer, adicionarQuestaoButton);
+        editorSection.getStyleClass().add("editor-bg");
         editorSection.setVisible(false);
         editorSection.setManaged(false);
 
         ScrollPane scrollPane = new ScrollPane(editorSection);
+        scrollPane.getStyleClass().add("editor-bg");
         scrollPane.setFitToWidth(true);
         scrollPane.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
         scrollPane.setVbarPolicy(ScrollPane.ScrollBarPolicy.AS_NEEDED);

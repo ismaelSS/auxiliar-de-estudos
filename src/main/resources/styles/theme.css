@@ -185,6 +185,11 @@
     -fx-background-radius: 6;
 }
 
+/* Question editor section background */
+.editor-bg {
+    -fx-background-color: #04102e;
+}
+
 /* Text fields on dark background */
 .text-field {
     -fx-background-color: #020817;
