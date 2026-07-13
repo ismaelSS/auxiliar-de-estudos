@@ -1,6 +1,6 @@
 param(
     [switch]$SkipTests = $true,
-    [string]$DistDir = "dist\FlashCardJava"
+    [string]$OutputDir = "dist\installer"
 )
 
 $ErrorActionPreference = "Stop"
@@ -22,29 +22,35 @@ $mvnArgs = @("clean", "package")
 if ($SkipTests) { $mvnArgs += "-DskipTests" }
 
 Write-Host "Running: mvn $($mvnArgs -join ' ')" -ForegroundColor Yellow
-$output = & mvn $mvnArgs 2>&1
-$output | Out-String | ForEach-Object { Write-Host $_ }
-if ($global:LASTEXITCODE -ne 0) { throw "Maven build failed (exit code: $global:LASTEXITCODE)" }
+& mvn $mvnArgs
+if ($LASTEXITCODE -ne 0) { throw "Maven build failed (exit code: $LASTEXITCODE)" }
 
-Write-Host "`n=== Preparing distribution ===" -ForegroundColor Cyan
-$distPath = Join-Path (Get-Location) $DistDir
+Write-Host "`n=== Creating EXE with jpackage ===" -ForegroundColor Cyan
+$runtimeImage = Join-Path (Get-Location) "target\flashCardJava-runtime"
+$iconPath = Join-Path (Get-Location) "src\main\resources\icon.ico"
+$outputPath = Join-Path (Get-Location) $OutputDir
 
-if (Test-Path $distPath) { Remove-Item -Recurse -Force $distPath }
-New-Item -ItemType Directory -Path $distPath -Force | Out-Null
+if (Test-Path $outputPath) { Remove-Item -Recurse -Force $outputPath }
 
-Write-Host "Copying jlink runtime..." -ForegroundColor Yellow
-Copy-Item -Recurse -Path "target\flashCardJava-runtime" -Destination "$distPath\runtime"
+jpackage --type app-image `
+    --runtime-image $runtimeImage `
+    --module "org.IsmaelSS.flashCardJava/org.IsmaelSS.Main" `
+    --name "FlashCardJava" `
+    --app-version "1.0" `
+    --icon $iconPath `
+    --dest $outputPath `
+    --vendor "IsmaelSS"
 
-if (Test-Path "themes") {
-    Write-Host "Copying themes folder..." -ForegroundColor Yellow
-    Copy-Item -Recurse -Path "themes" -Destination "$distPath\themes"
-}
+if ($global:LASTEXITCODE -ne 0) { throw "jpackage failed (exit code: $global:LASTEXITCODE)" }
 
-Copy-Item "target\flashCardJava-1.0-SNAPSHOT.jar" -Destination "$distPath\"
+Write-Host "`n=== Copying themes folder ===" -ForegroundColor Cyan
+$appDir = Join-Path $outputPath "FlashCardJava"
+Copy-Item -Recurse -Path "themes" -Destination "$appDir\themes"
 
-$size = (Get-ChildItem -Recurse $distPath | Measure-Object Length -Sum).Sum
+$exePath = Join-Path $appDir "FlashCardJava.exe"
+$size = (Get-ChildItem -Recurse $appDir | Measure-Object Length -Sum).Sum
 Write-Host "`n=== Distribution ready ===" -ForegroundColor Green
-Write-Host "  Path: $distPath"
+Write-Host "  EXE: $exePath"
 Write-Host "  Size: $([math]::Round($size/1MB, 1)) MB"
-Write-Host "`nQuick test:" -ForegroundColor Yellow
-Write-Host "  $distPath\runtime\bin\flashCardJava.bat"
+Write-Host "`nRun:" -ForegroundColor Yellow
+Write-Host "  $exePath"
