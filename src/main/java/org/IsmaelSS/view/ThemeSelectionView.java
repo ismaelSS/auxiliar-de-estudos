@@ -56,7 +56,7 @@ public class ThemeSelectionView {
         jogarContent.setPadding(new Insets(20));
         jogarContent.getChildren().addAll(title, themeListContainer, countLabel, questionCountSpinner, reforcoCheckBox, startButton, feedbackLabel);
 
-        jogarTab = new Tab("Jogar", jogarContent);
+        jogarTab = new Tab("Treinar", jogarContent);
         jogarTab.setClosable(false);
 
         relatoriosTab = new Tab("Relatórios");
