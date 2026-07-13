@@ -4,6 +4,7 @@ import javafx.geometry.Insets;
 import javafx.scene.control.Accordion;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.Tab;
 import javafx.scene.control.TitledPane;
 import javafx.scene.input.Clipboard;
 import javafx.scene.input.ClipboardContent;
@@ -103,6 +104,14 @@ public class ReportsController {
                 view.getAccordion().getPanes().add(pane);
             }
         }
+    }
+
+    /**
+     * Refreshes report data and sets the content into the given tab (embedded mode).
+     */
+    public void refreshAndShow(Tab tab) {
+        refresh();
+        tab.setContent(view.getContent());
     }
 
     private void copyAIPrompt(String themeName, List<Map.Entry<String, Integer>> lowestQuestions) {
