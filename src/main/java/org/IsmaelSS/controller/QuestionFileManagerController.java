@@ -7,7 +7,6 @@ import javafx.scene.control.TextInputDialog;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import org.IsmaelSS.model.Question;
-import org.IsmaelSS.model.Theme;
 import org.IsmaelSS.service.ThemeLoader;
 import org.IsmaelSS.view.QuestionFileManagerView;
 
@@ -49,18 +48,18 @@ public class QuestionFileManagerController {
         VBox container = view.getFileListContainer();
         container.getChildren().clear();
 
-        List<Theme> themes = themeLoader.loadAllThemes();
+        List<String> fileNames = themeLoader.listThemeFiles();
 
-        if (themes.isEmpty()) {
+        if (fileNames.isEmpty()) {
             Label emptyLabel = new Label("Nenhum arquivo encontrado.");
             emptyLabel.getStyleClass().add("label");
             container.getChildren().add(emptyLabel);
             return;
         }
 
-        for (Theme theme : themes) {
-            String name = theme.getName();
-            int count = theme.getQuestionCount();
+        for (String name : fileNames) {
+            List<Question> questions = themeLoader.loadThemeQuestions(name);
+            int count = questions.size();
 
             Label nameLabel = new Label(name + " (" + count + " questões)");
             nameLabel.getStyleClass().add("label");
@@ -124,20 +123,7 @@ public class QuestionFileManagerController {
 
     private void handleSelectFile(String name) {
         currentFileName = name;
-        List<Theme> themes = themeLoader.loadAllThemes();
-        Theme selected = null;
-        for (Theme t : themes) {
-            if (t.getName().equals(name)) {
-                selected = t;
-                break;
-            }
-        }
-
-        if (selected == null) {
-            currentQuestions = new ArrayList<>();
-        } else {
-            currentQuestions = new ArrayList<>(selected.getQuestions());
-        }
+        currentQuestions = themeLoader.loadThemeQuestions(name);
 
         List<String> texts = new ArrayList<>();
         List<List<String>> allOptions = new ArrayList<>();

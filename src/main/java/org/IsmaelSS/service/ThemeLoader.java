@@ -55,6 +55,43 @@ public class ThemeLoader {
     }
 
     /**
+     * Returns all .json file names in themes/ (without parsing/validation).
+     * Used by the file manager to list all files regardless of content validity.
+     */
+    public List<String> listThemeFiles() {
+        List<String> fileNames = new ArrayList<>();
+        File themesDir = new File(THEMES_DIR);
+        if (!themesDir.exists() || !themesDir.isDirectory()) {
+            return fileNames;
+        }
+        File[] jsonFiles = themesDir.listFiles((dir, name) -> name.toLowerCase().endsWith(".json"));
+        if (jsonFiles != null) {
+            for (File file : jsonFiles) {
+                fileNames.add(file.getName().replaceAll("\\.json$", ""));
+            }
+        }
+        return fileNames;
+    }
+
+    /**
+     * Loads questions from a specific theme file by name.
+     * Returns empty list if file doesn't exist or is invalid.
+     */
+    public List<Question> loadThemeQuestions(String name) {
+        File file = new File(THEMES_DIR, name + ".json");
+        if (!file.exists()) {
+            return new ArrayList<>();
+        }
+        try {
+            List<Question> questions = mapper.readValue(file, new TypeReference<List<Question>>() {});
+            return questions != null ? new ArrayList<>(questions) : new ArrayList<>();
+        } catch (Exception e) {
+            LOG.warning("Failed to load questions for theme: " + name + " - " + e.getMessage());
+            return new ArrayList<>();
+        }
+    }
+
+    /**
      * Writes a list of questions to themes/{name}.json.
      * Creates the themes directory if it does not exist.
      */
