@@ -125,6 +125,10 @@
     -fx-background-color: #020817;
 }
 
+.scroll-pane .viewport {
+    -fx-background-color: transparent;
+}
+
 .scroll-bar {
     -fx-background-color: #1a1a2e;
 }
