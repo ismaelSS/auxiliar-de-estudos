@@ -50,12 +50,12 @@
 ### Question File Management
 
 - [ ] **QMGMT-01**: New "Gerenciar" tab accessible from theme selection screen
-- [ ] **QMGMT-02**: Lists all .json files in `themes/` folder with titles
-- [ ] **QMGMT-03**: User can create new .json file with title (auto-generate ID, structure with empty questions array)
-- [ ] **QMGMT-04**: User can add questions (question text + 5 alternatives + correct index) to an existing file
-- [ ] **QMGMT-05**: User can delete questions from an existing file
-- [ ] **QMGMT-06**: User can delete entire .json files (with confirmation dialog)
-- [ ] **QMGMT-07**: Changes persist to disk and reflect immediately in theme selection screen
+- [x] **QMGMT-02**: Lists all .json files in `themes/` folder with titles
+- [x] **QMGMT-03**: User can create new .json file with title (auto-generate ID, structure with empty questions array)
+- [x] **QMGMT-04**: User can add questions (question text + 5 alternatives + correct index) to an existing file
+- [x] **QMGMT-05**: User can delete questions from an existing file
+- [x] **QMGMT-06**: User can delete entire .json files (with confirmation dialog)
+- [x] **QMGMT-07**: Changes persist to disk and reflect immediately in theme selection screen
 
 ## v2 Requirements
 
@@ -107,6 +107,7 @@
 | DIST-02 | Phase 1 | Complete ✓ |
 
 **Coverage:**
+
 - v1 requirements: 23 total
 - Mapped to phases: 23
 - Unmapped: 0 ✓

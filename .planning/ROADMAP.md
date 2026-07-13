@@ -163,3 +163,25 @@ Plans:
 
 - [x] 10-01-PLAN.md — External CSS stylesheet + ScreenController wiring + ThemeSelectionView + ReportsView refactoring (Wave 1)
 - [ ] 10-02-PLAN.md — StudyRoundView dynamic theming + class toggling for correct/wrong states (Wave 2)
+
+## Phase 11: Question File Manager ✓ [2026-07-13]
+
+**Goal:** Nova aba para gerenciar arquivos de questões: adicionar/excluir arquivos .json, adicionar/excluir questões dentro de arquivos, e criar novos arquivos com título e estrutura .json.
+**Requirements:** QMGMT-01, QMGMT-02, QMGMT-03, QMGMT-04, QMGMT-05, QMGMT-06, QMGMT-07
+**Depends on:** Phase 7 (StatsService for file I/O patterns), Phase 10 (visual theming)
+**Plans:** 2/2 plans complete
+**Success Criteria:**
+
+1. ✓ Nova aba "Gerenciar" visível na tela de seleção de temas
+2. ✓ Lista todos os arquivos .json na pasta `themes/` com seus títulos
+3. ✓ Usuário pode criar novo arquivo .json informando título (gera ID, estrutura de questões vazia)
+4. ✓ Usuário pode adicionar perguntas (enunciado + 5 alternativas + índice da correta) a um arquivo existente
+5. ✓ Usuário pode excluir perguntas de um arquivo existente
+6. ✓ Usuário pode excluir arquivos .json inteiros (com confirmação)
+7. ✓ Alterações persistem no disco e aparecem imediatamente na tela de seleção de temas
+8. ✓ Todos os testes existentes continuam passando
+
+Plans:
+
+- [x] 11-01-PLAN.md — Tab system refactor: TabPane + Reports embedding + lazy-init (Wave 1)
+- [x] 11-02-PLAN.md — File + Question CRUD: file list, question editor, auto-save (Wave 2)

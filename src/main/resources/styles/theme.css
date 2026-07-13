@@ -132,3 +132,105 @@
 .scroll-bar .thumb {
     -fx-background-color: #333355;
 }
+
+/* TabPane — dark theme overrides */
+.tab-pane {
+    -fx-background-color: #020817;
+    -fx-tab-min-height: 36;
+    -fx-tab-max-height: 36;
+}
+
+.tab-pane .tab-header-area {
+    -fx-background-color: transparent;
+    -fx-padding: 5 5 0 5;
+}
+
+.tab-pane .tab-header-background {
+    -fx-background-color: #020817;
+}
+
+.tab-pane .tab {
+    -fx-background-color: #1a1a2e;
+    -fx-background-radius: 6 6 0 0;
+    -fx-padding: 6 20;
+}
+
+.tab-pane .tab:selected {
+    -fx-background-color: #020817;
+    -fx-border-color: transparent transparent #fe9a00 transparent;
+    -fx-border-width: 0 0 2 0;
+}
+
+.tab-pane .tab:hover {
+    -fx-background-color: #25254a;
+}
+
+.tab-pane .tab .tab-label {
+    -fx-text-fill: #e0e0e0;
+    -fx-font-size: 1.1em;
+}
+
+.tab-pane .tab:selected .tab-label {
+    -fx-text-fill: #fe9a00;
+}
+
+.tab-pane > .tab-content-area {
+    -fx-background-color: #020817;
+    -fx-border-color: transparent;
+}
+
+/* Surface card for question editor */
+.surface-card {
+    -fx-background-color: #1a1a2e;
+    -fx-background-radius: 6;
+}
+
+/* Text fields on dark background */
+.text-field {
+    -fx-background-color: #020817;
+    -fx-text-fill: #e0e0e0;
+    -fx-prompt-text-fill: #555577;
+    -fx-border-color: #333355;
+    -fx-border-radius: 3;
+    -fx-padding: 4 8;
+}
+
+.text-field:focused {
+    -fx-border-color: #fe9a00;
+}
+
+/* Combo box on dark background */
+.combo-box {
+    -fx-background-color: #020817;
+    -fx-text-fill: #e0e0e0;
+    -fx-border-color: #333355;
+    -fx-border-radius: 3;
+}
+
+.combo-box .list-cell {
+    -fx-background-color: #020817;
+    -fx-text-fill: #e0e0e0;
+}
+
+.combo-box .arrow {
+    -fx-background-color: #fe9a00;
+}
+
+.combo-box-popup .list-view {
+    -fx-background-color: #1a1a2e;
+    -fx-border-color: #333355;
+}
+
+.combo-box-popup .list-cell {
+    -fx-background-color: #1a1a2e;
+    -fx-text-fill: #e0e0e0;
+}
+
+.combo-box-popup .list-cell:hover {
+    -fx-background-color: #25254a;
+}
+
+.combo-box-popup .list-cell:selected {
+    -fx-background-color: #fe9a00;
+    -fx-text-fill: #ffffff;
+}

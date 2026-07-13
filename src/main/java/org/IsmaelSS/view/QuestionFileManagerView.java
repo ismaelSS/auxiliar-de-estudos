@@ -192,7 +192,7 @@ public class QuestionFileManagerView {
 
         VBox card = new VBox(5, questionHeader, optionsBox, correctRow, removeBtn);
         card.setPadding(new Insets(8));
-        card.setStyle("-fx-background-color: #1a1a2e; -fx-background-radius: 6;");
+        card.getStyleClass().add("surface-card");
 
         return card;
     }

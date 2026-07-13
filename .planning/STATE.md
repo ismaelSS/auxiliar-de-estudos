@@ -2,14 +2,14 @@
 gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
-status: Executing Phase 08
-last_updated: "2026-07-13T14:20:53.103Z"
+status: Phase 11 Complete
+last_updated: "2026-07-13T12:53:03-03:00"
 progress:
-  total_phases: 10
-  completed_phases: 5
-  total_plans: 20
-  completed_plans: 11
-  percent: 50
+  total_phases: 11
+  completed_phases: 6
+  total_plans: 23
+  completed_plans: 14
+  percent: 60
 ---
 
 # State: FlashCard JavaFX
@@ -19,7 +19,7 @@ progress:
 See: .planning/PROJECT.md (updated 2026-07-07)
 
 **Core value:** Students can study any topic by loading a themed JSON question bank and immediately start quizzing themselves with performance tracking and weak-area reinforcement.
-**Current focus:** Phase 08 — resizable-window-ctrl-scroll-zoom
+**Current focus:** Between phases — Phase 11 complete
 
 ## Phase Summary
 
@@ -33,6 +33,9 @@ See: .planning/PROJECT.md (updated 2026-07-07)
 | 6 | Scoring System & Question ID Rework | Complete ✓ |
 | 7 | Reports & AI-Assisted Review | Complete ✓ |
 | 8 | Resizable Window & Ctrl+Scroll Zoom | Complete ✓ |
+| 9 | Navigation Overhaul | Blocked (needs UI-safety gate) |
+| 10 | Visual Theming & Color Identity | Partial (checkpoint visual pendente) |
+| 11 | Question File Manager | Complete ✓ |
 
 ## Completed Phases
 
@@ -100,6 +103,14 @@ See: .planning/PROJECT.md (updated 2026-07-07)
 | ScreenController owns zoom state | Single source of truth across all screens | Confirmed |
 | Session-only zoom persistence | No disk write per D-04 | Confirmed |
 | Capture-phase event filter for Ctrl+scroll | Prevents ScrollPane double-scroll in ReportsView | Confirmed |
+| TabPane home screen (3 tabs: Jogar/Relatórios/Gerenciar) | User chose tab system over button-based navigation | Confirmed |
+| ReportsView embedded as Node (not separate Scene) | Tab content via getContent() for embedding | Confirmed |
+| Lazy-init for Relatórios and Gerenciar tabs | First-click tab creation for startup perf | Confirmed |
+| New file: title → sanitized filename | User types title, system creates title-sanitized.json | Confirmed |
+| Template: empty [] for new files | Clean start, no sample question to delete | Confirmed |
+| Auto-refresh Jogar tab on file changes | Creates/deletes immediately visible | Confirmed |
+| Auto-save on each edit (focus-lost) | No manual save button needed | Confirmed |
+| Confirmation dialogs on deletes | Safety for file and question deletion | Confirmed |
 
 ## Quick Tasks Completed
 
@@ -121,3 +132,5 @@ See: .planning/PROJECT.md (updated 2026-07-07)
 | Phase 07-reports-ai-assisted-review P02 | 1min | 2 tasks | 2 files |
 | Phase 07-reports-ai-assisted-review P03 | 2min | 2 tasks | 2 files |
 | Phase 08 P01 | 6min | 3 tasks | 4 files |
+| Phase 11-question-file-manager P01 | 2min | 4 tasks | 4 files |
+| Phase 11-question-file-manager P02 | 7min | 5 tasks | 3 files |
