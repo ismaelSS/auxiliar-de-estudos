@@ -250,11 +250,9 @@ class StatsServiceTest {
                 new RoundResult("t2", "q3?", 0, true)
         ));
         List<Map.Entry<String, Integer>> result = service.getLowestScoreQuestionsByTheme("t1", 10);
-        // t1 has 2 questions, t2 has 1 — result should only contain t1's 2 questions
-        assertEquals(2, result.size());
-        // Verify all returned entries have t1's question IDs (0 and 1)
-        assertTrue(result.stream().anyMatch(e -> e.getKey().equals("0")));
-        assertTrue(result.stream().anyMatch(e -> e.getKey().equals("1")));
+        // t1 has q1 (correct, score >= 0) and q2 (wrong, score < 0) — only q2 returned
+        assertEquals(1, result.size());
+        assertEquals("1", result.get(0).getKey());
     }
 
     @Test

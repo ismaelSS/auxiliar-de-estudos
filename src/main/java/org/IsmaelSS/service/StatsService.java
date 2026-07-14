@@ -178,10 +178,9 @@ public class StatsService {
         if (ts == null) return new ArrayList<>();
         List<Map.Entry<String, Integer>> entries = new ArrayList<>();
         for (Map.Entry<String, QuestionScore> questionEntry : ts.getQuestions().entrySet()) {
-            entries.add(Map.entry(
-                    questionEntry.getKey(),
-                    questionEntry.getValue().getScore()
-            ));
+            int score = questionEntry.getValue().getScore();
+            if (score >= 0) continue;
+            entries.add(Map.entry(questionEntry.getKey(), score));
         }
         entries.sort(Map.Entry.comparingByValue());
         return entries.subList(0, Math.min(limit, entries.size()));

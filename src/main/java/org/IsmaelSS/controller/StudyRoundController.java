@@ -79,9 +79,6 @@ public class StudyRoundController {
     }
 
     private void showRoundComplete() {
-        if (!results.isEmpty()) {
-            statsService.recordRound(results);
-        }
         view.showRoundComplete(roundState.getCorrectCount(), roundState.getTotalAnswered());
     }
 
