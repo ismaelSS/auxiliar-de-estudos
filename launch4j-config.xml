@@ -18,12 +18,12 @@
   <versionInfo>
     <fileVersion>1.0.0.0</fileVersion>
     <txtFileVersion>1.0.0</txtFileVersion>
-    <fileDescription>FlashCard Java - Aplicativo de flashcards</fileDescription>
+    <fileDescription>Ferramenta de Aprendizado - Aplicativo para tonar seus estudos mais eficiente</fileDescription>
     <copyright>IsmaelSS</copyright>
-    <productVersion>1.0.0.0</productVersion>
+    <productVersion>0.2.1.0</productVersion>
     <txtProductVersion>1.0.0</txtProductVersion>
-    <productName>FlashCard Java</productName>
+    <productName>Ferramenta de Aprendizado</productName>
     <internalName>FlashCardJava</internalName>
-    <originalFilename>FlashCardJava.exe</originalFilename>
+    <originalFilename>FerramentaAprendizado.exe</originalFilename>
   </versionInfo>
 </launch4jConfig>
