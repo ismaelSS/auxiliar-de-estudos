@@ -38,7 +38,7 @@ public class ReportsController {
         Map<String, String> map = new HashMap<>();
         for (Theme theme : themeLoader.loadAllThemes()) {
             for (Question q : theme.getQuestions()) {
-                map.put(String.valueOf(q.getId()), q.getQuestion());
+                map.put(theme.getName() + "|" + q.getId(), q.getQuestion());
             }
         }
         return map;
@@ -119,7 +119,7 @@ public class ReportsController {
           .append(", apresentei dificuldade ao responder as seguintes perguntas")
           .append(" me explique os pontos que regem essas questões em detalhes:\n");
         for (Map.Entry<String, Integer> entry : lowestQuestions) {
-            String text = questionTextById.getOrDefault(entry.getKey(), "Questão " + entry.getKey());
+            String text = questionTextById.getOrDefault(themeName + "|" + entry.getKey(), "Questão " + entry.getKey());
             sb.append("- Questão: ").append(text).append("\n");
         }
 
