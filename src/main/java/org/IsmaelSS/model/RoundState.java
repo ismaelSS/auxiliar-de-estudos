@@ -136,6 +136,11 @@ public class RoundState {
             }
         }
 
+        // If still empty (no stats entries at all), use all questions from theme
+        if (selectedQuestions.isEmpty()) {
+            selectedQuestions.addAll(theme.getQuestions());
+        }
+
         // Shuffle and build RoundQuestion list (same pattern as buildQuestions)
         Collections.shuffle(selectedQuestions);
         List<RoundQuestion> questions = new ArrayList<>();

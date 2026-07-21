@@ -127,7 +127,7 @@ public class ReviewDashboardView {
         String lower = query == null ? "" : query.toLowerCase();
         for (Node node : cardContainer.getChildren()) {
             if (node instanceof ThemeCardNode card) {
-                boolean match = lower.isEmpty() || card.toString().toLowerCase().contains(lower);
+                boolean match = lower.isEmpty() || card.getThemeName().toLowerCase().contains(lower);
                 card.setVisible(match);
                 card.setManaged(match);
             }

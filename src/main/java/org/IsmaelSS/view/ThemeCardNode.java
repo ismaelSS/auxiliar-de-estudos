@@ -18,6 +18,7 @@ public class ThemeCardNode extends VBox {
 
     public enum Priority { OVERDUE, TODAY, NONE }
 
+    private final String themeName;
     private final Label nameLabel;
     private final Label dominioLabel;
     private final HBox badgeRow;
@@ -38,6 +39,7 @@ public class ThemeCardNode extends VBox {
         getStyleClass().add("theme-card");
         setPadding(new Insets(12, 16, 12, 16));
         setSpacing(8);
+        this.themeName = themeName;
 
         // Row 1: name + badges + dominio
         nameLabel = new Label(themeName + " (" + questionCount + " questões)");
@@ -76,6 +78,8 @@ public class ThemeCardNode extends VBox {
 
         getChildren().addAll(badgeRow, fixationBar, buttonRow);
     }
+
+    public String getThemeName() { return themeName; }
 
     public void setPriority(Priority priority) {
         getStyleClass().removeAll("priority-overdue", "priority-today", "priority-none");
