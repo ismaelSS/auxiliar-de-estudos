@@ -2,6 +2,7 @@ package org.IsmaelSS.service;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
+import org.IsmaelSS.model.FixationPhase;
 import org.IsmaelSS.model.RoundResult;
 import org.IsmaelSS.model.StatsData;
 import org.IsmaelSS.model.StatsData.OverallStats;
@@ -10,11 +11,19 @@ import org.IsmaelSS.model.StatsData.ThemeStats;
 
 import java.io.File;
 import java.io.IOException;
+import java.time.Instant;
+import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.EnumMap;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.TreeMap;
 import java.util.logging.Logger;
+import java.util.stream.Collectors;
 
 public class StatsService {
     private static final Logger LOG = Logger.getLogger(StatsService.class.getName());
@@ -102,6 +111,7 @@ public class StatsService {
             } else {
                 qScore.recordWrong();
             }
+            qScore.updateSM2(result.wasCorrect());
         }
         recalculateOverall();
         save();
@@ -188,5 +198,96 @@ public class StatsService {
 
     public List<String> getAllThemesWithData() {
         return new ArrayList<>(data.getThemes().keySet());
+    }
+
+    // == SM-2 query methods ==
+
+    /**
+     * Returns overdue questions for a theme: those with nextReviewTimestamp <= now and > 0.
+     * Sorted by repCount ascending.
+     */
+    public List<Map.Entry<String, QuestionScore>> getDueQuestions(String themeName) {
+        ThemeStats ts = data.getThemes().get(themeName);
+        if (ts == null) return new ArrayList<>();
+        long now = System.currentTimeMillis();
+        return ts.getQuestions().entrySet().stream()
+                .filter(e -> {
+                    long nextReview = e.getValue().getNextReviewTimestamp();
+                    return nextReview <= now && nextReview > 0;
+                })
+                .sorted(Map.Entry.comparingByValue(Comparator.comparingInt(qs -> qs.getRepCount())))
+                .collect(Collectors.toCollection(ArrayList::new));
+    }
+
+    /**
+     * Count of overdue questions for a theme.
+     */
+    public int getDueCount(String themeName) {
+        return getDueQuestions(themeName).size();
+    }
+
+    /**
+     * Returns unreviewed/new questions for a theme: those with repCount == 0.
+     */
+    public List<Map.Entry<String, QuestionScore>> getNewQuestions(String themeName) {
+        ThemeStats ts = data.getThemes().get(themeName);
+        if (ts == null) return new ArrayList<>();
+        return ts.getQuestions().entrySet().stream()
+                .filter(e -> e.getValue().getRepCount() == 0)
+                .collect(Collectors.toCollection(ArrayList::new));
+    }
+
+    /**
+     * Returns a map of FixationPhase to count for all questions in a theme.
+     */
+    public Map<FixationPhase, Integer> getFixationPhases(String themeName) {
+        ThemeStats ts = data.getThemes().get(themeName);
+        Map<FixationPhase, Integer> dist = new EnumMap<>(FixationPhase.class);
+        for (FixationPhase p : FixationPhase.values()) {
+            dist.put(p, 0);
+        }
+        if (ts == null) return dist;
+        for (QuestionScore qs : ts.getQuestions().values()) {
+            dist.merge(qs.getFixationPhase(), 1, Integer::sum);
+        }
+        return dist;
+    }
+
+    /**
+     * Returns all review history aggregated by day. The outer map is a TreeMap in
+     * descending order (most recent first). Each entry maps a LocalDate to a Map of
+     * theme name → number of questions reviewed that day.
+     */
+    public Map<LocalDate, Map<String, Integer>> getTimelineData() {
+        Map<LocalDate, Map<String, Integer>> timeline = new TreeMap<>(Collections.reverseOrder());
+        for (Map.Entry<String, ThemeStats> themeEntry : data.getThemes().entrySet()) {
+            for (QuestionScore qs : themeEntry.getValue().getQuestions().values()) {
+                if (qs.getLastReviewTimestamp() > 0) {
+                    LocalDate day = Instant.ofEpochMilli(qs.getLastReviewTimestamp())
+                            .atZone(ZoneId.systemDefault())
+                            .toLocalDate();
+                    timeline.computeIfAbsent(day, k -> new HashMap<>())
+                            .merge(themeEntry.getKey(), 1, Integer::sum);
+                }
+            }
+        }
+        return timeline;
+    }
+
+    /**
+     * Simulates a perfect SM-2 answer for all overdue questions in a theme.
+     * Only affects questions where nextReviewTimestamp <= now and > 0.
+     */
+    public void markThemeAsDone(String themeName) {
+        ThemeStats ts = data.getThemes().get(themeName);
+        if (ts == null) return;
+        long now = System.currentTimeMillis();
+        for (QuestionScore qs : ts.getQuestions().values()) {
+            long nrt = qs.getNextReviewTimestamp();
+            if (nrt <= now && nrt > 0) {
+                qs.updateSM2(true);
+            }
+        }
+        save();
     }
 }

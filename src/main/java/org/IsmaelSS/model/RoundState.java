@@ -1,5 +1,6 @@
 package org.IsmaelSS.model;
 
+import org.IsmaelSS.model.StatsData.QuestionScore;
 import org.IsmaelSS.service.StatsService;
 
 import java.util.ArrayList;
@@ -101,6 +102,52 @@ public class RoundState {
             }
         }
         Collections.shuffle(questions);
+        return new RoundState(questions, true);
+    }
+
+    /**
+     * Creates a review round consisting of only overdue questions for the given theme.
+     * If no questions are overdue, falls back to new/unreviewed questions (repCount == 0).
+     * Questions are shuffled and presented in random order.
+     */
+    public static RoundState createDueReviewRound(Theme theme, StatsService statsService) {
+        List<Question> selectedQuestions = new ArrayList<>();
+        List<Map.Entry<String, QuestionScore>> due = statsService.getDueQuestions(theme.getName());
+
+        // Map question IDs to Question objects
+        Map<Integer, Question> questionMap = new HashMap<>();
+        for (Question q : theme.getQuestions()) {
+            questionMap.put(q.getId(), q);
+        }
+
+        for (Map.Entry<String, QuestionScore> entry : due) {
+            int qId = Integer.parseInt(entry.getKey());
+            Question q = questionMap.get(qId);
+            if (q != null) selectedQuestions.add(q);
+        }
+
+        // If no overdue, fall back to new/unreviewed questions
+        if (selectedQuestions.isEmpty()) {
+            List<Map.Entry<String, QuestionScore>> newQ = statsService.getNewQuestions(theme.getName());
+            for (Map.Entry<String, QuestionScore> entry : newQ) {
+                int qId = Integer.parseInt(entry.getKey());
+                Question q = questionMap.get(qId);
+                if (q != null) selectedQuestions.add(q);
+            }
+        }
+
+        // Shuffle and build RoundQuestion list (same pattern as buildQuestions)
+        Collections.shuffle(selectedQuestions);
+        List<RoundQuestion> questions = new ArrayList<>();
+        for (Question q : selectedQuestions) {
+            List<String> original = q.getOptions();
+            String correctText = original.get(q.getCorrect());
+            List<String> shuffled = new ArrayList<>(original);
+            Collections.shuffle(shuffled);
+            int newCorrect = shuffled.indexOf(correctText);
+            questions.add(new RoundQuestion(theme.getName(), q, shuffled, newCorrect));
+        }
+
         return new RoundState(questions, true);
     }
 
