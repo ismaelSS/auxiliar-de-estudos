@@ -185,3 +185,14 @@ Plans:
 
 - [x] 11-01-PLAN.md — Tab system refactor: TabPane + Reports embedding + lazy-init (Wave 1)
 - [x] 11-02-PLAN.md — File + Question CRUD: file list, question editor, auto-save (Wave 2)
+
+### Phase 12: Spaced Repetition & Visual Review Dashboard
+
+**Goal:** Implement SM-2 algorithm with fixation phases, visual review dashboard showing all themes with priority ordering (overdue > today > no review > alphabetical), color-coded priority, search, review action buttons (start/manual complete), auto-recording on round completion, and a timeline showing study history with fixation phases and next review dates.
+**Requirements:** V2-01, SR-01, SR-02, SR-03, SR-04, SR-05, SR-06, SR-07, SR-08
+**Depends on:** Phase 11
+**Plans:** 0 plans
+
+Plans:
+
+- [ ] TBD (run /gsd-plan-phase 12 to break down)
