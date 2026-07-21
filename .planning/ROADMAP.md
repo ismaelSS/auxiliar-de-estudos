@@ -191,8 +191,9 @@ Plans:
 **Goal:** Implement SM-2 algorithm with fixation phases, visual review dashboard showing all themes with priority ordering (overdue > today > no review > alphabetical), color-coded priority, search, review action buttons (start/manual complete), auto-recording on round completion, and a timeline showing study history with fixation phases and next review dates.
 **Requirements:** V2-01, SR-01, SR-02, SR-03, SR-04, SR-05, SR-06, SR-07, SR-08
 **Depends on:** Phase 11
-**Plans:** 0 plans
+**Plans:** 2 plans (Wave 1 → Wave 2)
 
 Plans:
 
-- [ ] TBD (run /gsd-plan-phase 12 to break down)
+- [ ] 12-01-PLAN.md — SM-2 Data Layer: model, service, round factory, tests (Wave 1)
+- [ ] 12-02-PLAN.md — Dashboard UI + Integration: CSS, views, controller wiring (Wave 2)
