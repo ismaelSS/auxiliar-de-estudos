@@ -18,6 +18,8 @@ public class Main extends Application {
         stage.setMinHeight(500);
 
         javafx.geometry.Rectangle2D screenBounds = Screen.getPrimary().getVisualBounds();
+        stage.setWidth(screenBounds.getWidth());
+        stage.setHeight(screenBounds.getHeight());
         stage.setMaxWidth(screenBounds.getWidth());
         stage.setMaxHeight(screenBounds.getHeight());
 
