@@ -42,7 +42,7 @@ class StatsServiceTest {
         ));
         assertEquals(1, service.getOverallStats().getTotalAnswered());
         assertEquals(1, service.getOverallStats().getTotalCorrect());
-        assertEquals("2", service.getAproveitamento("t1"));  // +2 for one correct
+        assertEquals("1", service.getAproveitamento("t1"));  // +1 for repCount > 0
     }
 
     @Test
@@ -53,13 +53,13 @@ class StatsServiceTest {
         ));
         assertEquals(1, service.getOverallStats().getTotalAnswered());
         assertEquals(0, service.getOverallStats().getTotalCorrect());
-        assertEquals("-3", service.getAproveitamento("t1"));  // -3 for one wrong
+        assertEquals("-1", service.getAproveitamento("t1"));  // -1 for repCount == 0
     }
 
     @Test
-    void scoreCapsAtFive() {
+    void repCountIncreasesCorrectly() {
         StatsService service = new StatsService();
-        // 10 correct answers → score should cap at +5
+        // 10 correct answers → repCount should be 10 (no cap)
         for (int i = 0; i < 10; i++) {
             service.recordRound(List.of(
                     new RoundResult("t1", "q1 text?", 0, true)
@@ -67,13 +67,13 @@ class StatsServiceTest {
         }
         List<Map.Entry<String, Integer>> lowest = service.getLowestScoreQuestions(10);
         assertEquals(1, lowest.size());
-        assertEquals(5, lowest.get(0).getValue());  // capped at +5
+        assertEquals(10, lowest.get(0).getValue());  // repCount = 10
     }
 
     @Test
-    void scoreFloorsAtMinusTen() {
+    void repCountResetsOnWrong() {
         StatsService service = new StatsService();
-        // 10 wrong answers → score should floor at -10
+        // 10 wrong answers → repCount should be 0 (reset each time)
         for (int i = 0; i < 10; i++) {
             service.recordRound(List.of(
                 new RoundResult("t1", "q1 text?", 0, false)
@@ -81,19 +81,19 @@ class StatsServiceTest {
         }
         List<Map.Entry<String, Integer>> lowest = service.getLowestScoreQuestions(10);
         assertEquals(1, lowest.size());
-        assertEquals(-10, lowest.get(0).getValue());  // floored at -10
+        assertEquals(0, lowest.get(0).getValue());  // repCount resets to 0
     }
 
     @Test
     void aproveitamentoCalculation() {
         StatsService service = new StatsService();
-        // q1: correct (+2) → score=+2 → weight +2
+        // q1: correct (repCount=1, +1 weight)
         service.recordRound(List.of(new RoundResult("t1", "q1?", 0, true)));
-        // q2: wrong (-3) → score=-3 → weight -3
+        // q2: wrong (repCount=0, -1 weight)
         service.recordRound(List.of(new RoundResult("t1", "q2?", 1, false)));
-        // q3: no answers → score=0 → weight 0
-        // Total weight: +2 + (-3) + 0 = -1
-        assertEquals("-1", service.getAproveitamento("t1"));
+        // q3: no answers → not in questions map, no weight
+        // Total weight: +1 + (-1) + 0 = 0
+        assertEquals("0", service.getAproveitamento("t1"));
     }
 
     @Test
@@ -105,23 +105,20 @@ class StatsServiceTest {
     @Test
     void lowestScoreQuestionsRanking() {
         StatsService service = new StatsService();
-        // q1: correct (+2)
+        // q1: correct (repCount=1)
         service.recordRound(List.of(new RoundResult("t1", "q1?", 0, true)));
-        // q2: wrong (-3)
+        // q2: wrong (repCount=0)
         service.recordRound(List.of(new RoundResult("t1", "q2?", 1, false)));
-        // q3: wrong twice (-3, -3 = -6)
+        // q3: wrong twice (repCount=0 — reset each time)
         service.recordRound(List.of(new RoundResult("t1", "q3?", 2, false)));
         service.recordRound(List.of(new RoundResult("t1", "q3?", 2, false)));
 
         List<Map.Entry<String, Integer>> lowest = service.getLowestScoreQuestions(5);
         assertEquals(3, lowest.size());
-        // q3 should be lowest (-6), then q2 (-3), then q1 (+2)
-        assertEquals("2", lowest.get(0).getKey());
-        assertEquals(-6, lowest.get(0).getValue());
-        assertEquals("1", lowest.get(1).getKey());
-        assertEquals(-3, lowest.get(1).getValue());
-        assertEquals("0", lowest.get(2).getKey());
-        assertEquals(2, lowest.get(2).getValue());
+        // q2 and q3 should be lowest (repCount=0), then q1 (repCount=1)
+        assertEquals(0, lowest.get(0).getValue());
+        assertEquals(0, lowest.get(1).getValue());
+        assertEquals(1, lowest.get(2).getValue());
     }
 
     @Test
@@ -193,7 +190,7 @@ class StatsServiceTest {
         service.recordRound(List.of(new RoundResult("t1", "q3?", 2, true)));
         assertEquals(3, service.getOverallStats().getTotalAnswered());
         assertEquals(2, service.getOverallStats().getTotalCorrect());
-        // q1=+2, q2=-3, q3=+2 → weights: +2, -3, +2 = +1
+        // q1=repCount=1 (+1), q2=repCount=0 (-1), q3=repCount=1 (+1) → weights: +1, -1, +1 = +1
         assertEquals("1", service.getAproveitamento("t1"));
     }
 
@@ -206,13 +203,16 @@ class StatsServiceTest {
     }
 
     @Test
-    void dominioReturns100WhenAllCorrect() {
+    void dominioReturns100WhenAllInDominioPhase() {
         StatsService service = new StatsService();
-        service.recordRound(List.of(
-                new RoundResult("t1", "q1?", 0, true),
-                new RoundResult("t1", "q2?", 1, true),
-                new RoundResult("t1", "q3?", 2, true)
-        ));
+        // 6 correct reviews per question → repCount=6, interval=125 → DOMINIO phase
+        for (int i = 0; i < 6; i++) {
+            service.recordRound(List.of(
+                    new RoundResult("t1", "q1?", 0, true),
+                    new RoundResult("t1", "q2?", 1, true),
+                    new RoundResult("t1", "q3?", 2, true)
+            ));
+        }
         assertEquals("100", service.getDominio("t1"));
     }
 
@@ -230,12 +230,18 @@ class StatsServiceTest {
     @Test
     void dominioCalculationWithMixedScores() {
         StatsService service = new StatsService();
+        // q1, q2: 6 correct reviews each → DOMINIO phase
+        for (int i = 0; i < 6; i++) {
+            service.recordRound(List.of(
+                    new RoundResult("t1", "q1?", 0, true),
+                    new RoundResult("t1", "q2?", 1, true)
+            ));
+        }
+        // q3: 1 wrong review → APRENDENDO phase
         service.recordRound(List.of(
-                new RoundResult("t1", "q1?", 0, true),   // score=2 (>0)
-                new RoundResult("t1", "q2?", 1, true),   // score=2 (>0)
-                new RoundResult("t1", "q3?", 2, false)   // score=-3 (<0)
+                new RoundResult("t1", "q3?", 2, false)
         ));
-        // 2 out of 3 positive → (2*100)/3 = 66
+        // 2 out of 3 in DOMINIO → (2*100)/3 = 66
         assertEquals("66", service.getDominio("t1"));
     }
 
@@ -250,9 +256,12 @@ class StatsServiceTest {
                 new RoundResult("t2", "q3?", 0, true)
         ));
         List<Map.Entry<String, Integer>> result = service.getLowestScoreQuestionsByTheme("t1", 10);
-        // t1 has q1 (correct, score >= 0) and q2 (wrong, score < 0) — only q2 returned
-        assertEquals(1, result.size());
-        assertEquals("1", result.get(0).getKey());
+        // t1 has q1 (repCount=1) and q2 (repCount=0) — both returned, sorted by repCount
+        assertEquals(2, result.size());
+        assertEquals("1", result.get(0).getKey());  // q2: repCount=0 (lowest)
+        assertEquals(0, result.get(0).getValue());
+        assertEquals("0", result.get(1).getKey());  // q1: repCount=1
+        assertEquals(1, result.get(1).getValue());
     }
 
     @Test

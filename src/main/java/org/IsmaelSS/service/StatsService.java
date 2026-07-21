@@ -106,11 +106,6 @@ public class StatsService {
 
             QuestionScore qScore = themeStats.getQuestions()
                     .computeIfAbsent(String.valueOf(result.questionId()), k -> new QuestionScore());
-            if (result.wasCorrect()) {
-                qScore.recordCorrect();
-            } else {
-                qScore.recordWrong();
-            }
             qScore.updateSM2(result.wasCorrect());
         }
         recalculateOverall();
@@ -141,9 +136,8 @@ public class StatsService {
         if (ts == null || ts.getQuestions().isEmpty()) return "N/A";
         int weightSum = 0;
         for (QuestionScore qs : ts.getQuestions().values()) {
-            int score = qs.getScore();
-            if (score < 0) weightSum += -3;
-            else if (score > 0) weightSum += 2;
+            if (qs.getRepCount() > 0) weightSum += 1;
+            else weightSum -= 1;
         }
         return String.valueOf(weightSum);
     }
@@ -155,7 +149,7 @@ public class StatsService {
                     themeEntry.getValue().getQuestions().entrySet()) {
                 entries.add(Map.entry(
                         questionEntry.getKey(),
-                        questionEntry.getValue().getScore()
+                        questionEntry.getValue().getRepCount()
                 ));
             }
         }
@@ -164,23 +158,24 @@ public class StatsService {
     }
 
     /**
-     * Returns the percentage of questions with a positive score (score > 0)
-     * for the given theme, as an integer string like "80".
+     * Returns the percentage of questions in DOMINIO phase for the given theme,
+     * as an integer string like "80".
+     * DOMINIO = repCount >= 6 && interval > 30.
      * Returns "N/A" if the theme has no data or no questions.
      */
     public String getDominio(String themeName) {
         ThemeStats ts = data.getThemes().get(themeName);
         if (ts == null || ts.getQuestions().isEmpty()) return "N/A";
-        long positiveCount = ts.getQuestions().values().stream()
-                .filter(qs -> qs.getScore() > 0)
+        long dominioCount = ts.getQuestions().values().stream()
+                .filter(qs -> qs.getRepCount() >= 6 && qs.getInterval() > 30)
                 .count();
-        int percentage = (int) ((positiveCount * 100) / ts.getQuestions().size());
+        int percentage = (int) ((dominioCount * 100) / ts.getQuestions().size());
         return String.valueOf(percentage);
     }
 
     /**
      * Returns up to {@code limit} questions from the specified theme,
-     * sorted by score ascending (lowest first).
+     * sorted by repCount ascending (least reviewed first).
      * Returns an empty list if the theme is unknown or has no questions.
      */
     public List<Map.Entry<String, Integer>> getLowestScoreQuestionsByTheme(String themeName, int limit) {
@@ -188,9 +183,7 @@ public class StatsService {
         if (ts == null) return new ArrayList<>();
         List<Map.Entry<String, Integer>> entries = new ArrayList<>();
         for (Map.Entry<String, QuestionScore> questionEntry : ts.getQuestions().entrySet()) {
-            int score = questionEntry.getValue().getScore();
-            if (score >= 0) continue;
-            entries.add(Map.entry(questionEntry.getKey(), score));
+            entries.add(Map.entry(questionEntry.getKey(), questionEntry.getValue().getRepCount()));
         }
         entries.sort(Map.Entry.comparingByValue());
         return entries.subList(0, Math.min(limit, entries.size()));

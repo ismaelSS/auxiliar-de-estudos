@@ -86,7 +86,7 @@ public class StatsData {
         public void updateSM2(boolean correct) {
             if (correct) {
                 this.easeFactor = Math.min(2.5, this.easeFactor + 0.1);
-                if (this.repCount == 0 || this.interval <= 1) {
+                if (this.repCount == 0) {
                     this.interval = 1;
                 } else {
                     this.interval = (int) Math.ceil(this.interval * this.easeFactor);
