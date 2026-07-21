@@ -2,14 +2,14 @@
 gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
-status: Phase 11 Complete
-last_updated: "2026-07-13T12:53:03-03:00"
+status: Phase 12 — context gathered
+last_updated: "2026-07-21"
 progress:
-  total_phases: 11
+  total_phases: 12
   completed_phases: 6
-  total_plans: 23
-  completed_plans: 14
-  percent: 60
+  total_plans: 22
+  completed_plans: 13
+  percent: 50
 ---
 
 # State: FlashCard JavaFX
@@ -19,7 +19,7 @@ progress:
 See: .planning/PROJECT.md (updated 2026-07-07)
 
 **Core value:** Students can study any topic by loading a themed JSON question bank and immediately start quizzing themselves with performance tracking and weak-area reinforcement.
-**Current focus:** Between phases — Phase 11 complete
+**Current focus:** Phase 12 — context gathered (spaced repetition & visual review dashboard)
 
 ## Phase Summary
 
@@ -36,6 +36,7 @@ See: .planning/PROJECT.md (updated 2026-07-07)
 | 9 | Navigation Overhaul | Blocked (needs UI-safety gate) |
 | 10 | Visual Theming & Color Identity | Partial (checkpoint visual pendente) |
 | 11 | Question File Manager | Complete ✓ |
+| 12 | Spaced Repetition & Visual Review Dashboard | Context defined |
 
 ## Completed Phases
 
@@ -123,7 +124,7 @@ See: .planning/PROJECT.md (updated 2026-07-07)
 
 - (None)
 
-*Last updated: 2026-07-10 after Phase 8*
+*Last updated: 2026-07-21 after Phase 12 context gathered*
 
 ## Performance Metrics
 
