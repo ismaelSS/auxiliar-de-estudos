@@ -1,0 +1,422 @@
+[
+  {
+    "id": 0,
+    "question": "Qual é a principal finalidade de uma classe abstrata em Java?",
+    "options": [
+      "Criar objetos diretamente.",
+      "Servir como base para outras classes, compartilhando comportamento e definição comum.",
+      "Substituir interfaces.",
+      "Armazenar apenas constantes.",
+      "Eliminar a necessidade de herança."
+    ],
+    "correct": 1
+  },
+  {
+    "id": 1,
+    "question": "Qual palavra-chave é utilizada para declarar uma classe abstrata?",
+    "options": [
+      "interface",
+      "abstract",
+      "virtual",
+      "base",
+      "extends"
+    ],
+    "correct": 1
+  },
+  {
+    "id": 2,
+    "question": "Uma classe abstrata pode ser instanciada diretamente?",
+    "options": [
+      "Sim.",
+      "Somente usando reflection.",
+      "Não.",
+      "Somente se não possuir métodos abstratos.",
+      "Depende da JVM."
+    ],
+    "correct": 2
+  },
+  {
+    "id": 3,
+    "question": "Uma classe abstrata pode possuir métodos concretos?",
+    "options": [
+      "Não.",
+      "Somente static.",
+      "Sim.",
+      "Somente private.",
+      "Somente final."
+    ],
+    "correct": 2
+  },
+  {
+    "id": 4,
+    "question": "Uma classe abstrata pode possuir atributos?",
+    "options": [
+      "Não.",
+      "Somente static.",
+      "Sim.",
+      "Somente final.",
+      "Somente public."
+    ],
+    "correct": 2
+  },
+  {
+    "id": 5,
+    "question": "Uma classe abstrata pode possuir construtores?",
+    "options": [
+      "Não.",
+      "Sim.",
+      "Somente privados.",
+      "Somente protegidos.",
+      "Somente se não houver métodos abstratos."
+    ],
+    "correct": 1
+  },
+  {
+    "id": 6,
+    "question": "Qual palavra-chave é utilizada para declarar um método abstrato?",
+    "options": [
+      "virtual",
+      "abstract",
+      "override",
+      "interface",
+      "implements"
+    ],
+    "correct": 1
+  },
+  {
+    "id": 7,
+    "question": "Um método abstrato possui implementação?",
+    "options": [
+      "Sim.",
+      "Não.",
+      "Somente em interfaces.",
+      "Somente em records.",
+      "Depende do modificador final."
+    ],
+    "correct": 1
+  },
+  {
+    "id": 8,
+    "question": "Se uma classe possui um método abstrato, ela obrigatoriamente deve ser:",
+    "options": [
+      "final",
+      "static",
+      "abstract",
+      "sealed",
+      "private"
+    ],
+    "correct": 2
+  },
+  {
+    "id": 9,
+    "question": "Uma subclasse concreta que herda de uma classe abstrata deve:",
+    "options": [
+      "Ignorar os métodos abstratos.",
+      "Implementar todos os métodos abstratos herdados.",
+      "Ser obrigatoriamente final.",
+      "Possuir apenas métodos static.",
+      "Não declarar construtores."
+    ],
+    "correct": 1
+  },
+  {
+    "id": 10,
+    "question": "Se uma subclasse não implementar todos os métodos abstratos herdados, ela deverá ser:",
+    "options": [
+      "public",
+      "private",
+      "abstract",
+      "static",
+      "final"
+    ],
+    "correct": 2
+  },
+  {
+    "id": 11,
+    "question": "Qual palavra-chave é utilizada para declarar uma interface?",
+    "options": [
+      "abstract",
+      "contract",
+      "interface",
+      "implements",
+      "virtual"
+    ],
+    "correct": 2
+  },
+  {
+    "id": 12,
+    "question": "Uma interface representa principalmente:",
+    "options": [
+      "Uma implementação.",
+      "Um contrato de comportamento.",
+      "Uma superclasse.",
+      "Uma coleção de atributos mutáveis.",
+      "Um construtor."
+    ],
+    "correct": 1
+  },
+  {
+    "id": 13,
+    "question": "Qual palavra-chave é utilizada para implementar uma interface?",
+    "options": [
+      "extends",
+      "implements",
+      "inherits",
+      "interface",
+      "super"
+    ],
+    "correct": 1
+  },
+  {
+    "id": 14,
+    "question": "Uma classe pode implementar quantas interfaces?",
+    "options": [
+      "Apenas uma.",
+      "Duas.",
+      "Três.",
+      "Quantas forem necessárias.",
+      "Nenhuma."
+    ],
+    "correct": 3
+  },
+  {
+    "id": 15,
+    "question": "Uma interface pode estender outra interface?",
+    "options": [
+      "Não.",
+      "Sim.",
+      "Somente uma.",
+      "Somente interfaces funcionais.",
+      "Depende da JVM."
+    ],
+    "correct": 1
+  },
+  {
+    "id": 16,
+    "question": "Uma interface pode estender várias interfaces?",
+    "options": [
+      "Não.",
+      "Sim.",
+      "Somente duas.",
+      "Somente se forem funcionais.",
+      "Somente desde Java 21."
+    ],
+    "correct": 1
+  },
+  {
+    "id": 17,
+    "question": "Uma classe pode herdar apenas:",
+    "options": [
+      "Uma classe.",
+      "Duas classes.",
+      "Três classes.",
+      "Quantas classes desejar.",
+      "Nenhuma classe."
+    ],
+    "correct": 0
+  },
+  {
+    "id": 18,
+    "question": "Qual característica diferencia interfaces de classes abstratas?",
+    "options": [
+      "Interfaces permitem múltipla implementação.",
+      "Interfaces possuem construtores.",
+      "Classes abstratas não possuem atributos.",
+      "Interfaces não podem ter métodos.",
+      "Classes abstratas não participam do polimorfismo."
+    ],
+    "correct": 0
+  },
+  {
+    "id": 19,
+    "question": "Os atributos declarados em uma interface são implicitamente:",
+    "options": [
+      "private e final.",
+      "public, static e final.",
+      "protected e static.",
+      "public e mutáveis.",
+      "private e static."
+    ],
+    "correct": 1
+  },
+  {
+    "id": 20,
+    "question": "Os métodos de uma interface, quando não possuem implementação, são implicitamente:",
+    "options": [
+      "private.",
+      "protected.",
+      "public e abstract.",
+      "final.",
+      "static."
+    ],
+    "correct": 2
+  },
+  {
+    "id": 21,
+    "question": "Desde o Java 8, interfaces podem possuir:",
+    "options": [
+      "Apenas métodos abstratos.",
+      "Métodos default e static.",
+      "Construtores.",
+      "Blocos de inicialização.",
+      "Métodos final."
+    ],
+    "correct": 1
+  },
+  {
+    "id": 22,
+    "question": "Desde o Java 9, interfaces também podem possuir:",
+    "options": [
+      "Construtores.",
+      "Métodos private.",
+      "Atributos mutáveis.",
+      "Métodos final.",
+      "Blocos de inicialização."
+    ],
+    "correct": 1
+  },
+  {
+    "id": 23,
+    "question": "Qual é a finalidade dos métodos default em interfaces?",
+    "options": [
+      "Criar construtores.",
+      "Fornecer uma implementação padrão sem quebrar implementações existentes.",
+      "Substituir classes abstratas.",
+      "Criar atributos automaticamente.",
+      "Permitir herança múltipla de classes."
+    ],
+    "correct": 1
+  },
+  {
+    "id": 24,
+    "question": "Qual é a finalidade dos métodos private em interfaces?",
+    "options": [
+      "Permitir acesso externo.",
+      "Compartilhar código entre métodos default e static da própria interface.",
+      "Substituir métodos abstratos.",
+      "Criar construtores auxiliares.",
+      "Permitir herança."
+    ],
+    "correct": 1
+  },
+  {
+    "id": 25,
+    "question": "Métodos static em interfaces pertencem:",
+    "options": [
+      "À instância.",
+      "À interface.",
+      "À superclasse.",
+      "Ao objeto.",
+      "À JVM."
+    ],
+    "correct": 1
+  },
+  {
+    "id": 26,
+    "question": "Qual é a principal vantagem de programar utilizando interfaces?",
+    "options": [
+      "Maior acoplamento.",
+      "Maior flexibilidade e desacoplamento.",
+      "Maior consumo de memória.",
+      "Eliminar o polimorfismo.",
+      "Eliminar a herança."
+    ],
+    "correct": 1
+  },
+  {
+    "id": 27,
+    "question": "Quando utilizar uma classe abstrata em vez de uma interface?",
+    "options": [
+      "Quando várias classes compartilham estado e implementação comum.",
+      "Sempre.",
+      "Nunca.",
+      "Somente quando existir apenas um método.",
+      "Apenas para classes final."
+    ],
+    "correct": 0
+  },
+  {
+    "id": 28,
+    "question": "Quando utilizar uma interface em vez de uma classe abstrata?",
+    "options": [
+      "Quando se deseja definir apenas um contrato de comportamento.",
+      "Quando existem muitos atributos compartilhados.",
+      "Quando é necessário um construtor.",
+      "Quando existe estado comum.",
+      "Sempre que houver herança."
+    ],
+    "correct": 0
+  },
+  {
+    "id": 29,
+    "question": "Uma referência do tipo de uma interface pode apontar para:",
+    "options": [
+      "Apenas objetos da interface.",
+      "Qualquer objeto cuja classe implemente essa interface.",
+      "Somente classes abstratas.",
+      "Somente Object.",
+      "Apenas records."
+    ],
+    "correct": 1
+  },
+  {
+    "id": 30,
+    "question": "Qual alternativa representa corretamente uma relação entre classe e interface?",
+    "options": [
+      "Classe extends Interface.",
+      "Interface implements Classe.",
+      "Classe implements Interface.",
+      "Classe inherits Interface.",
+      "Interface super Classe."
+    ],
+    "correct": 2
+  },
+  {
+    "id": 31,
+    "question": "Qual alternativa representa corretamente uma relação entre duas interfaces?",
+    "options": [
+      "implements",
+      "extends",
+      "inherits",
+      "super",
+      "override"
+    ],
+    "correct": 1
+  },
+  {
+    "id": 32,
+    "question": "Uma interface pode ser instanciada diretamente?",
+    "options": [
+      "Sim.",
+      "Não.",
+      "Somente com reflection.",
+      "Somente se possuir métodos default.",
+      "Depende da JVM."
+    ],
+    "correct": 1
+  },
+  {
+    "id": 33,
+    "question": "Qual princípio da Orientação a Objetos é fortemente favorecido pelo uso de interfaces?",
+    "options": [
+      "Programar para implementações concretas.",
+      "Programar para abstrações.",
+      "Eliminar polimorfismo.",
+      "Eliminar encapsulamento.",
+      "Evitar herança."
+    ],
+    "correct": 1
+  },
+  {
+    "id": 34,
+    "question": "Qual afirmação resume corretamente a diferença entre classes abstratas e interfaces?",
+    "options": [
+      "Classes abstratas compartilham estado e implementação; interfaces definem contratos e permitem múltipla implementação.",
+      "Interfaces substituem completamente classes abstratas.",
+      "Classes abstratas não possuem métodos.",
+      "Interfaces possuem construtores.",
+      "Não existe diferença prática entre elas."
+    ],
+    "correct": 0
+  }
+]

@@ -1,0 +1,422 @@
+[
+  {
+    "id": 0,
+    "question": "O que uma classe representa em Java?",
+    "options": [
+      "Um objeto já existente.",
+      "Um modelo utilizado para criar objetos.",
+      "Um método especial.",
+      "Um pacote de classes.",
+      "Uma interface obrigatória."
+    ],
+    "correct": 1
+  },
+  {
+    "id": 1,
+    "question": "O que é um objeto em Java?",
+    "options": [
+      "Uma variável primitiva.",
+      "Uma classe compilada.",
+      "Uma instância de uma classe.",
+      "Um pacote.",
+      "Um construtor."
+    ],
+    "correct": 2
+  },
+  {
+    "id": 2,
+    "question": "Qual palavra-chave é utilizada para criar um objeto?",
+    "options": [
+      "create",
+      "instance",
+      "new",
+      "object",
+      "class"
+    ],
+    "correct": 2
+  },
+  {
+    "id": 3,
+    "question": "Ao executar 'new Pessoa()', o que acontece?",
+    "options": [
+      "Uma nova classe é criada.",
+      "Um novo objeto é instanciado.",
+      "Uma interface é implementada.",
+      "Um método é executado automaticamente.",
+      "Um pacote é criado."
+    ],
+    "correct": 1
+  },
+  {
+    "id": 4,
+    "question": "Em 'Pessoa p = new Pessoa();', a variável 'p' armazena:",
+    "options": [
+      "O objeto inteiro.",
+      "Uma cópia da classe.",
+      "Uma referência para o objeto.",
+      "Os atributos do objeto.",
+      "O construtor."
+    ],
+    "correct": 2
+  },
+  {
+    "id": 5,
+    "question": "Onde os objetos são normalmente alocados na memória?",
+    "options": [
+      "Stack.",
+      "Heap.",
+      "Code Cache.",
+      "Metaspace.",
+      "Registradores da CPU."
+    ],
+    "correct": 1
+  },
+  {
+    "id": 6,
+    "question": "As variáveis locais de referência são armazenadas normalmente na:",
+    "options": [
+      "Heap.",
+      "Metaspace.",
+      "Stack.",
+      "Code Cache.",
+      "ROM."
+    ],
+    "correct": 2
+  },
+  {
+    "id": 7,
+    "question": "O que acontece se duas variáveis de referência apontarem para o mesmo objeto?",
+    "options": [
+      "São criados dois objetos automaticamente.",
+      "As alterações feitas por uma referência são visíveis pela outra.",
+      "A JVM lança uma exceção.",
+      "Uma das referências torna-se inválida.",
+      "Os objetos são copiados."
+    ],
+    "correct": 1
+  },
+  {
+    "id": 8,
+    "question": "Qual operador é utilizado para acessar atributos ou métodos de um objeto?",
+    "options": [
+      "::",
+      "->",
+      ".",
+      ":",
+      "#"
+    ],
+    "correct": 2
+  },
+  {
+    "id": 9,
+    "question": "Qual das alternativas diferencia corretamente uma classe de um objeto?",
+    "options": [
+      "Objeto é o molde e classe é a instância.",
+      "Classe é o molde e objeto é a instância.",
+      "São exatamente a mesma coisa.",
+      "Classe existe apenas em tempo de execução.",
+      "Objeto existe apenas durante a compilação."
+    ],
+    "correct": 1
+  },
+  {
+    "id": 10,
+    "question": "É possível criar vários objetos da mesma classe?",
+    "options": [
+      "Não.",
+      "Somente um por aplicação.",
+      "Sim.",
+      "Somente utilizando herança.",
+      "Somente em classes públicas."
+    ],
+    "correct": 2
+  },
+  {
+    "id": 11,
+    "question": "Objetos da mesma classe podem possuir estados diferentes?",
+    "options": [
+      "Não.",
+      "Somente se forem subclasses.",
+      "Sim.",
+      "Somente em records.",
+      "Depende do construtor."
+    ],
+    "correct": 2
+  },
+  {
+    "id": 12,
+    "question": "Qual afirmação sobre atributos é verdadeira?",
+    "options": [
+      "Representam o comportamento do objeto.",
+      "Representam o estado do objeto.",
+      "Representam apenas métodos privados.",
+      "Existem apenas em interfaces.",
+      "São criados somente após o construtor."
+    ],
+    "correct": 1
+  },
+  {
+    "id": 13,
+    "question": "Qual afirmação sobre métodos é verdadeira?",
+    "options": [
+      "Representam o estado do objeto.",
+      "Representam o comportamento do objeto.",
+      "São sempre públicos.",
+      "Existem apenas em classes abstratas.",
+      "São armazenados dentro dos objetos."
+    ],
+    "correct": 1
+  },
+  {
+    "id": 14,
+    "question": "Quando um objeto é criado, qual método especial é chamado automaticamente?",
+    "options": [
+      "main()",
+      "start()",
+      "Construtor.",
+      "finalize().",
+      "clone()."
+    ],
+    "correct": 2
+  },
+  {
+    "id": 15,
+    "question": "Caso nenhum construtor seja declarado, o compilador normalmente fornece:",
+    "options": [
+      "Um construtor privado.",
+      "Um construtor protegido.",
+      "Um construtor padrão sem argumentos.",
+      "Nenhum construtor.",
+      "Um construtor abstrato."
+    ],
+    "correct": 2
+  },
+  {
+    "id": 16,
+    "question": "Qual palavra-chave representa o objeto atual dentro de um método de instância?",
+    "options": [
+      "self",
+      "current",
+      "this",
+      "super",
+      "me"
+    ],
+    "correct": 2
+  },
+  {
+    "id": 17,
+    "question": "Dentro de um método de instância, 'this' refere-se:",
+    "options": [
+      "À superclasse.",
+      "Ao objeto atual.",
+      "À classe.",
+      "Ao construtor.",
+      "À JVM."
+    ],
+    "correct": 1
+  },
+  {
+    "id": 18,
+    "question": "Qual palavra-chave representa a superclasse imediata?",
+    "options": [
+      "this",
+      "parent",
+      "base",
+      "super",
+      "extends"
+    ],
+    "correct": 3
+  },
+  {
+    "id": 19,
+    "question": "Uma referência pode existir sem apontar para um objeto?",
+    "options": [
+      "Não.",
+      "Somente em classes abstratas.",
+      "Sim, quando possui valor null.",
+      "Somente em arrays.",
+      "Nunca."
+    ],
+    "correct": 2
+  },
+  {
+    "id": 20,
+    "question": "O valor null representa:",
+    "options": [
+      "Um objeto vazio.",
+      "Um objeto padrão.",
+      "Ausência de referência para um objeto.",
+      "Um ponteiro inválido.",
+      "Uma referência para Object."
+    ],
+    "correct": 2
+  },
+  {
+    "id": 21,
+    "question": "O que acontece ao acessar um método por meio de uma referência null?",
+    "options": [
+      "Nada acontece.",
+      "O método é ignorado.",
+      "É lançada uma NullPointerException.",
+      "A JVM cria o objeto automaticamente.",
+      "O compilador impede a execução."
+    ],
+    "correct": 2
+  },
+  {
+    "id": 22,
+    "question": "Qual método da classe Object retorna uma representação textual do objeto?",
+    "options": [
+      "hashCode()",
+      "equals()",
+      "toString()",
+      "clone()",
+      "compareTo()"
+    ],
+    "correct": 2
+  },
+  {
+    "id": 23,
+    "question": "Qual método da classe Object é utilizado para comparar igualdade lógica entre objetos?",
+    "options": [
+      "compare()",
+      "equals()",
+      "==",
+      "hashCode()",
+      "same()"
+    ],
+    "correct": 1
+  },
+  {
+    "id": 24,
+    "question": "O operador == aplicado a referências compara:",
+    "options": [
+      "O conteúdo dos objetos.",
+      "Os atributos.",
+      "Se ambas as referências apontam para o mesmo objeto.",
+      "Os métodos.",
+      "Os construtores."
+    ],
+    "correct": 2
+  },
+  {
+    "id": 25,
+    "question": "Qual alternativa descreve corretamente o ciclo de vida de um objeto?",
+    "options": [
+      "Declaração → Compilação → Execução.",
+      "Instanciação → Utilização → Elegível para coleta de lixo.",
+      "Compilação → Herança → Destruição.",
+      "Interface → Classe → Método.",
+      "Construtor → Pacote → Coleta."
+    ],
+    "correct": 1
+  },
+  {
+    "id": 26,
+    "question": "Quando um objeto torna-se elegível para coleta de lixo?",
+    "options": [
+      "Quando o construtor termina.",
+      "Quando nenhuma referência acessível aponta para ele.",
+      "Quando possui muitos atributos.",
+      "Quando chama finalize().",
+      "Quando é declarado private."
+    ],
+    "correct": 1
+  },
+  {
+    "id": 27,
+    "question": "É possível que várias referências apontem para um único objeto?",
+    "options": [
+      "Não.",
+      "Somente em arrays.",
+      "Sim.",
+      "Somente em classes abstratas.",
+      "Somente usando reflection."
+    ],
+    "correct": 2
+  },
+  {
+    "id": 28,
+    "question": "Ao executar 'Pessoa p2 = p1;', o que acontece?",
+    "options": [
+      "É criada uma cópia completa do objeto.",
+      "É criado um novo objeto vazio.",
+      "p2 passa a referenciar o mesmo objeto de p1.",
+      "Os atributos são copiados individualmente.",
+      "O construtor é executado novamente."
+    ],
+    "correct": 2
+  },
+  {
+    "id": 29,
+    "question": "Qual alternativa define corretamente instanciação?",
+    "options": [
+      "Processo de declarar uma classe.",
+      "Processo de criar um objeto a partir de uma classe.",
+      "Processo de herdar uma classe.",
+      "Processo de sobrescrever métodos.",
+      "Processo de importar um pacote."
+    ],
+    "correct": 1
+  },
+  {
+    "id": 30,
+    "question": "Um objeto pode alterar seu estado ao longo da execução?",
+    "options": [
+      "Nunca.",
+      "Somente se for final.",
+      "Sim, por meio da alteração de seus atributos.",
+      "Somente através do construtor.",
+      "Somente em records."
+    ],
+    "correct": 2
+  },
+  {
+    "id": 31,
+    "question": "Qual afirmação é verdadeira sobre métodos de instância?",
+    "options": [
+      "Podem ser chamados sem existir um objeto.",
+      "Operam sobre o estado de um objeto específico.",
+      "São sempre static.",
+      "Não podem acessar atributos.",
+      "Existem apenas em interfaces."
+    ],
+    "correct": 1
+  },
+  {
+    "id": 32,
+    "question": "Qual é a principal diferença entre atributos de instância e atributos static?",
+    "options": [
+      "Não existe diferença.",
+      "Atributos de instância pertencem a cada objeto; atributos static pertencem à classe.",
+      "Atributos static pertencem ao objeto.",
+      "Atributos de instância são obrigatoriamente final.",
+      "Atributos static existem apenas durante a compilação."
+    ],
+    "correct": 1
+  },
+  {
+    "id": 33,
+    "question": "Ao criar três objetos da mesma classe, quantas cópias dos atributos de instância existirão?",
+    "options": [
+      "Uma.",
+      "Duas.",
+      "Três.",
+      "Depende do construtor.",
+      "Nenhuma."
+    ],
+    "correct": 2
+  },
+  {
+    "id": 34,
+    "question": "Ao criar três objetos da mesma classe, quantas cópias de um atributo static existirão?",
+    "options": [
+      "Uma.",
+      "Três.",
+      "Uma para cada objeto.",
+      "Depende da JVM.",
+      "Nenhuma."
+    ],
+    "correct": 0
+  }
+]

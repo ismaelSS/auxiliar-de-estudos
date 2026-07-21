@@ -1,0 +1,362 @@
+[
+  {
+    "id": 0,
+    "question": "O que é Orientação a Objetos (POO)?",
+    "options": [
+      "Um paradigma baseado em funções matemáticas.",
+      "Um paradigma baseado em objetos que representam dados e comportamentos.",
+      "Um paradigma exclusivo para desenvolvimento web.",
+      "Um tipo de linguagem de programação.",
+      "Uma técnica para otimização de memória."
+    ],
+    "correct": 1
+  },
+  {
+    "id": 1,
+    "question": "Qual das opções representa corretamente um objeto em Java?",
+    "options": [
+      "Um arquivo .java.",
+      "Uma variável primitiva.",
+      "Uma instância de uma classe.",
+      "Um pacote.",
+      "Um método."
+    ],
+    "correct": 2
+  },
+  {
+    "id": 2,
+    "question": "O que é uma classe?",
+    "options": [
+      "Um objeto já criado.",
+      "Um modelo (molde) utilizado para criar objetos.",
+      "Um método especial.",
+      "Um pacote de classes.",
+      "Uma interface."
+    ],
+    "correct": 1
+  },
+  {
+    "id": 3,
+    "question": "Qual alternativa descreve corretamente um atributo?",
+    "options": [
+      "Uma ação executada pelo objeto.",
+      "Uma variável que representa o estado do objeto.",
+      "Um construtor.",
+      "Uma interface.",
+      "Um pacote."
+    ],
+    "correct": 1
+  },
+  {
+    "id": 4,
+    "question": "Qual alternativa descreve corretamente um método?",
+    "options": [
+      "Uma variável de instância.",
+      "Um bloco de código que define o comportamento do objeto.",
+      "Uma classe abstrata.",
+      "Um modificador de acesso.",
+      "Um atributo constante."
+    ],
+    "correct": 1
+  },
+  {
+    "id": 5,
+    "question": "Todo objeto possui:",
+    "options": [
+      "Estado e comportamento.",
+      "Somente comportamento.",
+      "Somente estado.",
+      "Somente construtores.",
+      "Somente interfaces."
+    ],
+    "correct": 0
+  },
+  {
+    "id": 6,
+    "question": "O estado de um objeto é representado principalmente por:",
+    "options": [
+      "Seus métodos.",
+      "Seus atributos.",
+      "Seu pacote.",
+      "Sua interface.",
+      "Seu construtor."
+    ],
+    "correct": 1
+  },
+  {
+    "id": 7,
+    "question": "O comportamento de um objeto é definido por:",
+    "options": [
+      "Seus atributos.",
+      "Seu pacote.",
+      "Seus métodos.",
+      "Sua herança.",
+      "Sua interface."
+    ],
+    "correct": 2
+  },
+  {
+    "id": 8,
+    "question": "Quando um objeto é criado utilizando a palavra-chave new, ocorre:",
+    "options": [
+      "A criação de uma nova classe.",
+      "A criação de uma nova interface.",
+      "A instanciação da classe.",
+      "A compilação do código.",
+      "A serialização do objeto."
+    ],
+    "correct": 2
+  },
+  {
+    "id": 9,
+    "question": "Qual palavra-chave é utilizada para criar um objeto em Java?",
+    "options": [
+      "create",
+      "instance",
+      "new",
+      "object",
+      "make"
+    ],
+    "correct": 2
+  },
+  {
+    "id": 10,
+    "question": "Dois objetos criados a partir da mesma classe:",
+    "options": [
+      "Compartilham automaticamente seus atributos.",
+      "Sempre possuem exatamente os mesmos valores.",
+      "São instâncias independentes.",
+      "São o mesmo objeto.",
+      "Precisam obrigatoriamente possuir o mesmo estado."
+    ],
+    "correct": 2
+  },
+  {
+    "id": 11,
+    "question": "Qual conceito da POO busca reunir dados e comportamentos em uma única unidade?",
+    "options": [
+      "Herança",
+      "Polimorfismo",
+      "Encapsulamento",
+      "Abstração",
+      "Composição"
+    ],
+    "correct": 2
+  },
+  {
+    "id": 12,
+    "question": "Qual conceito da POO permite criar modelos focando apenas nas características relevantes?",
+    "options": [
+      "Abstração",
+      "Polimorfismo",
+      "Herança",
+      "Sobrecarga",
+      "Instanciação"
+    ],
+    "correct": 0
+  },
+  {
+    "id": 13,
+    "question": "Qual conceito permite que uma classe reutilize características de outra?",
+    "options": [
+      "Composição",
+      "Herança",
+      "Encapsulamento",
+      "Sobrecarga",
+      "Instanciação"
+    ],
+    "correct": 1
+  },
+  {
+    "id": 14,
+    "question": "Qual conceito permite que objetos diferentes respondam de maneiras diferentes à mesma chamada de método?",
+    "options": [
+      "Encapsulamento",
+      "Abstração",
+      "Polimorfismo",
+      "Associação",
+      "Instanciação"
+    ],
+    "correct": 2
+  },
+  {
+    "id": 15,
+    "question": "Qual dos itens abaixo NÃO é considerado um dos quatro pilares clássicos da POO?",
+    "options": [
+      "Encapsulamento",
+      "Herança",
+      "Polimorfismo",
+      "Abstração",
+      "Serialização"
+    ],
+    "correct": 4
+  },
+  {
+    "id": 16,
+    "question": "Uma classe pode existir sem que nenhum objeto dela tenha sido criado?",
+    "options": [
+      "Não",
+      "Somente em classes abstratas.",
+      "Sim",
+      "Somente em interfaces.",
+      "Depende da JVM."
+    ],
+    "correct": 2
+  },
+  {
+    "id": 17,
+    "question": "Um objeto pode existir sem ter sido criado a partir de uma classe?",
+    "options": [
+      "Sim",
+      "Somente usando reflection.",
+      "Somente em records.",
+      "Não",
+      "Depende do construtor."
+    ],
+    "correct": 3
+  },
+  {
+    "id": 18,
+    "question": "Em POO, um objeto representa:",
+    "options": [
+      "Uma definição.",
+      "Uma instância concreta de uma classe.",
+      "Um método estático.",
+      "Uma interface.",
+      "Uma biblioteca."
+    ],
+    "correct": 1
+  },
+  {
+    "id": 19,
+    "question": "Qual alternativa representa melhor a relação entre classe e objeto?",
+    "options": [
+      "Objeto é o molde e classe é a cópia.",
+      "Classe é o molde e objeto é a instância.",
+      "São exatamente a mesma coisa.",
+      "Classe existe apenas em tempo de execução.",
+      "Objeto existe apenas durante a compilação."
+    ],
+    "correct": 1
+  },
+  {
+    "id": 20,
+    "question": "Em uma analogia com automóveis, a classe Carro representa:",
+    "options": [
+      "Um carro específico.",
+      "O proprietário do carro.",
+      "O projeto ou molde de todos os carros.",
+      "A placa do veículo.",
+      "O motor."
+    ],
+    "correct": 2
+  },
+  {
+    "id": 21,
+    "question": "Na mesma analogia, um objeto Carro representa:",
+    "options": [
+      "O projeto do veículo.",
+      "Uma fábrica de automóveis.",
+      "Um carro específico criado a partir da classe.",
+      "Uma interface.",
+      "Um pacote Java."
+    ],
+    "correct": 2
+  },
+  {
+    "id": 22,
+    "question": "Qual afirmação sobre objetos é verdadeira?",
+    "options": [
+      "Objetos possuem identidade, estado e comportamento.",
+      "Objetos possuem apenas comportamento.",
+      "Objetos não possuem identidade.",
+      "Objetos são apenas conjuntos de métodos.",
+      "Objetos existem apenas durante a compilação."
+    ],
+    "correct": 0
+  },
+  {
+    "id": 23,
+    "question": "A identidade de um objeto refere-se:",
+    "options": [
+      "Ao valor de seus atributos.",
+      "Ao seu endereço lógico na memória, distinguindo-o de outros objetos.",
+      "Ao nome da classe.",
+      "Ao construtor utilizado.",
+      "Ao pacote onde foi declarado."
+    ],
+    "correct": 1
+  },
+  {
+    "id": 24,
+    "question": "Dois objetos podem possuir exatamente o mesmo estado e ainda assim serem objetos diferentes?",
+    "options": [
+      "Não",
+      "Somente se forem records.",
+      "Sim",
+      "Somente se forem imutáveis.",
+      "Somente em classes abstratas."
+    ],
+    "correct": 2
+  },
+  {
+    "id": 25,
+    "question": "Em Java, uma variável de referência armazena:",
+    "options": [
+      "O objeto inteiro.",
+      "Uma referência ao objeto.",
+      "Os atributos da classe.",
+      "O código dos métodos.",
+      "O construtor."
+    ],
+    "correct": 1
+  },
+  {
+    "id": 26,
+    "question": "Ao executar 'Pessoa p = new Pessoa();', a variável p armazena:",
+    "options": [
+      "Uma cópia completa do objeto.",
+      "O código-fonte da classe.",
+      "Uma referência para o objeto criado.",
+      "A definição da classe.",
+      "O construtor."
+    ],
+    "correct": 2
+  },
+  {
+    "id": 27,
+    "question": "Se duas variáveis de referência apontam para o mesmo objeto:",
+    "options": [
+      "Existem dois objetos distintos.",
+      "Alterações feitas por uma referência podem ser observadas pela outra.",
+      "Os objetos deixam de existir.",
+      "A JVM cria automaticamente uma cópia.",
+      "Isso não é permitido."
+    ],
+    "correct": 1
+  },
+  {
+    "id": 28,
+    "question": "Qual das afirmações sobre classes e objetos é correta?",
+    "options": [
+      "Uma classe pode gerar vários objetos.",
+      "Cada classe gera apenas um objeto.",
+      "Objetos podem existir sem classe.",
+      "Classes existem apenas após a criação do primeiro objeto.",
+      "Objetos criam classes automaticamente."
+    ],
+    "correct": 0
+  },
+  {
+    "id": 29,
+    "question": "Qual é a principal vantagem da Orientação a Objetos?",
+    "options": [
+      "Eliminar completamente o uso de funções.",
+      "Facilitar organização, reutilização e manutenção do código.",
+      "Reduzir o tamanho da JVM.",
+      "Eliminar o uso de memória dinâmica.",
+      "Substituir bancos de dados."
+    ],
+    "correct": 1
+  }
+]

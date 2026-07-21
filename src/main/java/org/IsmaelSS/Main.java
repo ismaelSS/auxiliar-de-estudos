@@ -1,6 +1,7 @@
 package org.IsmaelSS;
 
 import javafx.application.Application;
+import javafx.stage.Screen;
 import javafx.stage.Stage;
 import org.IsmaelSS.controller.ScreenController;
 import org.IsmaelSS.controller.ThemeSelectionController;
@@ -15,6 +16,10 @@ public class Main extends Application {
         stage.setTitle("FlashCard Java");
         stage.setMinWidth(600);
         stage.setMinHeight(500);
+
+        javafx.geometry.Rectangle2D screenBounds = Screen.getPrimary().getVisualBounds();
+        stage.setMaxWidth(screenBounds.getWidth());
+        stage.setMaxHeight(screenBounds.getHeight());
 
         ThemeLoader themeLoader = new ThemeLoader();
         StatsService statsService = new StatsService();

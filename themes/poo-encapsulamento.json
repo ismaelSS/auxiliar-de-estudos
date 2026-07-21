@@ -1,0 +1,362 @@
+[
+  {
+    "id": 0,
+    "question": "Qual é o principal objetivo do encapsulamento?",
+    "options": [
+      "Aumentar a velocidade da JVM.",
+      "Ocultar detalhes internos e controlar o acesso aos dados.",
+      "Permitir herança múltipla.",
+      "Eliminar a necessidade de construtores.",
+      "Substituir o uso de interfaces."
+    ],
+    "correct": 1
+  },
+  {
+    "id": 1,
+    "question": "Qual dos pilares da Orientação a Objetos está relacionado à proteção dos dados de um objeto?",
+    "options": [
+      "Herança",
+      "Polimorfismo",
+      "Encapsulamento",
+      "Abstração",
+      "Composição"
+    ],
+    "correct": 2
+  },
+  {
+    "id": 2,
+    "question": "O encapsulamento busca principalmente:",
+    "options": [
+      "Esconder a implementação e expor apenas o necessário.",
+      "Permitir acesso irrestrito aos atributos.",
+      "Eliminar métodos da classe.",
+      "Transformar todas as classes em abstratas.",
+      "Criar apenas objetos imutáveis."
+    ],
+    "correct": 0
+  },
+  {
+    "id": 3,
+    "question": "Qual modificador é mais utilizado para encapsular atributos?",
+    "options": [
+      "public",
+      "protected",
+      "private",
+      "static",
+      "final"
+    ],
+    "correct": 2
+  },
+  {
+    "id": 4,
+    "question": "Por que normalmente os atributos são declarados como private?",
+    "options": [
+      "Para economizar memória.",
+      "Para impedir qualquer acesso, inclusive da própria classe.",
+      "Para permitir que apenas a própria classe os acesse diretamente.",
+      "Para aumentar a velocidade da execução.",
+      "Porque é obrigatório em Java."
+    ],
+    "correct": 2
+  },
+  {
+    "id": 5,
+    "question": "Qual é a forma mais comum de permitir leitura de um atributo privado?",
+    "options": [
+      "Criando um construtor.",
+      "Utilizando um método getter.",
+      "Declarando o atributo como static.",
+      "Utilizando um método finalize().",
+      "Criando uma interface."
+    ],
+    "correct": 1
+  },
+  {
+    "id": 6,
+    "question": "Qual é a forma mais comum de alterar o valor de um atributo privado?",
+    "options": [
+      "Através de um método setter.",
+      "Utilizando instanceof.",
+      "Declarando o atributo public.",
+      "Sobrescrevendo toString().",
+      "Criando outro objeto."
+    ],
+    "correct": 0
+  },
+  {
+    "id": 7,
+    "question": "Qual método normalmente retorna o valor de um atributo?",
+    "options": [
+      "setter",
+      "getter",
+      "constructor",
+      "factory",
+      "builder"
+    ],
+    "correct": 1
+  },
+  {
+    "id": 8,
+    "question": "Qual método normalmente altera o valor de um atributo?",
+    "options": [
+      "getter",
+      "setter",
+      "builder",
+      "factory",
+      "initializer"
+    ],
+    "correct": 1
+  },
+  {
+    "id": 9,
+    "question": "Um setter pode realizar validações antes de alterar um atributo?",
+    "options": [
+      "Não.",
+      "Somente em classes abstratas.",
+      "Sim.",
+      "Somente em records.",
+      "Apenas se o atributo for final."
+    ],
+    "correct": 2
+  },
+  {
+    "id": 10,
+    "question": "Qual é uma vantagem de validar dados em um setter?",
+    "options": [
+      "Evitar estados inválidos do objeto.",
+      "Aumentar a quantidade de atributos.",
+      "Eliminar o construtor.",
+      "Substituir o encapsulamento.",
+      "Melhorar a coleta de lixo."
+    ],
+    "correct": 0
+  },
+  {
+    "id": 11,
+    "question": "Encapsulamento ajuda a manter:",
+    "options": [
+      "A consistência dos dados.",
+      "A velocidade da CPU.",
+      "O tamanho do bytecode.",
+      "A ordem dos métodos.",
+      "O número de objetos."
+    ],
+    "correct": 0
+  },
+  {
+    "id": 12,
+    "question": "Qual prática quebra o encapsulamento na maioria dos casos?",
+    "options": [
+      "Declarar atributos private.",
+      "Utilizar getters.",
+      "Utilizar setters com validação.",
+      "Declarar atributos importantes como public.",
+      "Criar construtores."
+    ],
+    "correct": 3
+  },
+  {
+    "id": 13,
+    "question": "Um getter precisa obrigatoriamente existir para todos os atributos?",
+    "options": [
+      "Sim.",
+      "Não.",
+      "Somente para atributos public.",
+      "Somente para atributos static.",
+      "Somente em records."
+    ],
+    "correct": 1
+  },
+  {
+    "id": 14,
+    "question": "Um setter precisa obrigatoriamente existir para todos os atributos?",
+    "options": [
+      "Sim.",
+      "Não.",
+      "Somente para atributos final.",
+      "Somente para atributos private.",
+      "Somente em interfaces."
+    ],
+    "correct": 1
+  },
+  {
+    "id": 15,
+    "question": "Uma classe imutável normalmente possui:",
+    "options": [
+      "Apenas setters.",
+      "Getters e setters.",
+      "Getters, mas não setters.",
+      "Somente métodos static.",
+      "Nenhum método."
+    ],
+    "correct": 2
+  },
+  {
+    "id": 16,
+    "question": "Qual das alternativas representa um bom encapsulamento?",
+    "options": [
+      "Todos os atributos públicos.",
+      "Atributos privados e acesso controlado por métodos.",
+      "Todos os métodos privados.",
+      "Nenhum construtor.",
+      "Todos os atributos protected."
+    ],
+    "correct": 1
+  },
+  {
+    "id": 17,
+    "question": "O encapsulamento reduz:",
+    "options": [
+      "A reutilização do código.",
+      "O acoplamento entre classes.",
+      "A quantidade de objetos.",
+      "O uso de memória.",
+      "O número de métodos."
+    ],
+    "correct": 1
+  },
+  {
+    "id": 18,
+    "question": "Alterar a implementação interna de uma classe encapsulada normalmente:",
+    "options": [
+      "Afeta todas as classes clientes.",
+      "Não afeta quem utiliza apenas sua interface pública.",
+      "Impede a compilação.",
+      "Exige alterar todos os objetos.",
+      "É impossível."
+    ],
+    "correct": 1
+  },
+  {
+    "id": 19,
+    "question": "Qual das opções representa melhor o conceito de 'ocultação de informação' (Information Hiding)?",
+    "options": [
+      "Esconder dados desnecessários da implementação.",
+      "Criptografar os atributos.",
+      "Remover atributos privados.",
+      "Eliminar métodos públicos.",
+      "Utilizar apenas interfaces."
+    ],
+    "correct": 0
+  },
+  {
+    "id": 20,
+    "question": "É correto afirmar que encapsulamento e ocultação de informação são exatamente a mesma coisa?",
+    "options": [
+      "Sim.",
+      "Não. O encapsulamento é o mecanismo que permite ocultar informações.",
+      "Sim, desde o Java 17.",
+      "Depende da JVM.",
+      "Depende da herança."
+    ],
+    "correct": 1
+  },
+  {
+    "id": 21,
+    "question": "Qual é a principal vantagem de utilizar métodos ao invés de acessar atributos diretamente?",
+    "options": [
+      "Permitir validações e controlar o acesso aos dados.",
+      "Reduzir o número de objetos.",
+      "Eliminar o uso de construtores.",
+      "Melhorar o Garbage Collector.",
+      "Diminuir o tamanho do código compilado."
+    ],
+    "correct": 0
+  },
+  {
+    "id": 22,
+    "question": "Uma classe pode ser considerada encapsulada mesmo sem possuir setters?",
+    "options": [
+      "Não.",
+      "Sim.",
+      "Somente se possuir herança.",
+      "Somente em interfaces.",
+      "Somente se for abstract."
+    ],
+    "correct": 1
+  },
+  {
+    "id": 23,
+    "question": "Qual situação representa um bom exemplo de encapsulamento?",
+    "options": [
+      "Qualquer classe pode alterar diretamente o saldo de uma conta bancária.",
+      "O saldo só pode ser alterado através dos métodos depositar() e sacar().",
+      "O saldo é um atributo public.",
+      "O saldo pode ser alterado livremente por subclasses.",
+      "O saldo é static."
+    ],
+    "correct": 1
+  },
+  {
+    "id": 24,
+    "question": "Suponha que uma classe Conta possua um atributo saldo privado. Qual é a melhor maneira de impedir que ele fique negativo?",
+    "options": [
+      "Declarar saldo como public.",
+      "Validar o valor dentro do método sacar() ou setter.",
+      "Remover o atributo saldo.",
+      "Declarar saldo como protected.",
+      "Utilizar instanceof."
+    ],
+    "correct": 1
+  },
+  {
+    "id": 25,
+    "question": "Qual dos seguintes atributos normalmente NÃO deveria possuir um setter?",
+    "options": [
+      "Nome do usuário.",
+      "Idade.",
+      "CPF após validação definitiva.",
+      "Telefone.",
+      "Endereço."
+    ],
+    "correct": 2
+  },
+  {
+    "id": 26,
+    "question": "Qual das afirmações sobre getters é verdadeira?",
+    "options": [
+      "Sempre modificam o estado do objeto.",
+      "Normalmente apenas retornam informações do objeto.",
+      "São obrigatoriamente privados.",
+      "Substituem os construtores.",
+      "Não podem retornar objetos."
+    ],
+    "correct": 1
+  },
+  {
+    "id": 27,
+    "question": "Ao retornar uma coleção interna através de um getter, qual cuidado pode ser necessário?",
+    "options": [
+      "Nenhum.",
+      "Retornar uma cópia ou uma visão imutável para preservar o encapsulamento.",
+      "Sempre utilizar static.",
+      "Transformar a coleção em array.",
+      "Declarar a coleção como public."
+    ],
+    "correct": 1
+  },
+  {
+    "id": 28,
+    "question": "Por que retornar diretamente uma lista mutável interna pode quebrar o encapsulamento?",
+    "options": [
+      "Porque a lista deixa de existir.",
+      "Porque código externo poderá modificar o estado interno do objeto.",
+      "Porque a JVM lança uma exceção.",
+      "Porque a lista torna-se static.",
+      "Porque o construtor deixa de funcionar."
+    ],
+    "correct": 1
+  },
+  {
+    "id": 29,
+    "question": "Qual característica é comum em classes bem encapsuladas?",
+    "options": [
+      "Todos os atributos são públicos.",
+      "A implementação interna pode mudar sem afetar quem utiliza a classe.",
+      "Todos os métodos são privados.",
+      "Não possuem construtores.",
+      "Sempre utilizam herança."
+    ],
+    "correct": 1
+  }
+]

@@ -1,0 +1,422 @@
+[
+  {
+    "id": 0,
+    "question": "O que é uma associação em Orientação a Objetos?",
+    "options": [
+      "Um tipo especial de herança.",
+      "Um relacionamento entre objetos que permite que eles interajam entre si.",
+      "Um modificador de acesso.",
+      "Uma forma de criar interfaces.",
+      "Um tipo de construtor."
+    ],
+    "correct": 1
+  },
+  {
+    "id": 1,
+    "question": "Qual é o conceito mais geral entre associação, agregação e composição?",
+    "options": [
+      "Composição.",
+      "Agregação.",
+      "Associação.",
+      "Herança.",
+      "Polimorfismo."
+    ],
+    "correct": 2
+  },
+  {
+    "id": 2,
+    "question": "Qual afirmação descreve corretamente uma associação?",
+    "options": [
+      "Sempre existe dependência de ciclo de vida.",
+      "Representa apenas relações de herança.",
+      "Representa qualquer relacionamento entre objetos.",
+      "Sempre existe compartilhamento de memória.",
+      "Sempre utiliza interfaces."
+    ],
+    "correct": 2
+  },
+  {
+    "id": 3,
+    "question": "Qual relação normalmente é representada por associação?",
+    "options": [
+      "Aluno frequenta Curso.",
+      "Carro herda de Motor.",
+      "ContaCorrente herda de Conta.",
+      "Cachorro herda de Animal.",
+      "Pessoa implementa CPF."
+    ],
+    "correct": 0
+  },
+  {
+    "id": 4,
+    "question": "Uma associação pode ser:",
+    "options": [
+      "Somente bidirecional.",
+      "Somente unidirecional.",
+      "Unidirecional ou bidirecional.",
+      "Sempre circular.",
+      "Sempre obrigatória."
+    ],
+    "correct": 2
+  },
+  {
+    "id": 5,
+    "question": "Em uma associação unidirecional:",
+    "options": [
+      "Os dois objetos conhecem um ao outro.",
+      "Apenas um objeto conhece o outro.",
+      "Não existe referência entre objetos.",
+      "Existe herança.",
+      "Existe composição."
+    ],
+    "correct": 1
+  },
+  {
+    "id": 6,
+    "question": "Em uma associação bidirecional:",
+    "options": [
+      "Nenhum objeto conhece o outro.",
+      "Os dois objetos mantêm referência um ao outro.",
+      "Sempre existe composição.",
+      "Sempre existe herança.",
+      "Existe apenas uma referência static."
+    ],
+    "correct": 1
+  },
+  {
+    "id": 7,
+    "question": "Qual conceito representa a quantidade de objetos envolvidos em uma associação?",
+    "options": [
+      "Herança.",
+      "Multiplicidade.",
+      "Polimorfismo.",
+      "Encapsulamento.",
+      "Generalização."
+    ],
+    "correct": 1
+  },
+  {
+    "id": 8,
+    "question": "Qual multiplicidade indica exatamente um objeto relacionado?",
+    "options": [
+      "0..*",
+      "1",
+      "0..1",
+      "1..*",
+      "*"
+    ],
+    "correct": 1
+  },
+  {
+    "id": 9,
+    "question": "Qual multiplicidade representa 'zero ou um'?",
+    "options": [
+      "1",
+      "0..1",
+      "1..*",
+      "*",
+      "0..*"
+    ],
+    "correct": 1
+  },
+  {
+    "id": 10,
+    "question": "Qual multiplicidade representa 'um ou muitos'?",
+    "options": [
+      "1",
+      "0..1",
+      "1..*",
+      "0..*",
+      "*"
+    ],
+    "correct": 2
+  },
+  {
+    "id": 11,
+    "question": "Qual multiplicidade representa 'zero ou muitos'?",
+    "options": [
+      "1",
+      "1..*",
+      "0..1",
+      "0..*",
+      "2"
+    ],
+    "correct": 3
+  },
+  {
+    "id": 12,
+    "question": "O que é agregação?",
+    "options": [
+      "Uma forma de herança.",
+      "Uma associação do tipo 'todo-parte' onde as partes podem existir independentemente do todo.",
+      "Um tipo de polimorfismo.",
+      "Uma interface especializada.",
+      "Uma composição obrigatória."
+    ],
+    "correct": 1
+  },
+  {
+    "id": 13,
+    "question": "Qual relação é normalmente representada por agregação?",
+    "options": [
+      "Departamento possui Funcionários.",
+      "Pessoa possui Coração.",
+      "Casa possui Fundação.",
+      "Pedido possui Item inseparável.",
+      "Motor herda de Carro."
+    ],
+    "correct": 0
+  },
+  {
+    "id": 14,
+    "question": "Na agregação, o ciclo de vida da parte:",
+    "options": [
+      "Depende completamente do todo.",
+      "É independente do todo.",
+      "Sempre termina junto com o todo.",
+      "Nunca pode existir sozinho.",
+      "É controlado pela JVM."
+    ],
+    "correct": 1
+  },
+  {
+    "id": 15,
+    "question": "Em agregação, o objeto parte pode pertencer a diferentes objetos ao longo da execução?",
+    "options": [
+      "Não.",
+      "Sim.",
+      "Somente em interfaces.",
+      "Somente em records.",
+      "Somente se for final."
+    ],
+    "correct": 1
+  },
+  {
+    "id": 16,
+    "question": "O que é composição?",
+    "options": [
+      "Uma herança múltipla.",
+      "Uma associação forte onde a parte depende do ciclo de vida do todo.",
+      "Uma interface concreta.",
+      "Uma associação fraca.",
+      "Uma forma de polimorfismo."
+    ],
+    "correct": 1
+  },
+  {
+    "id": 17,
+    "question": "Na composição, quando o objeto principal deixa de existir:",
+    "options": [
+      "As partes continuam existindo normalmente.",
+      "As partes normalmente deixam de existir junto com ele.",
+      "Nada acontece.",
+      "As partes tornam-se static.",
+      "A JVM cria novas partes automaticamente."
+    ],
+    "correct": 1
+  },
+  {
+    "id": 18,
+    "question": "Qual exemplo representa melhor uma composição?",
+    "options": [
+      "Empresa possui Funcionário.",
+      "Universidade possui Professor.",
+      "Pessoa possui Coração.",
+      "Aluno frequenta Curso.",
+      "Cliente utiliza Banco."
+    ],
+    "correct": 2
+  },
+  {
+    "id": 19,
+    "question": "Qual exemplo representa melhor uma agregação?",
+    "options": [
+      "Casa possui Cômodos construídos junto com ela.",
+      "Pessoa possui Pulmões.",
+      "Biblioteca possui Livros.",
+      "Motor é um Carro.",
+      "ContaCorrente herda de Conta."
+    ],
+    "correct": 2
+  },
+  {
+    "id": 20,
+    "question": "Qual característica diferencia composição de agregação?",
+    "options": [
+      "Na composição existe dependência de ciclo de vida.",
+      "Na composição existe herança.",
+      "Na agregação existe polimorfismo.",
+      "Na agregação não existem objetos.",
+      "Não existe diferença."
+    ],
+    "correct": 0
+  },
+  {
+    "id": 21,
+    "question": "Qual relação representa melhor 'tem um' (has-a)?",
+    "options": [
+      "Herança.",
+      "Associação, agregação ou composição.",
+      "Polimorfismo.",
+      "Sobrecarga.",
+      "Abstração."
+    ],
+    "correct": 1
+  },
+  {
+    "id": 22,
+    "question": "Qual relação representa melhor 'é um' (is-a)?",
+    "options": [
+      "Composição.",
+      "Agregação.",
+      "Herança.",
+      "Associação.",
+      "Dependência."
+    ],
+    "correct": 2
+  },
+  {
+    "id": 23,
+    "question": "Qual princípio de projeto recomenda preferir composição em vez de herança quando possível?",
+    "options": [
+      "Porque composição tende a produzir menor acoplamento e maior flexibilidade.",
+      "Porque herança não funciona em Java.",
+      "Porque composição elimina objetos.",
+      "Porque herança é mais lenta.",
+      "Porque interfaces não existem."
+    ],
+    "correct": 0
+  },
+  {
+    "id": 24,
+    "question": "Em Java, uma associação normalmente é implementada por meio de:",
+    "options": [
+      "Um atributo que referencia outro objeto.",
+      "Um construtor.",
+      "Uma interface.",
+      "Uma exceção.",
+      "Um método static."
+    ],
+    "correct": 0
+  },
+  {
+    "id": 25,
+    "question": "Uma classe Pedido possui um atributo Cliente cliente. Isso representa:",
+    "options": [
+      "Herança.",
+      "Associação.",
+      "Sobrecarga.",
+      "Polimorfismo.",
+      "Generalização."
+    ],
+    "correct": 1
+  },
+  {
+    "id": 26,
+    "question": "Uma classe Empresa possui uma lista de Funcionários. Funcionários continuam existindo mesmo que a empresa seja encerrada. Essa relação é:",
+    "options": [
+      "Composição.",
+      "Agregação.",
+      "Herança.",
+      "Dependência.",
+      "Generalização."
+    ],
+    "correct": 1
+  },
+  {
+    "id": 27,
+    "question": "Uma classe Casa cria internamente seus Cômodos, que deixam de existir quando a casa deixa de existir. Essa relação é:",
+    "options": [
+      "Agregação.",
+      "Composição.",
+      "Associação simples.",
+      "Herança.",
+      "Polimorfismo."
+    ],
+    "correct": 1
+  },
+  {
+    "id": 28,
+    "question": "Qual das alternativas representa uma associação muitos-para-muitos?",
+    "options": [
+      "Pessoa possui CPF.",
+      "Aluno cursa várias Disciplinas e cada Disciplina possui vários Alunos.",
+      "Pessoa possui Coração.",
+      "Conta possui Agência.",
+      "Carro possui Motor."
+    ],
+    "correct": 1
+  },
+  {
+    "id": 29,
+    "question": "Qual das alternativas representa uma associação um-para-muitos?",
+    "options": [
+      "Pessoa possui um CPF.",
+      "Professor leciona várias Turmas.",
+      "Motor pertence a um Carro.",
+      "Conta possui um Titular.",
+      "Pessoa possui um Coração."
+    ],
+    "correct": 1
+  },
+  {
+    "id": 30,
+    "question": "Qual afirmação é verdadeira sobre agregação?",
+    "options": [
+      "É uma forma de herança.",
+      "É um tipo especial de associação.",
+      "Substitui completamente composição.",
+      "Não utiliza referências entre objetos.",
+      "Só existe em UML."
+    ],
+    "correct": 1
+  },
+  {
+    "id": 31,
+    "question": "Qual afirmação é verdadeira sobre composição?",
+    "options": [
+      "É um tipo forte de associação.",
+      "É um tipo de polimorfismo.",
+      "É equivalente à herança.",
+      "Não representa relacionamento entre objetos.",
+      "Sempre utiliza interfaces."
+    ],
+    "correct": 0
+  },
+  {
+    "id": 32,
+    "question": "Qual das alternativas representa uma modelagem incorreta usando herança quando deveria ser composição?",
+    "options": [
+      "Cachorro herda de Animal.",
+      "ContaCorrente herda de Conta.",
+      "Carro herda de Motor.",
+      "Gerente herda de Funcionário.",
+      "Quadrado herda de Figura."
+    ],
+    "correct": 2
+  },
+  {
+    "id": 33,
+    "question": "Ao modelar um sistema orientado a objetos, normalmente deve-se preferir composição quando:",
+    "options": [
+      "Existe uma relação 'tem um'.",
+      "Existe uma relação 'é um'.",
+      "Existe uma interface.",
+      "Existe polimorfismo.",
+      "Existe encapsulamento."
+    ],
+    "correct": 0
+  },
+  {
+    "id": 34,
+    "question": "Qual afirmação resume corretamente associação, agregação e composição?",
+    "options": [
+      "Toda composição é uma agregação e toda agregação é uma associação, mas o inverso não é verdadeiro.",
+      "Associação é um tipo de composição.",
+      "Composição e agregação não são associações.",
+      "Herança substitui completamente essas relações.",
+      "Não existe diferença prática entre elas."
+    ],
+    "correct": 0
+  }
+]

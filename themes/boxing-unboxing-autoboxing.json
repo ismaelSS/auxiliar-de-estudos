@@ -1,0 +1,302 @@
+[
+    {
+        "id": 0,
+        "question": "O que é autoboxing em Java?",
+        "options": [
+            "A conversão automática de um objeto wrapper para um tipo primitivo.",
+            "A conversão automática de um tipo primitivo para seu objeto wrapper correspondente.",
+            "A conversão de qualquer objeto para String.",
+            "A conversão automática entre tipos numéricos diferentes.",
+            "A criação automática de arrays de wrappers."
+        ],
+        "correct": 1
+    },
+    {
+        "id": 1,
+        "question": "O que é unboxing em Java?",
+        "options": [
+            "A conversão de um tipo primitivo para um wrapper.",
+            "A conversão de uma String para um tipo primitivo.",
+            "A conversão automática de um objeto wrapper para seu tipo primitivo correspondente.",
+            "A remoção de um objeto da memória.",
+            "A conversão de um Integer para um Double."
+        ],
+        "correct": 2
+    },
+    {
+        "id": 2,
+        "question": "Qual classe wrapper corresponde ao tipo primitivo int?",
+        "options": [
+            "Int",
+            "Integer",
+            "Number",
+            "Long",
+            "Decimal"
+        ],
+        "correct": 1
+    },
+    {
+        "id": 3,
+        "question": "Qual classe wrapper corresponde ao tipo primitivo boolean?",
+        "options": [
+            "Bool",
+            "Boolean",
+            "Logic",
+            "Bit",
+            "Binary"
+        ],
+        "correct": 1
+    },
+    {
+        "id": 4,
+        "question": "Qual das instruções abaixo realiza autoboxing?",
+        "options": [
+            "Integer x = Integer.valueOf(10);",
+            "Integer x = 10;",
+            "int x = Integer.parseInt(\"10\");",
+            "int x = 10;",
+            "Integer x = new Integer(10);"
+        ],
+        "correct": 1
+    },
+    {
+        "id": 5,
+        "question": "Qual das instruções abaixo realiza unboxing automaticamente?",
+        "options": [
+            "Integer x = 10;",
+            "Integer x = Integer.valueOf(10);",
+            "int x = Integer.parseInt(\"10\");",
+            "int x = Integer.valueOf(10);",
+            "String x = Integer.toString(10);"
+        ],
+        "correct": 3
+    },
+    {
+        "id": 6,
+        "question": "O que acontece na instrução: Integer numero = 25;",
+        "options": [
+            "Erro de compilação.",
+            "O valor é convertido automaticamente em um objeto Integer.",
+            "O valor permanece sendo um int.",
+            "É criada uma String contendo \"25\".",
+            "O compilador ignora a atribuição."
+        ],
+        "correct": 1
+    },
+    {
+        "id": 7,
+        "question": "O que acontece na instrução: int numero = Integer.valueOf(25);",
+        "options": [
+            "Erro de compilação.",
+            "O objeto Integer é convertido automaticamente para int.",
+            "É realizada uma conversão para long.",
+            "É criado um novo objeto Integer.",
+            "O resultado será null."
+        ],
+        "correct": 1
+    },
+    {
+        "id": 8,
+        "question": "Qual é a principal vantagem do autoboxing?",
+        "options": [
+            "Reduz o consumo de memória.",
+            "Evita completamente a criação de objetos.",
+            "Permite escrever código mais simples ao converter automaticamente entre primitivos e wrappers.",
+            "Melhora sempre o desempenho da aplicação.",
+            "Elimina a necessidade de usar tipos primitivos."
+        ],
+        "correct": 2
+    },
+    {
+        "id": 9,
+        "question": "Por que coleções como ArrayList<Integer> utilizam Integer em vez de int?",
+        "options": [
+            "Porque tipos primitivos não podem ser usados como argumentos de tipos genéricos.",
+            "Porque Integer é mais rápido que int.",
+            "Porque int foi removido do Java.",
+            "Porque ArrayList só aceita objetos String e Integer.",
+            "Porque Integer ocupa menos memória."
+        ],
+        "correct": 0
+    },
+    {
+        "id": 10,
+        "question": "Qual código utiliza autoboxing ao adicionar elementos a uma lista?",
+        "options": [
+            "lista.add(Integer.valueOf(5));",
+            "lista.add((Integer)5);",
+            "lista.add(5);",
+            "lista.add(new Integer(5));",
+            "lista.add(Integer.parseInt(\"5\"));"
+        ],
+        "correct": 2
+    },
+    {
+        "id": 11,
+        "question": "O que acontece se um objeto Integer com valor null for convertido automaticamente para int?",
+        "options": [
+            "O resultado será 0.",
+            "O resultado será -1.",
+            "Será lançada uma NullPointerException.",
+            "O compilador impedirá a compilação.",
+            "Será criada uma nova instância de Integer."
+        ],
+        "correct": 2
+    },
+    {
+        "id": 12,
+        "question": "Qual trecho pode lançar NullPointerException devido ao unboxing?",
+        "options": [
+            "Integer x = 10;",
+            "Integer x = null; int y = x;",
+            "int x = 10;",
+            "Integer x = Integer.valueOf(10);",
+            "int x = Integer.parseInt(\"10\");"
+        ],
+        "correct": 1
+    },
+    {
+        "id": 13,
+        "question": "Qual é o resultado da expressão: Integer a = 5; Integer b = 10; int c = a + b;",
+        "options": [
+            "Erro de compilação.",
+            "Os objetos são automaticamente desempacotados, somados e o resultado é armazenado em c.",
+            "Os objetos são concatenados.",
+            "É realizada apenas uma conversão para String.",
+            "O resultado será null."
+        ],
+        "correct": 1
+    },
+    {
+        "id": 14,
+        "question": "Durante a expressão 'a + b', onde 'a' e 'b' são Integer, o compilador realiza:",
+        "options": [
+            "Apenas autoboxing.",
+            "Apenas casting.",
+            "Unboxing antes da operação aritmética.",
+            "Conversão para String.",
+            "Nenhuma conversão."
+        ],
+        "correct": 2
+    },
+    {
+        "id": 15,
+        "question": "Qual das alternativas representa boxing explícito?",
+        "options": [
+            "Integer x = 10;",
+            "Integer x = Integer.valueOf(10);",
+            "int x = Integer.valueOf(10);",
+            "int x = 10;",
+            "Integer x = null;"
+        ],
+        "correct": 1
+    },
+    {
+        "id": 16,
+        "question": "Antes do Java 5, como era feito o boxing normalmente?",
+        "options": [
+            "Utilizando autoboxing.",
+            "Com Integer.valueOf() ou construtores das classes wrapper.",
+            "Com cast explícito.",
+            "Utilizando parseInt().",
+            "Não era possível."
+        ],
+        "correct": 1
+    },
+    {
+        "id": 17,
+        "question": "Qual das alternativas descreve corretamente a relação entre boxing e autoboxing?",
+        "options": [
+            "São conceitos diferentes e incompatíveis.",
+            "Autoboxing é o nome dado ao boxing realizado automaticamente pelo compilador.",
+            "Boxing sempre converte String em Integer.",
+            "Autoboxing ocorre apenas em arrays.",
+            "Boxing só existe para Integer."
+        ],
+        "correct": 1
+    },
+    {
+        "id": 18,
+        "question": "Qual operação abaixo realiza unboxing automaticamente?",
+        "options": [
+            "System.out.println(Integer.valueOf(5));",
+            "Integer x = 5;",
+            "if (Integer.valueOf(5) > 3)",
+            "Integer.valueOf(\"5\")",
+            "Integer.toString(5)"
+        ],
+        "correct": 2
+    },
+    {
+        "id": 19,
+        "question": "Qual das afirmações sobre desempenho é verdadeira?",
+        "options": [
+            "Autoboxing nunca cria objetos.",
+            "Autoboxing pode criar objetos e gerar overhead em operações intensivas.",
+            "Wrappers sempre são mais rápidos que tipos primitivos.",
+            "Unboxing nunca ocorre em operações matemáticas.",
+            "Autoboxing elimina completamente o uso de memória heap."
+        ],
+        "correct": 1
+    },
+    {
+        "id": 20,
+        "question": "Qual das seguintes classes NÃO é uma classe wrapper de um tipo primitivo?",
+        "options": [
+            "Integer",
+            "Character",
+            "Boolean",
+            "Number",
+            "Double"
+        ],
+        "correct": 3
+    },
+    {
+        "id": 21,
+        "question": "Em qual versão do Java foram introduzidos o autoboxing e o auto-unboxing?",
+        "options": [
+            "Java 1.2",
+            "Java 1.3",
+            "Java 1.4",
+            "Java 5",
+            "Java 8"
+        ],
+        "correct": 3
+    },
+    {
+        "id": 22,
+        "question": "Qual é a principal diferença entre um tipo primitivo e sua classe wrapper?",
+        "options": [
+            "Não existe diferença.",
+            "Tipos primitivos são objetos e wrappers não.",
+            "Wrappers são objetos, enquanto tipos primitivos não são.",
+            "Primitivos ocupam mais memória que wrappers.",
+            "Wrappers não podem ser utilizados em coleções."
+        ],
+        "correct": 2
+    },
+    {
+        "id": 23,
+        "question": "Qual expressão exige unboxing para ser avaliada?",
+        "options": [
+            "Integer x = 5;",
+            "Integer.valueOf(5);",
+            "Integer x = null;",
+            "x == 5",
+            "new Integer(5)"
+        ],
+        "correct": 3
+    },
+    {
+        "id": 24,
+        "question": "Qual afirmação é correta sobre autoboxing e unboxing?",
+        "options": [
+            "São realizados pela JVM em tempo de execução sem participação do compilador.",
+            "São inseridos automaticamente pelo compilador quando necessário.",
+            "Só funcionam com Integer.",
+            "Só funcionam em coleções.",
+            "Sempre melhoram o desempenho."
+        ],
+        "correct": 1
+    }
+]

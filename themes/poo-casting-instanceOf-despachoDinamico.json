@@ -1,0 +1,362 @@
+[
+  {
+    "id": 0,
+    "question": "O que é casting em Java?",
+    "options": [
+      "A criação de um novo objeto.",
+      "A conversão de uma referência ou valor de um tipo para outro.",
+      "A comparação entre objetos.",
+      "A execução de um construtor.",
+      "A criação de uma interface."
+    ],
+    "correct": 1
+  },
+  {
+    "id": 1,
+    "question": "Qual dos seguintes tipos de casting ocorre automaticamente em uma hierarquia de classes?",
+    "options": [
+      "Downcasting.",
+      "Upcasting.",
+      "Casting explícito.",
+      "Casting inseguro.",
+      "Casting por reflexão."
+    ],
+    "correct": 1
+  },
+  {
+    "id": 2,
+    "question": "Qual é o nome da conversão de uma subclasse para uma superclasse?",
+    "options": [
+      "Downcasting.",
+      "Upcasting.",
+      "Autoboxing.",
+      "Unboxing.",
+      "Promotion."
+    ],
+    "correct": 1
+  },
+  {
+    "id": 3,
+    "question": "Qual é o nome da conversão de uma superclasse para uma subclasse?",
+    "options": [
+      "Upcasting.",
+      "Downcasting.",
+      "Autoboxing.",
+      "Implicit Casting.",
+      "Primitive Casting."
+    ],
+    "correct": 1
+  },
+  {
+    "id": 4,
+    "question": "O upcasting normalmente é:",
+    "options": [
+      "Explícito.",
+      "Implícito (automático).",
+      "Proibido.",
+      "Realizado apenas com interfaces.",
+      "Disponível apenas para classes abstratas."
+    ],
+    "correct": 1
+  },
+  {
+    "id": 5,
+    "question": "O downcasting normalmente exige:",
+    "options": [
+      "Conversão implícita.",
+      "Conversão explícita.",
+      "A palavra-chave super.",
+      "A palavra-chave extends.",
+      "Nenhuma conversão."
+    ],
+    "correct": 1
+  },
+  {
+    "id": 6,
+    "question": "Qual das alternativas representa um exemplo de upcasting?",
+    "options": [
+      "Animal a = new Cachorro();",
+      "Cachorro c = (Cachorro) animal;",
+      "Object o = (Object) \"texto\";",
+      "Integer i = (Integer) obj;",
+      "List l = (ArrayList) lista;"
+    ],
+    "correct": 0
+  },
+  {
+    "id": 7,
+    "question": "Qual das alternativas representa um exemplo de downcasting?",
+    "options": [
+      "Animal a = new Cachorro();",
+      "Object o = new Pessoa();",
+      "Cachorro c = (Cachorro) animal;",
+      "String s = \"Java\";",
+      "Pessoa p = new Pessoa();"
+    ],
+    "correct": 2
+  },
+  {
+    "id": 8,
+    "question": "Qual operador é recomendado antes de realizar um downcasting quando não há certeza do tipo real do objeto?",
+    "options": [
+      "==",
+      "equals",
+      "instanceof",
+      "super",
+      "this"
+    ],
+    "correct": 2
+  },
+  {
+    "id": 9,
+    "question": "Qual é a finalidade do operador instanceof?",
+    "options": [
+      "Comparar referências.",
+      "Verificar se um objeto é compatível com um determinado tipo.",
+      "Converter objetos.",
+      "Criar objetos.",
+      "Calcular hashCode."
+    ],
+    "correct": 1
+  },
+  {
+    "id": 10,
+    "question": "O operador instanceof retorna:",
+    "options": [
+      "Um inteiro.",
+      "Uma String.",
+      "Um boolean.",
+      "Um Object.",
+      "Um hashCode."
+    ],
+    "correct": 2
+  },
+  {
+    "id": 11,
+    "question": "Se um downcasting for realizado para um tipo incompatível, qual exceção será lançada?",
+    "options": [
+      "NullPointerException",
+      "IOException",
+      "ClassCastException",
+      "IllegalArgumentException",
+      "ArithmeticException"
+    ],
+    "correct": 2
+  },
+  {
+    "id": 12,
+    "question": "Considere: Animal a = new Cachorro();. Qual é o tipo da referência?",
+    "options": [
+      "Cachorro",
+      "Object",
+      "Animal",
+      "Interface",
+      "Depende da JVM"
+    ],
+    "correct": 2
+  },
+  {
+    "id": 13,
+    "question": "Considere: Animal a = new Cachorro();. Qual é o tipo real do objeto?",
+    "options": [
+      "Animal",
+      "Object",
+      "Cachorro",
+      "Interface",
+      "Classe Base"
+    ],
+    "correct": 2
+  },
+  {
+    "id": 14,
+    "question": "Em Java, qual tipo determina qual método sobrescrito será executado?",
+    "options": [
+      "O tipo da referência.",
+      "O tipo do parâmetro.",
+      "O tipo real do objeto.",
+      "O tipo do retorno.",
+      "O tipo do construtor."
+    ],
+    "correct": 2
+  },
+  {
+    "id": 15,
+    "question": "Como é chamado o mecanismo da JVM que escolhe qual implementação sobrescrita será executada em tempo de execução?",
+    "options": [
+      "Reflection.",
+      "Garbage Collection.",
+      "Despacho dinâmico (Dynamic Dispatch).",
+      "JIT Compilation.",
+      "Autoboxing."
+    ],
+    "correct": 2
+  },
+  {
+    "id": 16,
+    "question": "O despacho dinâmico acontece em:",
+    "options": [
+      "Tempo de compilação.",
+      "Tempo de execução.",
+      "Durante a escrita do código.",
+      "Na instalação da JVM.",
+      "Durante a serialização."
+    ],
+    "correct": 1
+  },
+  {
+    "id": 17,
+    "question": "Qual recurso da Orientação a Objetos depende diretamente do despacho dinâmico?",
+    "options": [
+      "Encapsulamento.",
+      "Herança.",
+      "Polimorfismo.",
+      "Abstração.",
+      "Composição."
+    ],
+    "correct": 2
+  },
+  {
+    "id": 18,
+    "question": "Métodos static participam do despacho dinâmico?",
+    "options": [
+      "Sim.",
+      "Não.",
+      "Somente em interfaces.",
+      "Somente em classes abstratas.",
+      "Depende do modificador final."
+    ],
+    "correct": 1
+  },
+  {
+    "id": 19,
+    "question": "Construtores participam do despacho dinâmico?",
+    "options": [
+      "Sim.",
+      "Não.",
+      "Somente quando sobrecarregados.",
+      "Somente em records.",
+      "Somente em classes abstratas."
+    ],
+    "correct": 1
+  },
+  {
+    "id": 20,
+    "question": "Campos (atributos) participam do despacho dinâmico da mesma forma que métodos?",
+    "options": [
+      "Sim.",
+      "Não.",
+      "Somente atributos protected.",
+      "Somente atributos public.",
+      "Somente atributos final."
+    ],
+    "correct": 1
+  },
+  {
+    "id": 21,
+    "question": "Ao acessar um atributo através de uma referência da superclasse, qual tipo é considerado?",
+    "options": [
+      "O tipo real do objeto.",
+      "O tipo da referência.",
+      "O tipo do construtor.",
+      "O tipo do método.",
+      "O tipo do parâmetro."
+    ],
+    "correct": 1
+  },
+  {
+    "id": 22,
+    "question": "Ao chamar um método sobrescrito através de uma referência da superclasse, qual tipo é considerado?",
+    "options": [
+      "O tipo da referência.",
+      "O tipo do retorno.",
+      "O tipo real do objeto.",
+      "O tipo do parâmetro.",
+      "O tipo do construtor."
+    ],
+    "correct": 2
+  },
+  {
+    "id": 23,
+    "question": "Qual afirmação sobre upcasting é verdadeira?",
+    "options": [
+      "Pode causar ClassCastException.",
+      "É sempre explícito.",
+      "É seguro e ocorre automaticamente.",
+      "Só funciona com interfaces.",
+      "Sempre cria um novo objeto."
+    ],
+    "correct": 2
+  },
+  {
+    "id": 24,
+    "question": "Qual afirmação sobre downcasting é verdadeira?",
+    "options": [
+      "Sempre é seguro.",
+      "Nunca exige casting explícito.",
+      "Pode lançar ClassCastException.",
+      "Sempre cria uma nova instância.",
+      "Não depende da hierarquia de classes."
+    ],
+    "correct": 2
+  },
+  {
+    "id": 25,
+    "question": "O operador instanceof pode ser utilizado com interfaces?",
+    "options": [
+      "Não.",
+      "Sim.",
+      "Somente com interfaces funcionais.",
+      "Somente com interfaces seladas.",
+      "Somente em Java 21."
+    ],
+    "correct": 1
+  },
+  {
+    "id": 26,
+    "question": "Qual afirmação descreve corretamente o despacho dinâmico?",
+    "options": [
+      "A decisão sobre qual método executar é feita em tempo de compilação.",
+      "A decisão é feita em tempo de execução com base no tipo real do objeto.",
+      "A JVM escolhe aleatoriamente um método.",
+      "O método da referência sempre é executado.",
+      "Funciona apenas com métodos static."
+    ],
+    "correct": 1
+  },
+  {
+    "id": 27,
+    "question": "Qual das alternativas representa uma boa prática ao realizar downcasting?",
+    "options": [
+      "Sempre converter diretamente.",
+      "Utilizar instanceof antes da conversão quando houver dúvida.",
+      "Evitar herança.",
+      "Utilizar apenas ==.",
+      "Converter qualquer objeto para qualquer tipo."
+    ],
+    "correct": 1
+  },
+  {
+    "id": 28,
+    "question": "Considere: Object obj = \"Java\";. A expressão obj instanceof String retorna:",
+    "options": [
+      "false",
+      "true",
+      "null",
+      "Erro de compilação",
+      "Depende da JVM"
+    ],
+    "correct": 1
+  },
+  {
+    "id": 29,
+    "question": "Qual afirmação resume corretamente casting, instanceof e despacho dinâmico?",
+    "options": [
+      "Casting converte referências, instanceof verifica compatibilidade de tipos e o despacho dinâmico escolhe a implementação correta de métodos sobrescritos em tempo de execução.",
+      "Casting cria novos objetos e instanceof realiza conversões automáticas.",
+      "Despacho dinâmico funciona apenas com atributos.",
+      "instanceof substitui completamente o casting.",
+      "Upcasting e downcasting sempre são implícitos."
+    ],
+    "correct": 0
+  }
+]

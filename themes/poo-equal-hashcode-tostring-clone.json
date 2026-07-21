@@ -1,0 +1,422 @@
+[
+  {
+    "id": 0,
+    "question": "Qual é a superclasse de todas as classes em Java?",
+    "options": [
+      "Base",
+      "Object",
+      "Class",
+      "Root",
+      "Serializable"
+    ],
+    "correct": 1
+  },
+  {
+    "id": 1,
+    "question": "Toda classe em Java herda implicitamente de:",
+    "options": [
+      "Serializable",
+      "Cloneable",
+      "Object",
+      "Comparable",
+      "Record"
+    ],
+    "correct": 2
+  },
+  {
+    "id": 2,
+    "question": "Qual classe declara originalmente os métodos equals(), hashCode(), toString() e clone()?",
+    "options": [
+      "System",
+      "Objects",
+      "Class",
+      "Object",
+      "Collections"
+    ],
+    "correct": 3
+  },
+  {
+    "id": 3,
+    "question": "Qual é a principal finalidade do método equals()?",
+    "options": [
+      "Comparar referências de objetos.",
+      "Comparar o conteúdo lógico de dois objetos.",
+      "Retornar o hash do objeto.",
+      "Criar uma cópia do objeto.",
+      "Converter o objeto para String."
+    ],
+    "correct": 1
+  },
+  {
+    "id": 4,
+    "question": "Qual operador compara se duas referências apontam para o mesmo objeto?",
+    "options": [
+      "equals()",
+      "compareTo()",
+      "==",
+      "hashCode()",
+      "instanceof"
+    ],
+    "correct": 2
+  },
+  {
+    "id": 5,
+    "question": "Na implementação padrão de Object, o método equals() compara:",
+    "options": [
+      "Os atributos do objeto.",
+      "O conteúdo da memória.",
+      "As referências dos objetos.",
+      "Os hashCodes.",
+      "As Strings geradas por toString()."
+    ],
+    "correct": 2
+  },
+  {
+    "id": 6,
+    "question": "Quando normalmente devemos sobrescrever equals()?",
+    "options": [
+      "Nunca.",
+      "Quando desejamos comparar objetos pelo seu estado lógico.",
+      "Apenas em classes abstratas.",
+      "Somente em interfaces.",
+      "Somente em records."
+    ],
+    "correct": 1
+  },
+  {
+    "id": 7,
+    "question": "Se equals() for sobrescrito, normalmente também devemos sobrescrever:",
+    "options": [
+      "clone()",
+      "finalize()",
+      "hashCode()",
+      "wait()",
+      "notify()"
+    ],
+    "correct": 2
+  },
+  {
+    "id": 8,
+    "question": "Qual é a finalidade do método hashCode()?",
+    "options": [
+      "Criar uma cópia do objeto.",
+      "Gerar um valor inteiro utilizado em estruturas baseadas em hash.",
+      "Converter o objeto em String.",
+      "Comparar dois objetos.",
+      "Criar um identificador único global."
+    ],
+    "correct": 1
+  },
+  {
+    "id": 9,
+    "question": "Se dois objetos são considerados iguais por equals(), seus hashCodes devem:",
+    "options": [
+      "Ser diferentes.",
+      "Ser iguais.",
+      "Ser negativos.",
+      "Ser positivos.",
+      "Depender da JVM."
+    ],
+    "correct": 1
+  },
+  {
+    "id": 10,
+    "question": "Se dois objetos possuem o mesmo hashCode(), então eles obrigatoriamente são iguais?",
+    "options": [
+      "Sim.",
+      "Não.",
+      "Somente em HashMap.",
+      "Somente em Set.",
+      "Depende do equals()."
+    ],
+    "correct": 1
+  },
+  {
+    "id": 11,
+    "question": "É possível que objetos diferentes possuam o mesmo hashCode()?",
+    "options": [
+      "Não.",
+      "Sim.",
+      "Somente em records.",
+      "Somente em interfaces.",
+      "Somente em classes abstratas."
+    ],
+    "correct": 1
+  },
+  {
+    "id": 12,
+    "question": "Como é chamado o caso em que dois objetos diferentes possuem o mesmo hashCode()?",
+    "options": [
+      "Overload.",
+      "Override.",
+      "Colisão (Collision).",
+      "Boxing.",
+      "Casting."
+    ],
+    "correct": 2
+  },
+  {
+    "id": 13,
+    "question": "Qual estrutura da biblioteca Java depende fortemente da implementação correta de equals() e hashCode()?",
+    "options": [
+      "ArrayList",
+      "LinkedList",
+      "HashMap",
+      "Stack",
+      "Queue"
+    ],
+    "correct": 2
+  },
+  {
+    "id": 14,
+    "question": "Qual é a principal finalidade do método toString()?",
+    "options": [
+      "Comparar objetos.",
+      "Retornar uma representação textual do objeto.",
+      "Criar uma cópia do objeto.",
+      "Calcular o hash.",
+      "Destruir o objeto."
+    ],
+    "correct": 1
+  },
+  {
+    "id": 15,
+    "question": "Na implementação padrão de Object, toString() retorna normalmente:",
+    "options": [
+      "Apenas o nome da classe.",
+      "O nome da classe seguido do hashCode em hexadecimal.",
+      "Todos os atributos do objeto.",
+      "Uma String vazia.",
+      "O endereço físico da memória."
+    ],
+    "correct": 1
+  },
+  {
+    "id": 16,
+    "question": "Quando normalmente sobrescrevemos toString()?",
+    "options": [
+      "Nunca.",
+      "Quando desejamos uma representação textual mais útil do objeto.",
+      "Apenas em interfaces.",
+      "Somente em classes abstratas.",
+      "Somente para coleções."
+    ],
+    "correct": 1
+  },
+  {
+    "id": 17,
+    "question": "Qual método é chamado automaticamente quando um objeto é passado para System.out.println()?",
+    "options": [
+      "equals()",
+      "clone()",
+      "toString()",
+      "hashCode()",
+      "compareTo()"
+    ],
+    "correct": 2
+  },
+  {
+    "id": 18,
+    "question": "Qual é a finalidade do método clone()?",
+    "options": [
+      "Comparar objetos.",
+      "Criar uma cópia do objeto.",
+      "Converter para String.",
+      "Calcular hash.",
+      "Liberar memória."
+    ],
+    "correct": 1
+  },
+  {
+    "id": 19,
+    "question": "O método clone() declarado em Object possui qual modificador de acesso?",
+    "options": [
+      "public",
+      "private",
+      "protected",
+      "package-private",
+      "final"
+    ],
+    "correct": 2
+  },
+  {
+    "id": 20,
+    "question": "Para permitir a clonagem utilizando clone(), normalmente a classe deve implementar:",
+    "options": [
+      "Serializable",
+      "Comparable",
+      "Cloneable",
+      "Iterable",
+      "AutoCloseable"
+    ],
+    "correct": 2
+  },
+  {
+    "id": 21,
+    "question": "Se uma classe não implementar Cloneable e clone() for chamado, normalmente será lançada:",
+    "options": [
+      "NullPointerException",
+      "IllegalArgumentException",
+      "CloneNotSupportedException",
+      "IOException",
+      "ClassCastException"
+    ],
+    "correct": 2
+  },
+  {
+    "id": 22,
+    "question": "A implementação padrão de clone() realiza:",
+    "options": [
+      "Deep Copy.",
+      "Shallow Copy.",
+      "Nenhuma cópia.",
+      "Serialização.",
+      "Compressão do objeto."
+    ],
+    "correct": 1
+  },
+  {
+    "id": 23,
+    "question": "Em uma Shallow Copy, objetos referenciados:",
+    "options": [
+      "São copiados completamente.",
+      "Continuam compartilhando as mesmas referências.",
+      "São destruídos.",
+      "São serializados.",
+      "São convertidos em String."
+    ],
+    "correct": 1
+  },
+  {
+    "id": 24,
+    "question": "Em uma Deep Copy:",
+    "options": [
+      "As referências continuam sendo compartilhadas.",
+      "Os objetos internos também são copiados.",
+      "Não existe cópia dos atributos.",
+      "Somente tipos primitivos são copiados.",
+      "A JVM cria automaticamente todas as cópias."
+    ],
+    "correct": 1
+  },
+  {
+    "id": 25,
+    "question": "Qual interface adiciona métodos à classe que a implementa?",
+    "options": [
+      "Serializable",
+      "Comparable",
+      "Cloneable",
+      "Nenhuma. Cloneable é apenas um marcador (marker interface).",
+      "Iterable"
+    ],
+    "correct": 3
+  },
+  {
+    "id": 26,
+    "question": "Qual classe utilitária oferece implementações convenientes de equals() e hash() através de métodos estáticos?",
+    "options": [
+      "Object",
+      "Objects",
+      "Collections",
+      "Arrays",
+      "Math"
+    ],
+    "correct": 1
+  },
+  {
+    "id": 27,
+    "question": "Qual método da classe Objects auxilia na implementação de equals()?",
+    "options": [
+      "Objects.hash()",
+      "Objects.equals()",
+      "Objects.clone()",
+      "Objects.compareTo()",
+      "Objects.identityHashCode()"
+    ],
+    "correct": 1
+  },
+  {
+    "id": 28,
+    "question": "Qual método da classe Objects auxilia na implementação de hashCode()?",
+    "options": [
+      "Objects.hash()",
+      "Objects.clone()",
+      "Objects.equals()",
+      "Objects.identityHashCode()",
+      "Objects.copy()"
+    ],
+    "correct": 0
+  },
+  {
+    "id": 29,
+    "question": "Qual anotação deve ser utilizada ao sobrescrever equals(), hashCode() e toString()?",
+    "options": [
+      "@Inherited",
+      "@Super",
+      "@Override",
+      "@Replace",
+      "@Object"
+    ],
+    "correct": 2
+  },
+  {
+    "id": 30,
+    "question": "Qual das alternativas representa uma boa prática?",
+    "options": [
+      "Sobrescrever equals() sem sobrescrever hashCode().",
+      "Sobrescrever hashCode() sem equals().",
+      "Sobrescrever ambos quando a igualdade lógica for alterada.",
+      "Nunca sobrescrever nenhum deles.",
+      "Usar == no lugar de equals() para comparar objetos."
+    ],
+    "correct": 2
+  },
+  {
+    "id": 31,
+    "question": "Qual afirmação sobre equals() e == é verdadeira?",
+    "options": [
+      "Ambos sempre fazem exatamente a mesma comparação.",
+      "== compara referências; equals() pode comparar conteúdo lógico.",
+      "equals() compara endereços de memória.",
+      "== compara Strings por conteúdo.",
+      "Não existe diferença entre eles."
+    ],
+    "correct": 1
+  },
+  {
+    "id": 32,
+    "question": "Qual afirmação sobre toString() é verdadeira?",
+    "options": [
+      "É utilizado apenas pelo compilador.",
+      "Pode ser sobrescrito para facilitar depuração e logging.",
+      "Sempre retorna JSON.",
+      "Não pode ser sobrescrito.",
+      "Retorna apenas o hashCode."
+    ],
+    "correct": 1
+  },
+  {
+    "id": 33,
+    "question": "Qual afirmação sobre clone() é considerada uma boa prática atualmente?",
+    "options": [
+      "É a única forma recomendada de copiar objetos.",
+      "Seu uso é controverso; frequentemente construtores de cópia ou fábricas são preferidos.",
+      "Sempre produz Deep Copy.",
+      "Nunca lança exceções.",
+      "Substitui construtores."
+    ],
+    "correct": 1
+  },
+  {
+    "id": 34,
+    "question": "Qual afirmação resume corretamente Object, equals(), hashCode(), toString() e clone()?",
+    "options": [
+      "Toda classe herda de Object, podendo sobrescrever esses métodos para definir igualdade, representação textual, hash e cópia do objeto.",
+      "Esses métodos pertencem à classe Objects.",
+      "São exclusivos de classes abstratas.",
+      "Só podem ser usados em records.",
+      "Não participam do desenvolvimento orientado a objetos."
+    ],
+    "correct": 0
+  }
+]

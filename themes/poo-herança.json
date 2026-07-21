@@ -1,0 +1,422 @@
+[
+  {
+    "id": 0,
+    "question": "O que é herança em Orientação a Objetos?",
+    "options": [
+      "Um mecanismo para compartilhar memória entre objetos.",
+      "Um mecanismo que permite que uma classe reutilize atributos e métodos de outra.",
+      "Uma forma de criar interfaces.",
+      "Uma técnica para encapsular atributos.",
+      "Um tipo especial de construtor."
+    ],
+    "correct": 1
+  },
+  {
+    "id": 1,
+    "question": "Qual palavra-chave é utilizada para indicar herança entre classes em Java?",
+    "options": [
+      "implements",
+      "inherits",
+      "extends",
+      "super",
+      "instanceof"
+    ],
+    "correct": 2
+  },
+  {
+    "id": 2,
+    "question": "Na declaração 'class Cachorro extends Animal', Cachorro é:",
+    "options": [
+      "A superclasse.",
+      "A interface.",
+      "A subclasse.",
+      "O objeto.",
+      "O construtor."
+    ],
+    "correct": 2
+  },
+  {
+    "id": 3,
+    "question": "Na declaração 'class Cachorro extends Animal', Animal é:",
+    "options": [
+      "A subclasse.",
+      "A superclasse.",
+      "A interface.",
+      "O objeto.",
+      "O pacote."
+    ],
+    "correct": 1
+  },
+  {
+    "id": 4,
+    "question": "Qual é a principal vantagem da herança?",
+    "options": [
+      "Aumentar a velocidade da JVM.",
+      "Reutilizar código e modelar relações 'é um'.",
+      "Eliminar construtores.",
+      "Reduzir o uso de memória.",
+      "Criar objetos automaticamente."
+    ],
+    "correct": 1
+  },
+  {
+    "id": 5,
+    "question": "Toda classe em Java herda implicitamente de:",
+    "options": [
+      "Serializable",
+      "Cloneable",
+      "Object",
+      "Record",
+      "Class"
+    ],
+    "correct": 2
+  },
+  {
+    "id": 6,
+    "question": "Uma subclasse herda:",
+    "options": [
+      "Apenas os métodos públicos.",
+      "Atributos e métodos acessíveis da superclasse.",
+      "Apenas os construtores.",
+      "Somente métodos privados.",
+      "Somente atributos protected."
+    ],
+    "correct": 1
+  },
+  {
+    "id": 7,
+    "question": "Construtores são herdados?",
+    "options": [
+      "Sempre.",
+      "Nunca.",
+      "Somente se forem public.",
+      "Somente se forem protected.",
+      "Depende da JVM."
+    ],
+    "correct": 1
+  },
+  {
+    "id": 8,
+    "question": "Quando um objeto da subclasse é criado, qual construtor é executado primeiro?",
+    "options": [
+      "O da subclasse.",
+      "O da superclasse.",
+      "Nenhum.",
+      "Os dois ao mesmo tempo.",
+      "Depende da quantidade de atributos."
+    ],
+    "correct": 1
+  },
+  {
+    "id": 9,
+    "question": "Qual palavra-chave é utilizada para acessar membros da superclasse?",
+    "options": [
+      "this",
+      "extends",
+      "super",
+      "parent",
+      "base"
+    ],
+    "correct": 2
+  },
+  {
+    "id": 10,
+    "question": "Qual palavra-chave permite chamar explicitamente o construtor da superclasse?",
+    "options": [
+      "this()",
+      "parent()",
+      "super()",
+      "extends()",
+      "base()"
+    ],
+    "correct": 2
+  },
+  {
+    "id": 11,
+    "question": "Se nenhum construtor da superclasse for chamado explicitamente, o compilador tenta inserir:",
+    "options": [
+      "this()",
+      "super()",
+      "Object()",
+      "new Super()",
+      "Nada."
+    ],
+    "correct": 1
+  },
+  {
+    "id": 12,
+    "question": "Se a superclasse não possuir construtor sem argumentos e a subclasse não chamar outro construtor usando super(...), ocorrerá:",
+    "options": [
+      "Erro de compilação.",
+      "NullPointerException.",
+      "StackOverflowError.",
+      "IllegalArgumentException.",
+      "O compilador criará automaticamente um construtor."
+    ],
+    "correct": 0
+  },
+  {
+    "id": 13,
+    "question": "Membros private da superclasse podem ser acessados diretamente pela subclasse?",
+    "options": [
+      "Sim.",
+      "Somente usando super.",
+      "Não.",
+      "Somente se forem final.",
+      "Somente em Java 21."
+    ],
+    "correct": 2
+  },
+  {
+    "id": 14,
+    "question": "Membros protected da superclasse podem ser acessados diretamente pela subclasse?",
+    "options": [
+      "Não.",
+      "Sim.",
+      "Somente se forem static.",
+      "Somente no mesmo pacote.",
+      "Somente usando reflection."
+    ],
+    "correct": 1
+  },
+  {
+    "id": 15,
+    "question": "Qual modificador impede que uma classe seja herdada?",
+    "options": [
+      "abstract",
+      "private",
+      "protected",
+      "final",
+      "static"
+    ],
+    "correct": 3
+  },
+  {
+    "id": 16,
+    "question": "É possível herdar de uma classe final?",
+    "options": [
+      "Sim.",
+      "Somente em Java 21.",
+      "Não.",
+      "Somente usando sealed.",
+      "Somente através de interfaces."
+    ],
+    "correct": 2
+  },
+  {
+    "id": 17,
+    "question": "Java permite herança múltipla de classes?",
+    "options": [
+      "Sim.",
+      "Somente classes abstratas.",
+      "Não.",
+      "Somente records.",
+      "Depende da JVM."
+    ],
+    "correct": 2
+  },
+  {
+    "id": 18,
+    "question": "Java permite implementar múltiplas interfaces?",
+    "options": [
+      "Não.",
+      "Somente duas.",
+      "Sim.",
+      "Somente interfaces funcionais.",
+      "Somente classes sealed."
+    ],
+    "correct": 2
+  },
+  {
+    "id": 19,
+    "question": "Qual relação é normalmente representada pela herança?",
+    "options": [
+      "Tem um (has-a).",
+      "Usa um.",
+      "É um (is-a).",
+      "Depende de.",
+      "Contém um."
+    ],
+    "correct": 2
+  },
+  {
+    "id": 20,
+    "question": "Qual relação normalmente é modelada por composição em vez de herança?",
+    "options": [
+      "É um (is-a).",
+      "Tem um (has-a).",
+      "Pode usar.",
+      "Depende de.",
+      "É semelhante a."
+    ],
+    "correct": 1
+  },
+  {
+    "id": 21,
+    "question": "Uma subclasse pode adicionar novos atributos e métodos?",
+    "options": [
+      "Não.",
+      "Somente atributos.",
+      "Somente métodos.",
+      "Sim.",
+      "Somente se a superclasse for abstrata."
+    ],
+    "correct": 3
+  },
+  {
+    "id": 22,
+    "question": "Uma subclasse pode sobrescrever métodos herdados?",
+    "options": [
+      "Não.",
+      "Sim, desde que o método possa ser sobrescrito.",
+      "Somente métodos private.",
+      "Somente métodos final.",
+      "Somente construtores."
+    ],
+    "correct": 1
+  },
+  {
+    "id": 23,
+    "question": "Qual anotação é utilizada para indicar a sobrescrita de um método?",
+    "options": [
+      "@Inherited",
+      "@Super",
+      "@Override",
+      "@Overwrite",
+      "@Extends"
+    ],
+    "correct": 2
+  },
+  {
+    "id": 24,
+    "question": "Se um método da superclasse for final, a subclasse:",
+    "options": [
+      "Pode sobrescrevê-lo normalmente.",
+      "Pode sobrescrevê-lo apenas com @Override.",
+      "Não pode sobrescrevê-lo.",
+      "Pode removê-lo.",
+      "Pode alterá-lo para private."
+    ],
+    "correct": 2
+  },
+  {
+    "id": 25,
+    "question": "Métodos static participam do polimorfismo por sobrescrita?",
+    "options": [
+      "Sim.",
+      "Não. Eles são ocultados (method hiding).",
+      "Somente em classes abstratas.",
+      "Somente em interfaces.",
+      "Depende do modificador final."
+    ],
+    "correct": 1
+  },
+  {
+    "id": 26,
+    "question": "É possível sobrescrever um método private?",
+    "options": [
+      "Sim.",
+      "Não.",
+      "Somente usando super.",
+      "Somente em subclasses do mesmo pacote.",
+      "Somente se for abstract."
+    ],
+    "correct": 1
+  },
+  {
+    "id": 27,
+    "question": "Ao utilizar 'super.metodo()', o que acontece?",
+    "options": [
+      "O método da subclasse é chamado.",
+      "O método da superclasse é chamado.",
+      "Um novo objeto é criado.",
+      "O método é sobrescrito.",
+      "O construtor é executado."
+    ],
+    "correct": 1
+  },
+  {
+    "id": 28,
+    "question": "Qual afirmação sobre herança é verdadeira?",
+    "options": [
+      "Herança reduz reutilização de código.",
+      "Herança cria uma relação de especialização.",
+      "Herança elimina encapsulamento.",
+      "Toda classe deve possuir uma subclasse.",
+      "Herança substitui composição em todos os casos."
+    ],
+    "correct": 1
+  },
+  {
+    "id": 29,
+    "question": "Qual princípio de projeto recomenda preferir composição à herança quando possível?",
+    "options": [
+      "Porque composição geralmente produz menor acoplamento e maior flexibilidade.",
+      "Porque herança é mais lenta.",
+      "Porque herança não funciona em Java.",
+      "Porque composição elimina objetos.",
+      "Porque herança só funciona com interfaces."
+    ],
+    "correct": 0
+  },
+  {
+    "id": 30,
+    "question": "Ao criar um objeto de uma subclasse, a memória destinada aos atributos da superclasse:",
+    "options": [
+      "Não existe.",
+      "Também faz parte do objeto criado.",
+      "É criada em outro objeto.",
+      "É compartilhada com todos os objetos.",
+      "Só existe se os atributos forem públicos."
+    ],
+    "correct": 1
+  },
+  {
+    "id": 31,
+    "question": "Se uma classe B estende A, e C estende B, então C herda membros acessíveis de:",
+    "options": [
+      "Apenas B.",
+      "Apenas A.",
+      "A e B.",
+      "Nenhuma das duas.",
+      "Somente Object."
+    ],
+    "correct": 2
+  },
+  {
+    "id": 32,
+    "question": "Qual das alternativas representa um bom uso de herança?",
+    "options": [
+      "Carro herda de Motor.",
+      "Pessoa herda de CPF.",
+      "Cachorro herda de Animal.",
+      "Pedido herda de Cliente.",
+      "Computador herda de Processador."
+    ],
+    "correct": 2
+  },
+  {
+    "id": 33,
+    "question": "Qual das alternativas representa um uso inadequado de herança?",
+    "options": [
+      "Aluno herda de Pessoa.",
+      "Gato herda de Animal.",
+      "Motor herda de Carro.",
+      "ContaCorrente herda de Conta.",
+      "Retângulo herda de Figura."
+    ],
+    "correct": 2
+  },
+  {
+    "id": 34,
+    "question": "Qual afirmação resume corretamente a herança em Java?",
+    "options": [
+      "Uma classe pode herdar apenas uma superclasse, reutilizando seus membros acessíveis e podendo especializar seu comportamento.",
+      "Uma classe pode herdar infinitas classes simultaneamente.",
+      "Construtores são herdados normalmente.",
+      "Classes final podem ser herdadas.",
+      "Herança substitui completamente composição."
+    ],
+    "correct": 0
+  }
+]

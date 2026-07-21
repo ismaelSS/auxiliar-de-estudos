@@ -1,0 +1,151 @@
+[ {
+  "id" : 0,
+  "question" : "Qual conjunto de pilares forma a base da Orientação a Objetos em Java?",
+  "options" : [ "Encapsulamento, Herança, Polimorfismo e Abstração", "Classes, Objetos, Métodos e Interfaces", "Herança, Casting, Reflection e Threads", "Encapsulamento, Records, Generics e Streams", "Classes, JVM, JDK e JRE" ],
+  "correct" : 0
+}, {
+  "id" : 1,
+  "question" : "Considere: Animal a = new Cachorro();. Qual afirmação está correta?",
+  "options" : [ "O tipo da referência e o tipo do objeto são Cachorro.", "O tipo da referência é Animal e o tipo real do objeto é Cachorro.", "O tipo da referência é Object.", "Não existe polimorfismo nessa situação.", "É um exemplo de downcasting." ],
+  "correct" : 1
+}, {
+  "id" : 2,
+  "question" : "Qual mecanismo da JVM permite que a chamada 'a.fazerSom()' execute a implementação de Cachorro em vez da de Animal?",
+  "options" : [ "Reflection", "Dynamic Dispatch (Despacho Dinâmico)", "Garbage Collector", "JIT Compiler", "Class Loader" ],
+  "correct" : 1
+}, {
+  "id" : 3,
+  "question" : "Qual relação deve ser modelada com herança?",
+  "options" : [ "Carro possui Motor", "Biblioteca possui Livro", "Cachorro é um Animal", "Empresa possui Funcionários", "Pedido possui Cliente" ],
+  "correct" : 2
+}, {
+  "id" : 4,
+  "question" : "Qual relação deve ser modelada preferencialmente com composição?",
+  "options" : [ "Aluno é uma Pessoa", "Carro possui Motor", "ContaCorrente é uma Conta", "Professor é um Funcionário", "Gato é um Animal" ],
+  "correct" : 1
+}, {
+  "id" : 5,
+  "question" : "Uma classe possui atributos private e métodos públicos que validam qualquer alteração nesses atributos. Qual pilar da POO está sendo aplicado principalmente?",
+  "options" : [ "Herança", "Polimorfismo", "Encapsulamento", "Abstração", "Composição" ],
+  "correct" : 2
+}, {
+  "id" : 6,
+  "question" : "Qual afirmação sobre classes abstratas é verdadeira?",
+  "options" : [ "Podem ser instanciadas normalmente.", "Não podem possuir métodos concretos.", "Podem possuir atributos, construtores e métodos concretos.", "São equivalentes às interfaces.", "Não podem participar do polimorfismo." ],
+  "correct" : 2
+}, {
+  "id" : 7,
+  "question" : "Uma interface é utilizada principalmente para:",
+  "options" : [ "Compartilhar estado entre classes.", "Definir um contrato de comportamento.", "Substituir herança.", "Criar objetos diretamente.", "Eliminar polimorfismo." ],
+  "correct" : 1
+}, {
+  "id" : 8,
+  "question" : "Qual é uma vantagem das interfaces em relação às classes abstratas?",
+  "options" : [ "Possuem construtores.", "Permitem herança múltipla de implementação.", "Permitem múltiplas implementações por uma mesma classe.", "Podem possuir atributos mutáveis.", "São sempre mais rápidas." ],
+  "correct" : 2
+}, {
+  "id" : 9,
+  "question" : "Uma classe implementa corretamente equals(), mas não sobrescreve hashCode(). Qual problema pode ocorrer?",
+  "options" : [ "Erro de compilação.", "Nada, pois hashCode() é opcional.", "Funcionamento incorreto em HashMap e HashSet.", "A JVM impedirá a criação de objetos.", "toString() deixará de funcionar." ],
+  "correct" : 2
+}, {
+  "id" : 10,
+  "question" : "Dois objetos possuem o mesmo hashCode(). O que podemos concluir?",
+  "options" : [ "São obrigatoriamente iguais.", "São obrigatoriamente diferentes.", "Nada; pode haver colisão de hash.", "equals() retornará false.", "São a mesma referência." ],
+  "correct" : 2
+}, {
+  "id" : 11,
+  "question" : "Qual método é chamado automaticamente por System.out.println(obj)?",
+  "options" : [ "equals()", "hashCode()", "toString()", "clone()", "compareTo()" ],
+  "correct" : 2
+}, {
+  "id" : 12,
+  "question" : "Qual interface deve ser implementada para que clone() funcione conforme esperado pela implementação de Object?",
+  "options" : [ "Serializable", "Comparable", "Cloneable", "Iterable", "Runnable" ],
+  "correct" : 2
+}, {
+  "id" : 13,
+  "question" : "Qual afirmação sobre clone() é considerada uma boa prática atualmente?",
+  "options" : [ "É sempre a melhor forma de copiar objetos.", "Frequentemente é preferível utilizar construtores de cópia ou métodos fábrica.", "Sempre produz Deep Copy.", "Nunca lança exceções.", "É obrigatório em todas as entidades." ],
+  "correct" : 1
+}, {
+  "id" : 14,
+  "question" : "Qual operador verifica se um objeto pertence a determinado tipo?",
+  "options" : [ "==", "equals", "instanceof", "super", "this" ],
+  "correct" : 2
+}, {
+  "id" : 15,
+  "question" : "Qual exceção normalmente é lançada durante um downcasting inválido?",
+  "options" : [ "IOException", "IllegalArgumentException", "ClassCastException", "NullPointerException", "RuntimeException" ],
+  "correct" : 2
+}, {
+  "id" : 16,
+  "question" : "Qual tipo de casting é considerado seguro e automático?",
+  "options" : [ "Downcasting", "Casting explícito", "Upcasting", "Primitive Narrowing", "Reflection" ],
+  "correct" : 2
+}, {
+  "id" : 17,
+  "question" : "Qual membro NÃO participa do despacho dinâmico?",
+  "options" : [ "Métodos sobrescritos", "Métodos de interfaces", "Métodos abstratos implementados", "Métodos static", "Métodos concretos sobrescritos" ],
+  "correct" : 3
+}, {
+  "id" : 18,
+  "question" : "Qual afirmação sobre atributos e polimorfismo é verdadeira?",
+  "options" : [ "Atributos utilizam despacho dinâmico.", "O atributo acessado depende do tipo real do objeto.", "O atributo acessado depende do tipo da referência.", "Atributos podem ser sobrescritos.", "Atributos sempre utilizam instanceof." ],
+  "correct" : 2
+}, {
+  "id" : 19,
+  "question" : "Uma classe Record em Java é principalmente indicada para:",
+  "options" : [ "Criar hierarquias complexas de herança.", "Representar objetos imutáveis de transporte de dados.", "Substituir interfaces.", "Criar Singletons.", "Implementar composição." ],
+  "correct" : 1
+}, {
+  "id" : 20,
+  "question" : "Qual característica dos records reduz a necessidade de escrever equals(), hashCode() e toString() manualmente?",
+  "options" : [ "Herança automática.", "Geração automática desses métodos pelo compilador.", "Uso obrigatório de Lombok.", "Clone automático.", "Interfaces implícitas." ],
+  "correct" : 1
+}, {
+  "id" : 21,
+  "question" : "Qual modificador impede que uma classe seja herdada?",
+  "options" : [ "abstract", "sealed", "private", "final", "static" ],
+  "correct" : 3
+}, {
+  "id" : 22,
+  "question" : "Uma subclasse concreta herda de uma classe abstrata que possui dois métodos abstratos. A subclasse implementa apenas um deles. O que acontece?",
+  "options" : [ "Erro de compilção.", "Nada.", "A subclasse também deverá ser abstrata.", "O compilador implementará automaticamente o método restante.", "O método será herdado." ],
+  "correct" : 0
+}, {
+  "id" : 23,
+  "question" : "Qual afirmação sobre interfaces modernas (Java 8+) é verdadeira?",
+  "options" : [ "Podem possuir apenas métodos abstratos.", "Podem possuir métodos default e static.", "Podem possuir construtores.", "Não participam do polimorfismo.", "Não podem ser estendidas." ],
+  "correct" : 1
+}, {
+  "id" : 24,
+  "question" : "Qual situação representa melhor agregação?",
+  "options" : [ "Pessoa possui Coração.", "Empresa possui Funcionários.", "Casa possui Fundação.", "Computador possui Placa-Mãe integrada ao ciclo de vida.", "Triângulo é uma Figura." ],
+  "correct" : 1
+}, {
+  "id" : 25,
+  "question" : "Qual situação representa composição?",
+  "options" : [ "Universidade possui Professor.", "Biblioteca possui Livro.", "Pessoa possui Coração.", "Cliente utiliza Banco.", "Aluno frequenta Curso." ],
+  "correct" : 2
+}, {
+  "id" : 26,
+  "question" : "Qual alternativa representa uma associação muitos-para-muitos?",
+  "options" : [ "Pessoa possui CPF.", "Aluno cursa Disciplinas e cada Disciplina possui vários Alunos.", "Pedido possui Cliente.", "Conta possui Agência.", "Empresa possui Diretor." ],
+  "correct" : 1
+}, {
+  "id" : 27,
+  "question" : "Qual alternativa representa corretamente o princípio 'Programar para abstrações'?",
+  "options" : [ "Sempre utilizar classes concretas.", "Declarar variáveis utilizando interfaces ou superclasses quando possível.", "Evitar polimorfismo.", "Evitar encapsulamento.", "Nunca utilizar herança." ],
+  "correct" : 1
+}, {
+  "id" : 28,
+  "question" : "Por que composição costuma ser preferida em relação à herança?",
+  "options" : [ "Porque elimina objetos.", "Porque reduz acoplamento e aumenta flexibilidade.", "Porque herança é proibida em Java.", "Porque composição substitui polimorfismo.", "Porque não utiliza referências." ],
+  "correct" : 1
+}, {
+  "id" : 29,
+  "question" : "Qual das alternativas resume corretamente os conceitos fundamentais da POO em Java?",
+  "options" : [ "Encapsulamento protege o estado, herança reutiliza comportamento, polimorfismo permite diferentes implementações e abstração define contratos ou modelos essenciais.", "Herança substitui composição e interfaces.", "equals() substitui hashCode().", "Casting é um dos quatro pilares da POO.", "Interfaces e classes abstratas possuem exatamente a mesma finalidade." ],
+  "correct" : 0
+} ]

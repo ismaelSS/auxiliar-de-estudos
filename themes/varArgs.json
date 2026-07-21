@@ -1,0 +1,314 @@
+[
+    {
+        "id": 0,
+        "question": "O que são varargs em Java?",
+        "options": [
+            "Um tipo especial de array bidimensional.",
+            "Um recurso que permite que um método receba uma quantidade variável de argumentos do mesmo tipo.",
+            "Um modificador de acesso.",
+            "Uma forma de declarar variáveis globais.",
+            "Um tipo de coleção da biblioteca Java."
+        ],
+        "correct": 1
+    },
+    {
+        "id": 1,
+        "question": "Qual é a sintaxe correta para declarar um método que recebe varargs de inteiros?",
+        "options": [
+            "void metodo(int[]... valores)",
+            "void metodo(...int valores)",
+            "void metodo(int valores...)",
+            "void metodo(int... valores)",
+            "void metodo(... valores)"
+        ],
+        "correct": 3
+    },
+    {
+        "id": 2,
+        "question": "Internamente, um parâmetro varargs é tratado pelo compilador como:",
+        "options": [
+            "Uma List.",
+            "Um Set.",
+            "Um array.",
+            "Um Stream.",
+            "Uma Queue."
+        ],
+        "correct": 2
+    },
+    {
+        "id": 3,
+        "question": "Qual chamada é válida para um método declarado como soma(int... numeros)?",
+        "options": [
+            "soma();",
+            "soma(10);",
+            "soma(10, 20, 30);",
+            "soma(new int[]{10, 20, 30});",
+            "Todas as alternativas anteriores."
+        ],
+        "correct": 4
+    },
+    {
+        "id": 4,
+        "question": "Um método com varargs pode ser chamado sem passar nenhum argumento?",
+        "options": [
+            "Não, sempre é necessário pelo menos um argumento.",
+            "Sim, o compilador cria um array vazio.",
+            "Sim, mas apenas para tipos primitivos.",
+            "Não, apenas arrays podem ser passados.",
+            "Depende da versão do Java."
+        ],
+        "correct": 1
+    },
+    {
+        "id": 5,
+        "question": "Qual é o comprimento (length) do array recebido quando um método varargs é chamado sem argumentos?",
+        "options": [
+            "-1",
+            "null",
+            "0",
+            "1",
+            "Depende da JVM."
+        ],
+        "correct": 2
+    },
+    {
+        "id": 6,
+        "question": "Qual das declarações abaixo é inválida?",
+        "options": [
+            "void metodo(int... numeros)",
+            "void metodo(String... nomes)",
+            "void metodo(double valor, int... numeros)",
+            "void metodo(int... numeros, String nome)",
+            "Todas as anteriores são válidas."
+        ],
+        "correct": 3
+    },
+    {
+        "id": 7,
+        "question": "Por que a declaração 'void metodo(int... numeros, String nome)' é inválida?",
+        "options": [
+            "Porque varargs só funciona com String.",
+            "Porque parâmetros varargs devem ser o último parâmetro do método.",
+            "Porque não é permitido misturar tipos.",
+            "Porque um método só pode ter um parâmetro.",
+            "Porque o compilador não suporta arrays."
+        ],
+        "correct": 1
+    },
+    {
+        "id": 8,
+        "question": "Quantos parâmetros varargs um método pode possuir?",
+        "options": [
+            "Apenas um.",
+            "Dois.",
+            "Três.",
+            "Depende da JVM.",
+            "Quantos forem necessários."
+        ],
+        "correct": 0
+    },
+    {
+        "id": 9,
+        "question": "Qual declaração é válida?",
+        "options": [
+            "void metodo(int... a, int... b)",
+            "void metodo(String... nomes, int... idades)",
+            "void metodo(int valor, String... nomes)",
+            "void metodo(int... numeros, double valor)",
+            "void metodo(String... nomes, boolean... ativos)"
+        ],
+        "correct": 2
+    },
+    {
+        "id": 10,
+        "question": "Dentro do método, como o parâmetro varargs pode ser percorrido?",
+        "options": [
+            "Apenas com while.",
+            "Apenas com for tradicional.",
+            "Apenas com for-each.",
+            "Como qualquer array.",
+            "Somente usando Streams."
+        ],
+        "correct": 3
+    },
+    {
+        "id": 11,
+        "question": "Qual é a principal vantagem do uso de varargs?",
+        "options": [
+            "Melhorar o desempenho.",
+            "Evitar sobrecarga de métodos para diferentes quantidades de parâmetros.",
+            "Reduzir o consumo de memória.",
+            "Eliminar arrays completamente.",
+            "Permitir parâmetros de tipos diferentes."
+        ],
+        "correct": 1
+    },
+    {
+        "id": 12,
+        "question": "Qual código substitui corretamente várias sobrecargas como soma(int), soma(int,int) e soma(int,int,int)?",
+        "options": [
+            "void soma(int[] numeros)",
+            "void soma(int... numeros)",
+            "void soma(Integer numero)",
+            "void soma(Object numero)",
+            "void soma(List<Integer> numeros)"
+        ],
+        "correct": 1
+    },
+    {
+        "id": 13,
+        "question": "É possível passar um array existente para um método varargs?",
+        "options": [
+            "Não.",
+            "Sim, pois o parâmetro varargs é tratado como um array.",
+            "Somente se for um ArrayList.",
+            "Somente usando cast.",
+            "Somente para tipos primitivos."
+        ],
+        "correct": 1
+    },
+    {
+        "id": 14,
+        "question": "Qual chamada utiliza um array existente corretamente?",
+        "options": [
+            "int[] numeros = {1,2,3}; soma(numeros);",
+            "int[] numeros = {1,2,3}; soma(*numeros);",
+            "int[] numeros = {1,2,3}; soma(...numeros);",
+            "int[] numeros = {1,2,3}; soma([numeros]);",
+            "Nenhuma das alternativas."
+        ],
+        "correct": 0
+    },
+    {
+        "id": 15,
+        "question": "O método printf da classe System.out utiliza qual recurso da linguagem?",
+        "options": [
+            "Generics.",
+            "Reflection.",
+            "Varargs.",
+            "Annotations.",
+            "Lambdas."
+        ],
+        "correct": 2
+    },
+    {
+        "id": 16,
+        "question": "Qual assinatura simplificada representa o método printf?",
+        "options": [
+            "printf(String formato)",
+            "printf(String formato, Object... args)",
+            "printf(Object formato)",
+            "printf(Object... args)",
+            "printf(List<Object> args)"
+        ],
+        "correct": 1
+    },
+    {
+        "id": 17,
+        "question": "Qual afirmação sobre desempenho é verdadeira?",
+        "options": [
+            "Varargs nunca cria arrays.",
+            "Toda chamada a um método varargs envolve um array, explícito ou criado pelo compilador.",
+            "Varargs é sempre mais rápido que parâmetros normais.",
+            "Varargs elimina completamente o uso de memória.",
+            "Não existe diferença entre varargs e generics."
+        ],
+        "correct": 1
+    },
+    {
+        "id": 18,
+        "question": "Qual é o tipo da variável 'nomes' na declaração void imprimir(String... nomes)?",
+        "options": [
+            "String",
+            "List<String>",
+            "Collection<String>",
+            "String[]",
+            "Object[]"
+        ],
+        "correct": 3
+    },
+    {
+        "id": 19,
+        "question": "É permitido modificar os elementos do array recebido por um parâmetro varargs?",
+        "options": [
+            "Não, o array é somente leitura.",
+            "Sim, pois ele é um array comum.",
+            "Somente se os elementos forem primitivos.",
+            "Somente utilizando Reflection.",
+            "Apenas em Java 8 ou superior."
+        ],
+        "correct": 1
+    },
+    {
+        "id": 20,
+        "question": "Considere: void metodo(String titulo, int... valores). Qual chamada é válida?",
+        "options": [
+            "metodo();",
+            "metodo(1, 2, 3);",
+            "metodo(\"Teste\");",
+            "metodo(1, \"Teste\");",
+            "Nenhuma das alternativas."
+        ],
+        "correct": 2
+    },
+    {
+        "id": 21,
+        "question": "Considere: void metodo(String titulo, int... valores). Qual chamada também é válida?",
+        "options": [
+            "metodo(\"Teste\", 1, 2, 3);",
+            "metodo(1, 2, 3, \"Teste\");",
+            "metodo(1);",
+            "metodo(new int[]{1,2});",
+            "metodo(int[]{1,2});"
+        ],
+        "correct": 0
+    },
+    {
+        "id": 22,
+        "question": "Por que o compilador exige que o parâmetro varargs seja o último da lista?",
+        "options": [
+            "Porque facilita a identificação de quais argumentos pertencem ao varargs.",
+            "Porque arrays sempre devem ser o último parâmetro.",
+            "Porque o bytecode não suporta outra ordem.",
+            "Porque varargs é convertido em List.",
+            "Porque é uma limitação da JVM."
+        ],
+        "correct": 0
+    },
+    {
+        "id": 23,
+        "question": "Qual destas afirmações sobre varargs é correta?",
+        "options": [
+            "Varargs aceita argumentos de tipos diferentes automaticamente.",
+            "Varargs pode substituir completamente generics.",
+            "Todos os argumentos do varargs devem ser do mesmo tipo ou compatíveis com ele.",
+            "Varargs funciona apenas com tipos primitivos.",
+            "Varargs funciona apenas com objetos."
+        ],
+        "correct": 2
+    },
+    {
+        "id": 24,
+        "question": "O que acontece quando chamamos um método varargs passando cinco argumentos?",
+        "options": [
+            "O compilador cria cinco parâmetros diferentes.",
+            "O compilador cria um array contendo os cinco elementos e o passa ao método.",
+            "São criados cinco métodos sobrecarregados.",
+            "Os argumentos são convertidos para String.",
+            "O método é chamado cinco vezes."
+        ],
+        "correct": 1
+    },
+    {
+        "id": 25,
+        "question": "Qual alternativa descreve melhor a relação entre um parâmetro int[] e um parâmetro int...?",
+        "options": [
+            "São conceitos completamente diferentes.",
+            "Internamente, um parâmetro varargs é tratado como um array do mesmo tipo.",
+            "int... é uma List e int[] é um array.",
+            "int[] aceita qualquer quantidade de argumentos automaticamente.",
+            "Não possuem nenhuma relação."
+        ],
+        "correct": 1
+    }
+]

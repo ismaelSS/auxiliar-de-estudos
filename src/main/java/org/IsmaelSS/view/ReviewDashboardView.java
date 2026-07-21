@@ -1,6 +1,7 @@
 package org.IsmaelSS.view;
 
 import javafx.geometry.Insets;
+import javafx.geometry.Rectangle2D;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
@@ -8,6 +9,7 @@ import javafx.scene.control.Separator;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.stage.Screen;
 import org.IsmaelSS.model.FixationPhase;
 import org.IsmaelSS.model.StatsData.QuestionScore;
 import org.IsmaelSS.model.StatsData.ThemeStats;
@@ -68,6 +70,10 @@ public class ReviewDashboardView {
         scrollPane.setVbarPolicy(ScrollPane.ScrollBarPolicy.AS_NEEDED);
 
         root = new VBox(scrollPane);
+
+        Rectangle2D screenBounds = Screen.getPrimary().getVisualBounds();
+        root.maxWidthProperty().set(screenBounds.getWidth());
+        content.maxWidthProperty().bind(root.widthProperty().multiply(0.8));
 
         buildCards(onReviewFactory, onMarkDone);
         buildTimeline();
