@@ -243,3 +243,119 @@
     -fx-background-color: #fe9a00;
     -fx-text-fill: #ffffff;
 }
+
+/* === Dashboard: Theme Card === */
+.theme-card {
+    -fx-background-color: #1a1a2e;
+    -fx-background-radius: 6;
+    -fx-padding: 12 16 12 16;
+    -fx-border-color: transparent;
+    -fx-border-width: 0 0 0 4;
+    -fx-border-radius: 6 0 0 6;
+}
+
+/* Priority border variants */
+.priority-overdue { -fx-border-color: #e74c3c; }
+.priority-today   { -fx-border-color: #fe9a00; }
+.priority-none    { -fx-border-color: #27ae60; }
+
+/* Overdue count badge */
+.badge-overdue {
+    -fx-background-color: #e74c3c;
+    -fx-text-fill: #ffffff;
+    -fx-background-radius: 10;
+    -fx-padding: 2 8 2 8;
+    -fx-font-size: 0.85em;
+}
+
+/* Fixation phase badges */
+.badge-aprendendo {
+    -fx-background-color: #e74c3c;
+    -fx-text-fill: #ffffff;
+    -fx-background-radius: 10;
+    -fx-padding: 2 8 2 8;
+    -fx-font-size: 0.85em;
+}
+.badge-revisao {
+    -fx-background-color: #fe9a00;
+    -fx-text-fill: #ffffff;
+    -fx-background-radius: 10;
+    -fx-padding: 2 8 2 8;
+    -fx-font-size: 0.85em;
+}
+.badge-fixa {
+    -fx-background-color: #27ae60;
+    -fx-text-fill: #ffffff;
+    -fx-background-radius: 10;
+    -fx-padding: 2 8 2 8;
+    -fx-font-size: 0.85em;
+}
+.badge-dominio {
+    -fx-background-color: #1abc9c;
+    -fx-text-fill: #ffffff;
+    -fx-background-radius: 10;
+    -fx-padding: 2 8 2 8;
+    -fx-font-size: 0.85em;
+}
+
+/* Fixation bar */
+.fixation-bar {
+    -fx-background-color: #020817;
+    -fx-background-radius: 3;
+    -fx-padding: 4;
+    -fx-spacing: 2;
+}
+.fixation-segment-aprendendo { -fx-background-color: #e74c3c; -fx-background-radius: 2; }
+.fixation-segment-revisao    { -fx-background-color: #fe9a00; -fx-background-radius: 2; }
+.fixation-segment-fixa       { -fx-background-color: #27ae60; -fx-background-radius: 2; }
+.fixation-segment-dominio    { -fx-background-color: #1abc9c; -fx-background-radius: 2; }
+
+/* Dashboard action buttons */
+.button-revisar {
+    -fx-background-color: #fe9a00;
+    -fx-text-fill: #ffffff;
+    -fx-background-radius: 4;
+    -fx-padding: 6 16 6 16;
+    -fx-cursor: hand;
+}
+.button-revisar:hover  { -fx-background-color: #ffb340; }
+.button-revisar:pressed { -fx-background-color: #cc7c00; }
+
+.button-feito {
+    -fx-background-color: transparent;
+    -fx-text-fill: #27ae60;
+    -fx-border-color: #27ae60;
+    -fx-border-radius: 4;
+    -fx-padding: 6 16 6 16;
+    -fx-cursor: hand;
+}
+.button-feito:hover { -fx-background-color: #1a1a2e; }
+
+/* Timeline */
+.timeline-line {
+    -fx-border-color: #333355;
+    -fx-border-width: 0 0 0 2;
+    -fx-min-width: 2;
+    -fx-max-width: 2;
+}
+.timeline-dot {
+    -fx-background-color: #fe9a00;
+    -fx-background-radius: 5;
+    -fx-min-width: 10;
+    -fx-max-width: 10;
+    -fx-min-height: 10;
+    -fx-max-height: 10;
+}
+.timeline-date  { -fx-text-fill: #888899; -fx-font-size: 0.85em; }
+.timeline-entry { -fx-text-fill: #e0e0e0; }
+
+/* Dashboard search field */
+.search-field {
+    -fx-background-color: #1a1a2e;
+    -fx-text-fill: #e0e0e0;
+    -fx-prompt-text-fill: #555577;
+    -fx-border-color: #333355;
+    -fx-border-radius: 4;
+    -fx-padding: 8 12 8 12;
+}
+.search-field:focused { -fx-border-color: #fe9a00; }

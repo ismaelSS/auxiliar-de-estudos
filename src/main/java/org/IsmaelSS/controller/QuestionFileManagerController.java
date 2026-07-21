@@ -115,7 +115,7 @@ public class QuestionFileManagerController {
                     view.hideEditor();
                 }
                 loadFileList();
-                themeSelectionController.refreshScores();
+                themeSelectionController.refreshDashboard();
             }
         });
     }

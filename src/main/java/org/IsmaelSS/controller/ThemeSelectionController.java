@@ -1,5 +1,7 @@
 package org.IsmaelSS.controller;
 
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Tab;
 import org.IsmaelSS.model.RoundState;
 import org.IsmaelSS.model.Theme;
@@ -7,6 +9,7 @@ import org.IsmaelSS.service.StatsService;
 import org.IsmaelSS.service.ThemeLoader;
 import org.IsmaelSS.view.QuestionFileManagerView;
 import org.IsmaelSS.view.ReportsView;
+import org.IsmaelSS.view.ReviewDashboardView;
 import org.IsmaelSS.view.StudyRoundView;
 import org.IsmaelSS.view.ThemeSelectionView;
 
@@ -30,11 +33,9 @@ public class ThemeSelectionController {
     }
 
     public void initialize() {
-        refreshScores();
+        refreshDashboard();
 
         screenController.registerScreen("themeSelection", view.getScene());
-
-        view.getStartButton().setOnAction(e -> handleStart());
 
         view.getTabPane().getSelectionModel().selectedItemProperty().addListener(
                 (obs, oldTab, newTab) -> handleTabSelection(newTab));
@@ -42,53 +43,42 @@ public class ThemeSelectionController {
         screenController.switchTo("themeSelection");
     }
 
-    /**
-     * Reloads themes from disk and refreshes score displays.
-     * Called after file create/delete to update the Jogar tab.
-     */
-    public void refreshScores() {
+    public void refreshDashboard() {
         themes = themeLoader.loadAllThemes();
-        view.setThemes(themes);
-
-        int maxQuestions = themes.stream()
-                .mapToInt(Theme::getQuestionCount)
-                .max()
-                .orElse(1);
-        view.updateQuestionCountRange(maxQuestions);
-
-        for (Theme theme : themes) {
-            String score = statsService.getAproveitamento(theme.getName());
-            view.updateAproveitamento(theme.getName(), score);
-            String dominio = statsService.getDominio(theme.getName());
-            String dominioDisplay = "N/A".equals(dominio) ? "N/A" : dominio + "%";
-            view.updateDominio(theme.getName(), dominioDisplay);
-        }
+        ReviewDashboardView dashboard = new ReviewDashboardView(
+                statsService, themes,
+                theme -> () -> handleReviewTheme(theme),
+                this::handleMarkAsDone
+        );
+        view.setDashboard(dashboard);
     }
 
-    private void handleStart() {
-        List<Theme> selectedThemes = view.getSelectedThemes();
-
-        if (selectedThemes.isEmpty()) {
-            view.setFeedback("Selecione pelo menos um tema para iniciar.");
+    private void handleReviewTheme(Theme theme) {
+        RoundState roundState = RoundState.createDueReviewRound(theme, statsService);
+        if (roundState.getSelectedQuestionsCount() == 0) {
             return;
         }
-
-        view.setFeedback("");
-
-        int questionsPerTheme = view.getQuestionCount();
-        RoundState roundState;
-        if (view.isReinforcementMode()) {
-            roundState = RoundState.createReinforcementRound(selectedThemes, questionsPerTheme, statsService);
-        } else {
-            roundState = new RoundState(selectedThemes, questionsPerTheme);
-        }
         StudyRoundView studyRoundView = new StudyRoundView();
-        StudyRoundController studyRoundController = new StudyRoundController(roundState, studyRoundView, screenController, statsService);
+        StudyRoundController studyRoundController = new StudyRoundController(
+                roundState, studyRoundView, screenController, statsService);
         studyRoundController.setOnRoundEndCallback(() -> {
-        refreshScores();
+            refreshDashboard();
             screenController.switchTo("themeSelection");
         });
         studyRoundController.initialize();
+    }
+
+    private void handleMarkAsDone(String themeName) {
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Marcar como feita");
+        alert.setHeaderText(null);
+        alert.setContentText("Marcar todas as questões atrasadas como dominadas para '" + themeName + "'?");
+        alert.showAndWait().ifPresent(response -> {
+            if (response == ButtonType.OK) {
+                statsService.markThemeAsDone(themeName);
+                refreshDashboard();
+            }
+        });
     }
 
     private void handleTabSelection(Tab tab) {
