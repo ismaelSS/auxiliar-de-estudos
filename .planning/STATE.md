@@ -2,14 +2,14 @@
 gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
-status: Phase 12 — context gathered
-last_updated: "2026-07-21"
+status: Phase 12 — plan 01 complete (executing)
+last_updated: "2026-07-21T13:23:30.000Z"
 progress:
   total_phases: 12
   completed_phases: 6
   total_plans: 22
-  completed_plans: 13
-  percent: 50
+  completed_plans: 14
+  percent: 54
 ---
 
 # State: FlashCard JavaFX
@@ -19,7 +19,7 @@ progress:
 See: .planning/PROJECT.md (updated 2026-07-07)
 
 **Core value:** Students can study any topic by loading a themed JSON question bank and immediately start quizzing themselves with performance tracking and weak-area reinforcement.
-**Current focus:** Phase 12 — context gathered (spaced repetition & visual review dashboard)
+**Current focus:** Phase 12 — plan 01 complete (SM-2 data layer); plan 02 pending (dashboard UI)
 
 ## Phase Summary
 
@@ -36,7 +36,7 @@ See: .planning/PROJECT.md (updated 2026-07-07)
 | 9 | Navigation Overhaul | Blocked (needs UI-safety gate) |
 | 10 | Visual Theming & Color Identity | Partial (checkpoint visual pendente) |
 | 11 | Question File Manager | Complete ✓ |
-| 12 | Spaced Repetition & Visual Review Dashboard | Context defined |
+| 12 | Spaced Repetition & Visual Review Dashboard | Executing (1/2 plans) |
 
 ## Completed Phases
 
@@ -124,7 +124,7 @@ See: .planning/PROJECT.md (updated 2026-07-07)
 
 - (None)
 
-*Last updated: 2026-07-21 after Phase 12 context gathered*
+*Last updated: 2026-07-21 after Phase 12 plan 01 complete*
 
 ## Performance Metrics
 
@@ -136,3 +136,4 @@ See: .planning/PROJECT.md (updated 2026-07-07)
 | Phase 08 P01 | 6min | 3 tasks | 4 files |
 | Phase 11-question-file-manager P01 | 2min | 4 tasks | 4 files |
 | Phase 11-question-file-manager P02 | 7min | 5 tasks | 3 files |
+| Phase 12-spaced-repetition P01 | 9min | 3 tasks | 7 files |

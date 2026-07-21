@@ -192,8 +192,11 @@ Plans:
 **Requirements:** V2-01, SR-01, SR-02, SR-03, SR-04, SR-05, SR-06, SR-07, SR-08
 **Depends on:** Phase 11
 **Plans:** 2 plans (Wave 1 → Wave 2)
-
 Plans:
+**Wave 1**
 
-- [ ] 12-01-PLAN.md — SM-2 Data Layer: model, service, round factory, tests (Wave 1)
+- [x] 12-01-PLAN.md — SM-2 Data Layer: model, service, round factory, tests (Wave 1)
+
+**Wave 2** *(blocked on Wave 1 completion)*
+
 - [ ] 12-02-PLAN.md — Dashboard UI + Integration: CSS, views, controller wiring (Wave 2)
