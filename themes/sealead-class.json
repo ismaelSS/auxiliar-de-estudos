@@ -1,0 +1,374 @@
+[
+  {
+    "id": 0,
+    "question": "Qual palavra-chave é utilizada para declarar uma classe selada em Java?",
+    "options": [
+      "closed",
+      "sealed",
+      "restricted",
+      "final",
+      "secure"
+    ],
+    "correct": 1
+  },
+  {
+    "id": 1,
+    "question": "Qual é o principal objetivo de uma sealed class?",
+    "options": [
+      "Impedir que a classe seja instanciada.",
+      "Controlar explicitamente quais classes podem estendê-la.",
+      "Melhorar o desempenho da JVM.",
+      "Permitir múltipla herança.",
+      "Substituir interfaces."
+    ],
+    "correct": 1
+  },
+  {
+    "id": 2,
+    "question": "Qual cláusula é utilizada para informar quais classes podem herdar de uma sealed class?",
+    "options": [
+      "extends",
+      "implements",
+      "permits",
+      "allows",
+      "inherits"
+    ],
+    "correct": 2
+  },
+  {
+    "id": 3,
+    "question": "Qual declaração é válida?",
+    "options": [
+      "sealed class Animal permits Cachorro, Gato {}",
+      "sealed Animal permits Cachorro {}",
+      "sealed class Animal extends Cachorro {}",
+      "sealed class Animal allow Cachorro {}",
+      "sealed class Animal inherit Cachorro {}"
+    ],
+    "correct": 0
+  },
+  {
+    "id": 4,
+    "question": "Uma classe que herda de uma sealed class deve obrigatoriamente ser declarada como:",
+    "options": [
+      "abstract apenas.",
+      "sealed, non-sealed ou final.",
+      "public apenas.",
+      "protected apenas.",
+      "record apenas."
+    ],
+    "correct": 1
+  },
+  {
+    "id": 5,
+    "question": "O que significa declarar uma subclasse como final?",
+    "options": [
+      "Ela pode ser herdada apenas uma vez.",
+      "Ela não pode ser herdada por nenhuma outra classe.",
+      "Ela só pode possuir métodos finais.",
+      "Ela deve ser abstrata.",
+      "Ela pode ser reaberta posteriormente."
+    ],
+    "correct": 1
+  },
+  {
+    "id": 6,
+    "question": "O que significa declarar uma subclasse como sealed?",
+    "options": [
+      "Ela nunca poderá ser instanciada.",
+      "Ela também controlará explicitamente quem poderá herdá-la.",
+      "Ela será automaticamente abstrata.",
+      "Ela não poderá possuir métodos.",
+      "Ela será convertida em interface."
+    ],
+    "correct": 1
+  },
+  {
+    "id": 7,
+    "question": "O que significa declarar uma subclasse como non-sealed?",
+    "options": [
+      "Ela não pode mais ser herdada.",
+      "Ela remove a restrição de herança para suas subclasses.",
+      "Ela se torna abstrata.",
+      "Ela passa a ser final.",
+      "Ela deixa de pertencer ao módulo."
+    ],
+    "correct": 1
+  },
+  {
+    "id": 8,
+    "question": "Qual declaração de subclasse é inválida para uma sealed class?",
+    "options": [
+      "final class Cachorro extends Animal {}",
+      "sealed class Cachorro extends Animal permits Poodle {}",
+      "non-sealed class Cachorro extends Animal {}",
+      "class Cachorro extends Animal {}",
+      "Todas as anteriores são válidas."
+    ],
+    "correct": 3
+  },
+  {
+    "id": 9,
+    "question": "Se uma classe estende uma sealed class e não possui nenhum modificador (final, sealed ou non-sealed), o que acontece?",
+    "options": [
+      "Nada.",
+      "A JVM adiciona final automaticamente.",
+      "Erro de compilação.",
+      "A classe torna-se non-sealed automaticamente.",
+      "A classe torna-se sealed automaticamente."
+    ],
+    "correct": 2
+  },
+  {
+    "id": 10,
+    "question": "Qual requisito existe entre uma sealed class e suas subclasses permitidas?",
+    "options": [
+      "Devem estar no mesmo módulo ou, na ausência de módulos, no mesmo pacote.",
+      "Devem estar obrigatoriamente no mesmo arquivo.",
+      "Devem possuir o mesmo nome.",
+      "Devem ser públicas.",
+      "Devem ser abstratas."
+    ],
+    "correct": 0
+  },
+  {
+    "id": 11,
+    "question": "Antes da introdução dos módulos (JPMS), onde as subclasses permitidas deveriam estar?",
+    "options": [
+      "No mesmo pacote.",
+      "Na mesma classe.",
+      "No mesmo arquivo JAR.",
+      "Na mesma interface.",
+      "Na mesma JVM."
+    ],
+    "correct": 0
+  },
+  {
+    "id": 12,
+    "question": "Quando um projeto utiliza módulos (JPMS), qual é a exigência para subclasses permitidas?",
+    "options": [
+      "Devem estar no mesmo módulo.",
+      "Devem estar no mesmo pacote.",
+      "Devem estar no mesmo arquivo.",
+      "Devem ser internas.",
+      "Não existe nenhuma exigência."
+    ],
+    "correct": 0
+  },
+  {
+    "id": 13,
+    "question": "É obrigatório utilizar a cláusula permits?",
+    "options": [
+      "Sempre.",
+      "Nunca.",
+      "Não, quando todas as subclasses permitidas estão declaradas no mesmo arquivo fonte.",
+      "Somente em interfaces.",
+      "Somente em records."
+    ],
+    "correct": 2
+  },
+  {
+    "id": 14,
+    "question": "Quando permits pode ser omitido?",
+    "options": [
+      "Quando existir apenas uma subclasse.",
+      "Quando todas as subclasses estiverem no mesmo arquivo fonte.",
+      "Quando todas forem finais.",
+      "Quando houver módulos.",
+      "Nunca."
+    ],
+    "correct": 1
+  },
+  {
+    "id": 15,
+    "question": "Uma sealed interface pode ser implementada por:",
+    "options": [
+      "Qualquer classe.",
+      "Apenas interfaces.",
+      "Apenas os tipos listados em permits.",
+      "Somente records.",
+      "Somente enums."
+    ],
+    "correct": 2
+  },
+  {
+    "id": 16,
+    "question": "Interfaces seladas utilizam qual palavra-chave para listar implementações permitidas?",
+    "options": [
+      "implements",
+      "permits",
+      "extends",
+      "allows",
+      "inherit"
+    ],
+    "correct": 1
+  },
+  {
+    "id": 17,
+    "question": "Uma record pode implementar uma sealed interface?",
+    "options": [
+      "Não.",
+      "Sim, desde que esteja listada em permits.",
+      "Somente se a interface não for sealed.",
+      "Somente em Java 21.",
+      "Somente se for abstract."
+    ],
+    "correct": 1
+  },
+  {
+    "id": 18,
+    "question": "Uma record que implementa uma sealed interface é implicitamente:",
+    "options": [
+      "sealed",
+      "non-sealed",
+      "abstract",
+      "final",
+      "protected"
+    ],
+    "correct": 3
+  },
+  {
+    "id": 19,
+    "question": "Qual recurso da linguagem Java se beneficia bastante de sealed classes?",
+    "options": [
+      "Reflection.",
+      "Pattern Matching for switch.",
+      "JNI.",
+      "Threads virtuais.",
+      "Generics."
+    ],
+    "correct": 1
+  },
+  {
+    "id": 20,
+    "question": "Por que Pattern Matching for switch funciona melhor com sealed classes?",
+    "options": [
+      "Porque a JVM executa mais rápido.",
+      "Porque o compilador conhece todos os subtipos possíveis.",
+      "Porque elimina casts.",
+      "Porque impede polimorfismo.",
+      "Porque transforma objetos em records."
+    ],
+    "correct": 1
+  },
+  {
+    "id": 21,
+    "question": "Uma sealed class pode ser abstrata?",
+    "options": [
+      "Não.",
+      "Sim.",
+      "Somente se possuir permits.",
+      "Somente em Java 21.",
+      "Somente se implementar interfaces."
+    ],
+    "correct": 1
+  },
+  {
+    "id": 22,
+    "question": "Uma sealed class pode possuir construtores?",
+    "options": [
+      "Não.",
+      "Sim.",
+      "Somente privados.",
+      "Somente protegidos.",
+      "Somente package-private."
+    ],
+    "correct": 1
+  },
+  {
+    "id": 23,
+    "question": "Uma sealed class pode possuir métodos concretos?",
+    "options": [
+      "Não.",
+      "Sim.",
+      "Somente estáticos.",
+      "Somente finais.",
+      "Somente abstratos."
+    ],
+    "correct": 1
+  },
+  {
+    "id": 24,
+    "question": "Uma sealed class pode possuir métodos abstratos?",
+    "options": [
+      "Não.",
+      "Sim, se ela for abstrata.",
+      "Somente interfaces podem.",
+      "Somente records podem.",
+      "Nunca."
+    ],
+    "correct": 1
+  },
+  {
+    "id": 25,
+    "question": "Qual afirmação sobre herança é verdadeira?",
+    "options": [
+      "Uma classe fora de permits pode estender uma sealed class.",
+      "A cláusula permits controla exatamente quem pode herdar.",
+      "Qualquer interface pode implementar uma sealed interface.",
+      "non-sealed impede herança.",
+      "final permite apenas uma subclasse."
+    ],
+    "correct": 1
+  },
+  {
+    "id": 26,
+    "question": "O modificador non-sealed pode ser utilizado em qualquer classe?",
+    "options": [
+      "Sim.",
+      "Não, apenas em classes que estendem uma sealed class ou implementam uma sealed interface.",
+      "Somente em interfaces.",
+      "Somente em records.",
+      "Somente em enums."
+    ],
+    "correct": 1
+  },
+  {
+    "id": 27,
+    "question": "Uma classe non-sealed pode ser herdada livremente?",
+    "options": [
+      "Não.",
+      "Sim.",
+      "Somente dentro do mesmo pacote.",
+      "Somente dentro do mesmo módulo.",
+      "Somente por records."
+    ],
+    "correct": 1
+  },
+  {
+    "id": 28,
+    "question": "Qual das opções representa uma hierarquia completamente fechada?",
+    "options": [
+      "sealed -> non-sealed",
+      "sealed -> sealed -> non-sealed",
+      "sealed -> final",
+      "non-sealed -> final",
+      "sealed -> abstract"
+    ],
+    "correct": 2
+  },
+  {
+    "id": 29,
+    "question": "Qual das opções representa uma hierarquia parcialmente aberta?",
+    "options": [
+      "sealed -> non-sealed",
+      "sealed -> final",
+      "final -> final",
+      "record -> final",
+      "sealed -> record"
+    ],
+    "correct": 0
+  },
+  {
+    "id": 30,
+    "question": "Qual afirmação resume corretamente o objetivo das sealed classes?",
+    "options": [
+      "Eliminar o polimorfismo.",
+      "Permitir múltipla herança.",
+      "Dar ao desenvolvedor controle explícito sobre a hierarquia de herança.",
+      "Substituir classes abstratas.",
+      "Melhorar automaticamente o desempenho da aplicação."
+    ],
+    "correct": 2
+  }
+]

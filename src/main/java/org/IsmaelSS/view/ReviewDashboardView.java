@@ -5,7 +5,6 @@ import javafx.geometry.Rectangle2D;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
-import javafx.scene.control.Separator;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
@@ -31,8 +30,10 @@ public class ReviewDashboardView {
     private final VBox root;
     private final TextField searchField;
     private final VBox cardContainer;
+    private final VBox upcomingContainer;
     private final TimelineView timelineView;
     private final ScrollPane cardScrollPane;
+    private final ScrollPane upcomingScrollPane;
     private final ScrollPane timelineScrollPane;
     private List<Theme> themes;
 
@@ -60,21 +61,31 @@ public class ReviewDashboardView {
         cardScrollPane.setVbarPolicy(ScrollPane.ScrollBarPolicy.AS_NEEDED);
         VBox.setVgrow(cardScrollPane, Priority.ALWAYS);
 
-        // Timeline section (30% of available space)
+        // Upcoming section (left half of bottom 30%)
+        Label upcomingTitle = new Label("Próximos 7 dias");
+        upcomingTitle.getStyleClass().add("title");
+        upcomingContainer = new VBox(4);
+        upcomingScrollPane = new ScrollPane(new VBox(4, upcomingTitle, upcomingContainer));
+        upcomingScrollPane.setFitToWidth(true);
+        upcomingScrollPane.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
+        upcomingScrollPane.setVbarPolicy(ScrollPane.ScrollBarPolicy.AS_NEEDED);
+
+        // Timeline section (right half of bottom 30%)
         Label timelineTitle = new Label("Histórico de Estudos");
         timelineTitle.getStyleClass().add("title");
         timelineView = new TimelineView();
-
-        VBox timelineContent = new VBox(4, timelineTitle, timelineView);
-        timelineContent.setPadding(new Insets(4, 0, 0, 0));
-        timelineScrollPane = new ScrollPane(timelineContent);
+        timelineScrollPane = new ScrollPane(new VBox(4, timelineTitle, timelineView));
         timelineScrollPane.setFitToWidth(true);
         timelineScrollPane.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
         timelineScrollPane.setVbarPolicy(ScrollPane.ScrollBarPolicy.AS_NEEDED);
-        VBox.setVgrow(timelineScrollPane, Priority.NEVER);
 
-        // Root: no scroll, just stacks the two sections
-        root = new VBox(0, title, searchField, cardScrollPane, timelineScrollPane);
+        // Bottom row: upcoming | timeline
+        HBox bottomRow = new HBox(8, upcomingScrollPane, timelineScrollPane);
+        HBox.setHgrow(upcomingScrollPane, Priority.ALWAYS);
+        HBox.setHgrow(timelineScrollPane, Priority.ALWAYS);
+
+        // Root: no scroll
+        root = new VBox(0, title, searchField, cardScrollPane, bottomRow);
         root.getStyleClass().add("background");
         root.setPadding(new Insets(16));
 
@@ -82,16 +93,17 @@ public class ReviewDashboardView {
         root.maxWidthProperty().set(screenBounds.getWidth());
         root.maxHeightProperty().set(screenBounds.getHeight());
 
-        // Proportion: card section 70%, timeline 30%
+        // Proportion: cards 70%, bottom 30%
         root.heightProperty().addListener((obs, oldVal, newVal) -> {
-            double total = newVal.doubleValue() - 80; // approx title+search+padding
+            double total = newVal.doubleValue() - 80;
             if (total > 0) {
                 cardScrollPane.maxHeightProperty().set(total * 0.70);
-                timelineScrollPane.maxHeightProperty().set(total * 0.30);
+                bottomRow.maxHeightProperty().set(total * 0.30);
             }
         });
 
         buildCards(onReviewFactory, onMarkDone);
+        buildUpcoming();
         buildTimeline();
     }
 
@@ -100,6 +112,7 @@ public class ReviewDashboardView {
         this.themes = new ArrayList<>(newThemes);
         searchField.clear();
         buildCards(onReviewFactory, onMarkDone);
+        buildUpcoming();
         buildTimeline();
     }
 
@@ -127,6 +140,31 @@ public class ReviewDashboardView {
             );
             card.setPriority(getThemePriority(theme));
             cardContainer.getChildren().add(card);
+        }
+    }
+
+    private void buildUpcoming() {
+        upcomingContainer.getChildren().clear();
+        Map<String, List<Map.Entry<String, Integer>>> upcoming = statsService.getUpcomingReviews(7);
+        if (upcoming.isEmpty()) {
+            Label empty = new Label("Nenhuma revisão agendada.");
+            empty.getStyleClass().add("label");
+            upcomingContainer.getChildren().add(empty);
+            return;
+        }
+        for (Map.Entry<String, List<Map.Entry<String, Integer>>> themeEntry : upcoming.entrySet()) {
+            int minDays = themeEntry.getValue().stream()
+                    .mapToInt(Map.Entry::getValue).min().orElse(1);
+            LocalDate reviewDate = LocalDate.now().plusDays(minDays - 1);
+            String dateStr = String.format("%02d/%02d", reviewDate.getDayOfMonth(), reviewDate.getMonthValue());
+            HBox row = new HBox(8);
+            row.setPadding(new Insets(2, 0, 2, 0));
+            Label name = new Label(themeEntry.getKey());
+            name.getStyleClass().add("section-title");
+            Label date = new Label(dateStr);
+            date.getStyleClass().add("label");
+            row.getChildren().addAll(name, date);
+            upcomingContainer.getChildren().add(row);
         }
     }
 

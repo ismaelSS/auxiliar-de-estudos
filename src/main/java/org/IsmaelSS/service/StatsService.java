@@ -268,6 +268,27 @@ public class StatsService {
     }
 
     /**
+     * Returns questions due in the next N days, grouped by theme.
+     * Each entry maps theme name to a list of (questionId, daysUntilDue).
+     */
+    public Map<String, List<Map.Entry<String, Integer>>> getUpcomingReviews(int days) {
+        Map<String, List<Map.Entry<String, Integer>>> upcoming = new TreeMap<>();
+        long now = System.currentTimeMillis();
+        long end = now + (long) days * 86_400_000L;
+        for (Map.Entry<String, ThemeStats> themeEntry : data.getThemes().entrySet()) {
+            for (Map.Entry<String, QuestionScore> qe : themeEntry.getValue().getQuestions().entrySet()) {
+                long nrt = qe.getValue().getNextReviewTimestamp();
+                if (nrt > now && nrt <= end) {
+                    int daysUntil = (int) ((nrt - now) / 86_400_000L) + 1;
+                    upcoming.computeIfAbsent(themeEntry.getKey(), k -> new ArrayList<>())
+                            .add(Map.entry(qe.getKey(), daysUntil));
+                }
+            }
+        }
+        return upcoming;
+    }
+
+    /**
      * Simulates a perfect SM-2 answer for all overdue questions in a theme.
      * Only affects questions where nextReviewTimestamp <= now and > 0.
      */

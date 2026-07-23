@@ -1,0 +1,434 @@
+[
+  {
+    "id": 0,
+    "question": "O que é um enum em Java?",
+    "options": [
+      "Uma interface especial.",
+      "Uma classe utilizada para representar um conjunto fixo de constantes.",
+      "Um tipo de array.",
+      "Um modificador de acesso.",
+      "Um pacote da linguagem."
+    ],
+    "correct": 1
+  },
+  {
+    "id": 1,
+    "question": "Qual palavra-chave é utilizada para declarar um enum?",
+    "options": [
+      "class",
+      "constant",
+      "enum",
+      "enumeration",
+      "final"
+    ],
+    "correct": 2
+  },
+  {
+    "id": 2,
+    "question": "Qual declaração de enum é válida?",
+    "options": [
+      "enum Dia { SEGUNDA, TERCA, QUARTA }",
+      "class enum Dia {}",
+      "enumeration Dia {}",
+      "enum Dia() {}",
+      "enum Dia [] {}"
+    ],
+    "correct": 0
+  },
+  {
+    "id": 3,
+    "question": "Todo enum em Java herda diretamente de:",
+    "options": [
+      "Object",
+      "Serializable",
+      "Enum",
+      "Comparable",
+      "Record"
+    ],
+    "correct": 2
+  },
+  {
+    "id": 4,
+    "question": "É permitido uma classe estender um enum?",
+    "options": [
+      "Sim.",
+      "Somente se o enum for final.",
+      "Não.",
+      "Somente em módulos diferentes.",
+      "Somente se implementar Serializable."
+    ],
+    "correct": 2
+  },
+  {
+    "id": 5,
+    "question": "Um enum pode implementar interfaces?",
+    "options": [
+      "Não.",
+      "Somente Cloneable.",
+      "Sim.",
+      "Somente Comparable.",
+      "Somente Serializable."
+    ],
+    "correct": 2
+  },
+  {
+    "id": 6,
+    "question": "As constantes de um enum são:",
+    "options": [
+      "Objetos.",
+      "Variáveis locais.",
+      "Métodos.",
+      "Construtores.",
+      "Pacotes."
+    ],
+    "correct": 0
+  },
+  {
+    "id": 7,
+    "question": "Quantas instâncias existem de cada constante de um enum?",
+    "options": [
+      "Uma para cada chamada ao new.",
+      "Uma por thread.",
+      "Apenas uma.",
+      "Depende da JVM.",
+      "Uma para cada pacote."
+    ],
+    "correct": 2
+  },
+  {
+    "id": 8,
+    "question": "É possível criar uma instância de um enum utilizando new?",
+    "options": [
+      "Sim.",
+      "Somente dentro do próprio enum.",
+      "Não.",
+      "Somente com reflexão.",
+      "Somente em Java 21."
+    ],
+    "correct": 2
+  },
+  {
+    "id": 9,
+    "question": "Qual método retorna o nome exato da constante?",
+    "options": [
+      "getName()",
+      "value()",
+      "name()",
+      "toName()",
+      "ordinal()"
+    ],
+    "correct": 2
+  },
+  {
+    "id": 10,
+    "question": "Qual método retorna a posição da constante dentro do enum?",
+    "options": [
+      "index()",
+      "position()",
+      "ordinal()",
+      "number()",
+      "rank()"
+    ],
+    "correct": 2
+  },
+  {
+    "id": 11,
+    "question": "Qual método retorna um array contendo todas as constantes do enum?",
+    "options": [
+      "all()",
+      "list()",
+      "values()",
+      "getValues()",
+      "constants()"
+    ],
+    "correct": 2
+  },
+  {
+    "id": 12,
+    "question": "Qual método converte uma String no enum correspondente?",
+    "options": [
+      "parse()",
+      "valueOf()",
+      "fromString()",
+      "of()",
+      "toEnum()"
+    ],
+    "correct": 1
+  },
+  {
+    "id": 13,
+    "question": "O método valueOf() diferencia letras maiúsculas e minúsculas?",
+    "options": [
+      "Não.",
+      "Sim.",
+      "Depende da JVM.",
+      "Somente para Strings Unicode.",
+      "Somente em Java 17."
+    ],
+    "correct": 1
+  },
+  {
+    "id": 14,
+    "question": "O que acontece se valueOf() receber um nome inexistente?",
+    "options": [
+      "Retorna null.",
+      "Retorna a primeira constante.",
+      "Lança IllegalArgumentException.",
+      "Lança NullPointerException.",
+      "Cria automaticamente a constante."
+    ],
+    "correct": 2
+  },
+  {
+    "id": 15,
+    "question": "Qual método é herdado de Object e normalmente é sobrescrito em enums para exibição amigável?",
+    "options": [
+      "clone()",
+      "equals()",
+      "toString()",
+      "hashCode()",
+      "wait()"
+    ],
+    "correct": 2
+  },
+  {
+    "id": 16,
+    "question": "Qual operador deve ser utilizado para comparar constantes de enum?",
+    "options": [
+      "equals() apenas.",
+      "==",
+      "compareTo() apenas.",
+      "instanceof",
+      "hashCode()"
+    ],
+    "correct": 1
+  },
+  {
+    "id": 17,
+    "question": "Por que o operador == funciona corretamente com enums?",
+    "options": [
+      "Porque compara Strings.",
+      "Porque cada constante possui apenas uma instância.",
+      "Porque enums são arrays.",
+      "Porque o compilador converte para int.",
+      "Porque equals() é chamado automaticamente."
+    ],
+    "correct": 1
+  },
+  {
+    "id": 18,
+    "question": "Enums podem possuir atributos?",
+    "options": [
+      "Não.",
+      "Somente públicos.",
+      "Sim.",
+      "Somente static.",
+      "Somente final."
+    ],
+    "correct": 2
+  },
+  {
+    "id": 19,
+    "question": "Enums podem possuir construtores?",
+    "options": [
+      "Não.",
+      "Sim.",
+      "Somente protected.",
+      "Somente public.",
+      "Somente abstract."
+    ],
+    "correct": 1
+  },
+  {
+    "id": 20,
+    "question": "Qual é a visibilidade permitida para construtores de enum?",
+    "options": [
+      "public",
+      "protected",
+      "private (ou implícita)",
+      "package-private apenas",
+      "abstract"
+    ],
+    "correct": 2
+  },
+  {
+    "id": 21,
+    "question": "Por que construtores de enum não podem ser públicos?",
+    "options": [
+      "Porque enums não possuem construtores.",
+      "Porque impedir a criação de novas instâncias é parte do funcionamento do enum.",
+      "Porque public é reservado para classes.",
+      "Porque apenas interfaces possuem construtores públicos.",
+      "Porque a JVM não suporta."
+    ],
+    "correct": 1
+  },
+  {
+    "id": 22,
+    "question": "Enums podem possuir métodos?",
+    "options": [
+      "Não.",
+      "Somente static.",
+      "Sim.",
+      "Somente privados.",
+      "Somente abstratos."
+    ],
+    "correct": 2
+  },
+  {
+    "id": 23,
+    "question": "Enums podem possuir métodos estáticos?",
+    "options": [
+      "Não.",
+      "Sim.",
+      "Somente final.",
+      "Somente protected.",
+      "Somente package-private."
+    ],
+    "correct": 1
+  },
+  {
+    "id": 24,
+    "question": "Um enum pode declarar métodos abstratos?",
+    "options": [
+      "Não.",
+      "Sim, desde que todas as constantes implementem o método.",
+      "Somente se o enum for sealed.",
+      "Somente em Java 21.",
+      "Somente se houver uma única constante."
+    ],
+    "correct": 1
+  },
+  {
+    "id": 25,
+    "question": "Qual estrutura é muito utilizada em conjunto com enums?",
+    "options": [
+      "goto",
+      "switch",
+      "try-with-resources",
+      "assert",
+      "native"
+    ],
+    "correct": 1
+  },
+  {
+    "id": 26,
+    "question": "Ao utilizar switch com enums, normalmente escreve-se:",
+    "options": [
+      "case Dia.SEGUNDA:",
+      "case \"SEGUNDA\":",
+      "case SEGUNDA:",
+      "case 0:",
+      "case new Dia():"
+    ],
+    "correct": 2
+  },
+  {
+    "id": 27,
+    "question": "Qual coleção é otimizada especificamente para enums?",
+    "options": [
+      "HashMap",
+      "TreeSet",
+      "EnumSet",
+      "LinkedList",
+      "PriorityQueue"
+    ],
+    "correct": 2
+  },
+  {
+    "id": 28,
+    "question": "Qual mapa é otimizado especificamente para chaves do tipo enum?",
+    "options": [
+      "HashMap",
+      "LinkedHashMap",
+      "TreeMap",
+      "EnumMap",
+      "ConcurrentHashMap"
+    ],
+    "correct": 3
+  },
+  {
+    "id": 29,
+    "question": "A ordem retornada por values() corresponde a:",
+    "options": [
+      "A ordem alfabética.",
+      "A ordem em que as constantes foram declaradas.",
+      "A ordem do hashCode.",
+      "A ordem de criação na JVM.",
+      "Não existe ordem garantida."
+    ],
+    "correct": 1
+  },
+  {
+    "id": 30,
+    "question": "Qual afirmação sobre ordinal() é considerada uma boa prática?",
+    "options": [
+      "Deve ser usado como identificador permanente.",
+      "É recomendado armazenar seu valor em banco de dados.",
+      "Não deve ser utilizado como identificador persistente, pois pode mudar se a ordem das constantes mudar.",
+      "Sempre retorna o mesmo valor independentemente da declaração.",
+      "É obrigatório utilizá-lo para comparações."
+    ],
+    "correct": 2
+  },
+  {
+    "id": 31,
+    "question": "Qual interface é implementada automaticamente por todos os enums?",
+    "options": [
+      "Runnable",
+      "Comparable",
+      "List",
+      "Map",
+      "Cloneable"
+    ],
+    "correct": 1
+  },
+  {
+    "id": 32,
+    "question": "A implementação de compareTo() em enums compara:",
+    "options": [
+      "O nome em ordem alfabética.",
+      "O hashCode.",
+      "O ordinal das constantes.",
+      "Os atributos do enum.",
+      "O resultado de toString()."
+    ],
+    "correct": 2
+  },
+  {
+    "id": 33,
+    "question": "Qual afirmação sobre serialização de enums é verdadeira?",
+    "options": [
+      "Enums não podem ser serializados.",
+      "Enums são serializáveis automaticamente.",
+      "É necessário implementar Serializable manualmente.",
+      "Somente enums sem atributos podem ser serializados.",
+      "Depende do construtor."
+    ],
+    "correct": 1
+  },
+  {
+    "id": 34,
+    "question": "Qual é uma das principais vantagens de utilizar enums em vez de constantes int ou String?",
+    "options": [
+      "Consumir menos memória obrigatoriamente.",
+      "Maior segurança de tipos (type safety).",
+      "Executar sempre mais rápido.",
+      "Eliminar completamente o uso de switch.",
+      "Permitir herança múltipla."
+    ],
+    "correct": 1
+  },
+  {
+    "id": 35,
+    "question": "Sobre herança em enums, é correto afirmar que:",
+    "options": [
+      "Um enum pode estender outra classe comum.",
+      "Um enum pode estender outro enum.",
+      "Um enum não pode estender nenhuma classe além de Enum.",
+      "Um enum pode estender qualquer classe abstrata.",
+      "Um enum pode escolher sua superclasse."
+    ],
+    "correct": 2
+  }
+]
