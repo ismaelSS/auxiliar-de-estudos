@@ -94,11 +94,11 @@ public class StatsData {
                 this.repCount++;
             } else {
                 this.easeFactor = Math.max(1.3, this.easeFactor - 0.2);
-                this.interval = 1;
-                this.repCount = 0;
             }
             this.lastReviewTimestamp = System.currentTimeMillis();
-            this.nextReviewTimestamp = System.currentTimeMillis() + (long) this.interval * 86_400_000L;
+            if (this.interval > 0) {
+                this.nextReviewTimestamp = System.currentTimeMillis() + (long) this.interval * 86_400_000L;
+            }
         }
 
         /**

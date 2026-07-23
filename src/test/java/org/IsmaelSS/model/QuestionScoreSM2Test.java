@@ -37,11 +37,11 @@ class QuestionScoreSM2Test {
         qs.updateSM2(true);  // interval=3 (ceil(1*2.1)=3), rep=2, ef=2.2
         qs.updateSM2(true);  // interval=7 (ceil(3*2.2)=ceil(6.6)=7), rep=3, ef=2.3
 
-        // Now wrong
+        // Now wrong — interval and repCount preserved, only ef drops
         qs.updateSM2(false);
 
-        assertEquals(1, qs.getInterval(), "wrong should reset interval to 1");
-        assertEquals(0, qs.getRepCount(), "wrong should reset repCount to 0");
+        assertEquals(7, qs.getInterval(), "wrong should not reset interval");
+        assertEquals(3, qs.getRepCount(), "wrong should not reset repCount");
         assertEquals(2.1, qs.getEaseFactor(), 0.001, "ef = 2.3 - 0.2");
     }
 
