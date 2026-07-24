@@ -40,6 +40,7 @@ public class ReviewDashboardView {
     private boolean customStudyMode = false;
     private Button modeToggleButton;
     private Button startStudyBtn;
+    private HBox actionsRow;
     private Runnable onCustomStudyStart;
 
     public ReviewDashboardView(StatsService statsService, List<Theme> themes,
@@ -103,8 +104,14 @@ public class ReviewDashboardView {
         HBox.setHgrow(upcomingScrollPane, Priority.ALWAYS);
         HBox.setHgrow(timelineScrollPane, Priority.ALWAYS);
 
+        // Actions row: toggle always visible, start button hidden until custom mode
+        startStudyBtn.setVisible(false);
+        startStudyBtn.setManaged(false);
+        HBox actionsRow = new HBox(8, modeToggleButton, startStudyBtn);
+        actionsRow.setAlignment(javafx.geometry.Pos.CENTER_LEFT);
+
         // Root: no scroll
-        root = new VBox(0, title, modeToggleButton, searchField, startStudyBtn, cardScrollPane, bottomRow);
+        root = new VBox(0, title, searchField, cardScrollPane, actionsRow, bottomRow);
         root.getStyleClass().add("background");
         root.setPadding(new Insets(16));
 
