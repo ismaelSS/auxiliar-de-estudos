@@ -43,6 +43,7 @@ public class ReviewDashboardView {
     private Button startStudyBtn;
     private HBox actionsRow;
     private HBox questionCountRow;
+    private VBox customStudyControls;
     private TextField questionCountField;
     private CheckBox selectAllCheckBox;
     private Runnable onCustomStudyStart;
@@ -138,10 +139,18 @@ public class ReviewDashboardView {
         questionCountRow.setManaged(false);
 
         HBox actionsRow = new HBox(8, modeToggleButton, startStudyBtn);
-        actionsRow.setAlignment(javafx.geometry.Pos.CENTER_LEFT);
+        actionsRow.setAlignment(javafx.geometry.Pos.CENTER);
+
+        // Custom study controls container (centered with padding)
+        VBox customStudyControls = new VBox(8, questionCountRow, actionsRow);
+        customStudyControls.setAlignment(javafx.geometry.Pos.CENTER);
+        customStudyControls.setPadding(new Insets(8, 16, 8, 16));
+        customStudyControls.setVisible(false);
+        customStudyControls.setManaged(false);
+        this.customStudyControls = customStudyControls;
 
         // Root: no scroll
-        root = new VBox(0, title, searchField, cardScrollPane, questionCountRow, actionsRow, bottomRow);
+        root = new VBox(0, title, searchField, cardScrollPane, customStudyControls, bottomRow);
         root.getStyleClass().add("background");
         root.setPadding(new Insets(16));
 
@@ -149,11 +158,11 @@ public class ReviewDashboardView {
         root.maxWidthProperty().set(screenBounds.getWidth());
         root.maxHeightProperty().set(screenBounds.getHeight());
 
-        // Proportion: cards 70%, bottom 30%
+        // Proportion: cards 60%, custom study 10%, bottom 30%
         root.heightProperty().addListener((obs, oldVal, newVal) -> {
             double total = newVal.doubleValue() - 80;
             if (total > 0) {
-                cardScrollPane.maxHeightProperty().set(total * 0.70);
+                cardScrollPane.maxHeightProperty().set(total * 0.60);
                 bottomRow.maxHeightProperty().set(total * 0.30);
             }
         });
@@ -181,11 +190,9 @@ public class ReviewDashboardView {
         customStudyMode = !customStudyMode;
         if (customStudyMode) {
             modeToggleButton.getStyleClass().add("button-mode-toggle-active");
-            startStudyBtn.setVisible(true);
-            startStudyBtn.setManaged(true);
+            customStudyControls.setVisible(true);
+            customStudyControls.setManaged(true);
             startStudyBtn.setDisable(true);
-            questionCountRow.setVisible(true);
-            questionCountRow.setManaged(true);
             questionCountField.setText("Todas");
             selectAllCheckBox.setSelected(false);
             for (Node node : cardContainer.getChildren()) {
@@ -196,10 +203,8 @@ public class ReviewDashboardView {
             updateMaxQuestions();
         } else {
             modeToggleButton.getStyleClass().remove("button-mode-toggle-active");
-            startStudyBtn.setVisible(false);
-            startStudyBtn.setManaged(false);
-            questionCountRow.setVisible(false);
-            questionCountRow.setManaged(false);
+            customStudyControls.setVisible(false);
+            customStudyControls.setManaged(false);
             for (Node node : cardContainer.getChildren()) {
                 if (node instanceof ThemeCardNode card) {
                     card.setCustomStudyMode(false);
