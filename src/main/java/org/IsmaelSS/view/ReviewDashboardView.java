@@ -4,6 +4,7 @@ import javafx.geometry.Insets;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
@@ -41,6 +42,9 @@ public class ReviewDashboardView {
     private Button modeToggleButton;
     private Button startStudyBtn;
     private HBox actionsRow;
+    private HBox questionCountRow;
+    private TextField questionCountField;
+    private CheckBox selectAllCheckBox;
     private Runnable onCustomStudyStart;
 
     public ReviewDashboardView(StatsService statsService, List<Theme> themes,
@@ -107,11 +111,37 @@ public class ReviewDashboardView {
         // Actions row: toggle always visible, start button hidden until custom mode
         startStudyBtn.setVisible(false);
         startStudyBtn.setManaged(false);
+
+        // Question count row (hidden until custom mode)
+        Label countLabel = new Label("Questões por tema:");
+        countLabel.getStyleClass().add("label");
+        questionCountField = new TextField();
+        questionCountField.getStyleClass().add("text-field");
+        questionCountField.setPrefWidth(60);
+        questionCountField.setText("Todas");
+        questionCountField.setPromptText("Todas");
+        Label maxLabel = new Label("");
+        maxLabel.getStyleClass().add("label");
+        selectAllCheckBox = new CheckBox("Selecionar todas");
+        selectAllCheckBox.getStyleClass().add("check-box");
+        selectAllCheckBox.setOnAction(e -> {
+            boolean checked = selectAllCheckBox.isSelected();
+            for (Node node : cardContainer.getChildren()) {
+                if (node instanceof ThemeCardNode card) {
+                    card.setSelected(checked);
+                }
+            }
+        });
+        questionCountRow = new HBox(8, countLabel, questionCountField, maxLabel, selectAllCheckBox);
+        questionCountRow.setAlignment(javafx.geometry.Pos.CENTER_LEFT);
+        questionCountRow.setVisible(false);
+        questionCountRow.setManaged(false);
+
         HBox actionsRow = new HBox(8, modeToggleButton, startStudyBtn);
         actionsRow.setAlignment(javafx.geometry.Pos.CENTER_LEFT);
 
         // Root: no scroll
-        root = new VBox(0, title, searchField, cardScrollPane, actionsRow, bottomRow);
+        root = new VBox(0, title, searchField, cardScrollPane, questionCountRow, actionsRow, bottomRow);
         root.getStyleClass().add("background");
         root.setPadding(new Insets(16));
 
@@ -154,15 +184,22 @@ public class ReviewDashboardView {
             startStudyBtn.setVisible(true);
             startStudyBtn.setManaged(true);
             startStudyBtn.setDisable(true);
+            questionCountRow.setVisible(true);
+            questionCountRow.setManaged(true);
+            questionCountField.setText("Todas");
+            selectAllCheckBox.setSelected(false);
             for (Node node : cardContainer.getChildren()) {
                 if (node instanceof ThemeCardNode card) {
                     card.setCustomStudyMode(true);
                 }
             }
+            updateMaxQuestions();
         } else {
             modeToggleButton.getStyleClass().remove("button-mode-toggle-active");
             startStudyBtn.setVisible(false);
             startStudyBtn.setManaged(false);
+            questionCountRow.setVisible(false);
+            questionCountRow.setManaged(false);
             for (Node node : cardContainer.getChildren()) {
                 if (node instanceof ThemeCardNode card) {
                     card.setCustomStudyMode(false);
@@ -184,6 +221,35 @@ public class ReviewDashboardView {
 
     public boolean isCustomStudyMode() { return customStudyMode; }
 
+    public int getQuestionCount() {
+        String text = questionCountField.getText().trim();
+        if (text.isEmpty() || "Todas".equalsIgnoreCase(text)) return Integer.MAX_VALUE;
+        try {
+            return Integer.parseInt(text);
+        } catch (NumberFormatException e) {
+            return Integer.MAX_VALUE;
+        }
+    }
+
+    private void updateMaxQuestions() {
+        int minQuestions = Integer.MAX_VALUE;
+        for (Node node : cardContainer.getChildren()) {
+            if (node instanceof ThemeCardNode card && card.isStudySelected()) {
+                for (Theme t : themes) {
+                    if (t.getName().equals(card.getThemeName())) {
+                        minQuestions = Math.min(minQuestions, t.getQuestionCount());
+                        break;
+                    }
+                }
+            }
+        }
+        if (minQuestions == Integer.MAX_VALUE || minQuestions == 0) {
+            questionCountField.setPromptText("Todas");
+        } else {
+            questionCountField.setPromptText("Max: " + minQuestions);
+        }
+    }
+
     private void updateStartButton() {
         if (!customStudyMode) return;
         boolean anySelected = false;
@@ -194,6 +260,7 @@ public class ReviewDashboardView {
             }
         }
         startStudyBtn.setDisable(!anySelected);
+        updateMaxQuestions();
     }
 
     private void buildCards(Function<Theme, Runnable> onReviewFactory, Consumer<String> onMarkDone) {

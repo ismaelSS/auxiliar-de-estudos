@@ -104,8 +104,7 @@ public class ThemeSelectionController {
         List<String> selectedNames = dashboard.getSelectedThemeNames();
         if (selectedNames.isEmpty()) return;
 
-        int count = askQuestionCount();
-        if (count == 0) return;
+        int count = dashboard.getQuestionCount();
 
         List<Theme> selectedThemes = new ArrayList<>();
         for (Theme theme : themes) {
