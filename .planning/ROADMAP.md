@@ -200,3 +200,24 @@ Plans:
 **Wave 2** *(blocked on Wave 1 completion)*
 
 - [ ] 12-02-PLAN.md — Dashboard UI + Integration: CSS, views, controller wiring (Wave 2)
+
+## Phase 13: Study Mode Overhaul
+
+**Goal:** Renomear aba "Treinar" para "Estudar", adicionar seleção de quantidade de questões antes da rodada, e criar seção de estudo personalizado com seleção de temas via checkbox nos cards.
+**Requirements:** STUDY-01, STUDY-02, STUDY-03, STUDY-04, STUDY-05
+**Depends on:** Phase 12
+**Plans:** 2 plans (Wave 1 → Wave 2)
+**Success Criteria:**
+
+1. Aba "Treinar" renomeada para "Estudar"
+2. Botão "Revisar" renomeado para "Estudar"
+3. Antes de iniciar rodada, usuário pode escolher quantas questões serão respondidas
+4. Nova seção de estudo personalizado com seleção de temas
+5. Cards de temas possuem checkbox para seleção no estudo personalizado
+6. Questões respondidas no estudo personalizado contam como estudadas
+7. Todos os testes existentes continuam passando
+
+Plans:
+
+- [ ] 13-01-PLAN.md — Rename tab/button + question count dialog + RoundState factory + tests (Wave 1)
+- [ ] 13-02-PLAN.md — Custom study UI: mode toggle, checkboxes, start button, controller wiring, CSS (Wave 2)
