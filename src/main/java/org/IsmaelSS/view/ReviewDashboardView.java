@@ -109,7 +109,7 @@ public class ReviewDashboardView {
         HBox.setHgrow(upcomingScrollPane, Priority.ALWAYS);
         HBox.setHgrow(timelineScrollPane, Priority.ALWAYS);
 
-        // Actions row: toggle always visible, start button hidden until custom mode
+        // Actions row: start button hidden until custom mode
         startStudyBtn.setVisible(false);
         startStudyBtn.setManaged(false);
 
@@ -135,14 +135,11 @@ public class ReviewDashboardView {
         });
         questionCountRow = new HBox(8, countLabel, questionCountField, maxLabel, selectAllCheckBox);
         questionCountRow.setAlignment(javafx.geometry.Pos.CENTER_LEFT);
-        questionCountRow.setVisible(false);
-        questionCountRow.setManaged(false);
 
-        HBox actionsRow = new HBox(8, modeToggleButton, startStudyBtn);
-        actionsRow.setAlignment(javafx.geometry.Pos.CENTER);
-
-        // Custom study controls container (centered with padding)
-        VBox customStudyControls = new VBox(8, questionCountRow, actionsRow);
+        // Custom study controls container (centered with padding, hidden until custom mode)
+        HBox startRow = new HBox(8, startStudyBtn);
+        startRow.setAlignment(javafx.geometry.Pos.CENTER);
+        VBox customStudyControls = new VBox(8, questionCountRow, startRow);
         customStudyControls.setAlignment(javafx.geometry.Pos.CENTER);
         customStudyControls.setPadding(new Insets(8, 16, 8, 16));
         customStudyControls.setVisible(false);
@@ -150,7 +147,7 @@ public class ReviewDashboardView {
         this.customStudyControls = customStudyControls;
 
         // Root: no scroll
-        root = new VBox(0, title, searchField, cardScrollPane, customStudyControls, bottomRow);
+        root = new VBox(0, title, searchField, cardScrollPane, modeToggleButton, customStudyControls, bottomRow);
         root.getStyleClass().add("background");
         root.setPadding(new Insets(16));
 
