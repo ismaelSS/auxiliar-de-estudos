@@ -3,6 +3,7 @@ package org.IsmaelSS.view;
 import javafx.geometry.Insets;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.Node;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
@@ -36,6 +37,10 @@ public class ReviewDashboardView {
     private final ScrollPane upcomingScrollPane;
     private final ScrollPane timelineScrollPane;
     private List<Theme> themes;
+    private boolean customStudyMode = false;
+    private Button modeToggleButton;
+    private Button startStudyBtn;
+    private Runnable onCustomStudyStart;
 
     public ReviewDashboardView(StatsService statsService, List<Theme> themes,
                                Function<Theme, Runnable> onReviewFactory,
@@ -46,6 +51,11 @@ public class ReviewDashboardView {
         // Title
         Label title = new Label("Revisão Espaçada");
         title.getStyleClass().add("title");
+
+        // Mode toggle button
+        modeToggleButton = new Button("Estudo Personalizado");
+        modeToggleButton.getStyleClass().add("button-mode-toggle");
+        modeToggleButton.setOnAction(e -> toggleCustomStudyMode());
 
         // Search field
         searchField = new TextField();
@@ -60,6 +70,15 @@ public class ReviewDashboardView {
         cardScrollPane.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
         cardScrollPane.setVbarPolicy(ScrollPane.ScrollBarPolicy.AS_NEEDED);
         VBox.setVgrow(cardScrollPane, Priority.ALWAYS);
+
+        // Start study button (hidden by default)
+        startStudyBtn = new Button("Iniciar Estudo");
+        startStudyBtn.getStyleClass().add("button-start-study");
+        startStudyBtn.setVisible(false);
+        startStudyBtn.setManaged(false);
+        startStudyBtn.setOnAction(e -> {
+            if (onCustomStudyStart != null) onCustomStudyStart.run();
+        });
 
         // Upcoming section (left half of bottom 30%)
         Label upcomingTitle = new Label("Próximos 7 dias");
@@ -85,7 +104,7 @@ public class ReviewDashboardView {
         HBox.setHgrow(timelineScrollPane, Priority.ALWAYS);
 
         // Root: no scroll
-        root = new VBox(0, title, searchField, cardScrollPane, bottomRow);
+        root = new VBox(0, title, modeToggleButton, searchField, startStudyBtn, cardScrollPane, bottomRow);
         root.getStyleClass().add("background");
         root.setPadding(new Insets(16));
 
@@ -119,6 +138,57 @@ public class ReviewDashboardView {
     public TextField getSearchField() { return searchField; }
     public VBox getContent() { return root; }
 
+    public void setOnCustomStudyStart(Runnable callback) { this.onCustomStudyStart = callback; }
+
+    private void toggleCustomStudyMode() {
+        customStudyMode = !customStudyMode;
+        if (customStudyMode) {
+            modeToggleButton.getStyleClass().add("button-mode-toggle-active");
+            startStudyBtn.setVisible(true);
+            startStudyBtn.setManaged(true);
+            startStudyBtn.setDisable(true);
+            for (Node node : cardContainer.getChildren()) {
+                if (node instanceof ThemeCardNode card) {
+                    card.setCustomStudyMode(true);
+                }
+            }
+        } else {
+            modeToggleButton.getStyleClass().remove("button-mode-toggle-active");
+            startStudyBtn.setVisible(false);
+            startStudyBtn.setManaged(false);
+            for (Node node : cardContainer.getChildren()) {
+                if (node instanceof ThemeCardNode card) {
+                    card.setCustomStudyMode(false);
+                    card.setSelected(false);
+                }
+            }
+        }
+    }
+
+    public List<String> getSelectedThemeNames() {
+        List<String> selected = new ArrayList<>();
+        for (Node node : cardContainer.getChildren()) {
+            if (node instanceof ThemeCardNode card && card.isStudySelected()) {
+                selected.add(card.getThemeName());
+            }
+        }
+        return selected;
+    }
+
+    public boolean isCustomStudyMode() { return customStudyMode; }
+
+    private void updateStartButton() {
+        if (!customStudyMode) return;
+        boolean anySelected = false;
+        for (Node node : cardContainer.getChildren()) {
+            if (node instanceof ThemeCardNode card && card.isStudySelected()) {
+                anySelected = true;
+                break;
+            }
+        }
+        startStudyBtn.setDisable(!anySelected);
+    }
+
     private void buildCards(Function<Theme, Runnable> onReviewFactory, Consumer<String> onMarkDone) {
         cardContainer.getChildren().clear();
         List<Theme> sorted = new ArrayList<>(themes);
@@ -139,6 +209,7 @@ public class ReviewDashboardView {
                     () -> onMarkDone.accept(theme.getName())
             );
             card.setPriority(getThemePriority(theme));
+            card.setOnSelectionChange(this::updateStartButton);
             cardContainer.getChildren().add(card);
         }
     }

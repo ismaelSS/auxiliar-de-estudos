@@ -3,6 +3,7 @@ package org.IsmaelSS.view;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Region;
@@ -25,6 +26,8 @@ public class ThemeCardNode extends VBox {
     private final HBox fixationBar;
     private final Button revisarBtn;
     private final Button feitoBtn;
+    private final CheckBox studyCheckBox;
+    private Runnable onSelectionChange;
 
     private static final String[] PHASE_STYLES = {
             "fixation-segment-aprendendo",
@@ -52,7 +55,16 @@ public class ThemeCardNode extends VBox {
 
         badgeRow = new HBox(6);
         badgeRow.setAlignment(Pos.CENTER_LEFT);
-        badgeRow.getChildren().addAll(nameLabel, dominioPrefix, dominioLabel);
+
+        studyCheckBox = new CheckBox();
+        studyCheckBox.setVisible(false);
+        studyCheckBox.setManaged(false);
+        studyCheckBox.getStyleClass().add("theme-card-checkbox");
+        studyCheckBox.selectedProperty().addListener((obs, old, val) -> {
+            if (onSelectionChange != null) onSelectionChange.run();
+        });
+
+        badgeRow.getChildren().addAll(studyCheckBox, nameLabel, dominioPrefix, dominioLabel);
         updateBadge(overdueCount);
 
         // Row 2: fixation bar
@@ -65,7 +77,7 @@ public class ThemeCardNode extends VBox {
         buildFixationBar(fixationDist, questionCount);
 
         // Row 3: action buttons
-        revisarBtn = new Button("Revisar");
+        revisarBtn = new Button("Estudar");
         revisarBtn.getStyleClass().add("button-revisar");
         revisarBtn.setOnAction(e -> onReview.run());
 
@@ -95,6 +107,23 @@ public class ThemeCardNode extends VBox {
         updateBadge(overdueCount);
         dominioLabel.setText(dominioPercent + "%");
         buildFixationBar(fixationDist, questionCount);
+    }
+
+    public void setCustomStudyMode(boolean active) {
+        studyCheckBox.setVisible(active);
+        studyCheckBox.setManaged(active);
+    }
+
+    public boolean isStudySelected() {
+        return studyCheckBox.isSelected();
+    }
+
+    public void setSelected(boolean selected) {
+        studyCheckBox.setSelected(selected);
+    }
+
+    public void setOnSelectionChange(Runnable listener) {
+        this.onSelectionChange = listener;
     }
 
     private void updateBadge(int overdueCount) {

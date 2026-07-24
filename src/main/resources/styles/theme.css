@@ -359,3 +359,60 @@
     -fx-padding: 8 12 8 12;
 }
 .search-field:focused { -fx-border-color: #fe9a00; }
+
+/* Custom study checkbox inside theme card */
+.theme-card-checkbox {
+    -fx-padding: 0 4 0 0;
+}
+.theme-card-checkbox .box {
+    -fx-background-color: #020817;
+    -fx-border-color: #333355;
+    -fx-border-radius: 3;
+    -fx-background-radius: 3;
+    -fx-padding: 3;
+}
+.theme-card-checkbox:selected .box {
+    -fx-background-color: #fe9a00;
+    -fx-border-color: #fe9a00;
+}
+.theme-card-checkbox:selected .mark {
+    -fx-background-color: #ffffff;
+}
+
+/* Mode toggle button */
+.button-mode-toggle {
+    -fx-background-color: transparent;
+    -fx-text-fill: #fe9a00;
+    -fx-border-color: #fe9a00;
+    -fx-border-radius: 4;
+    -fx-padding: 6 16 6 16;
+    -fx-cursor: hand;
+}
+.button-mode-toggle:hover {
+    -fx-background-color: #1a1a2e;
+}
+.button-mode-toggle-active {
+    -fx-background-color: #fe9a00;
+    -fx-text-fill: #ffffff;
+}
+
+/* Start study button */
+.button-start-study {
+    -fx-background-color: #1abc9c;
+    -fx-text-fill: #ffffff;
+    -fx-background-radius: 4;
+    -fx-padding: 8 24 8 24;
+    -fx-cursor: hand;
+    -fx-font-weight: bold;
+}
+.button-start-study:hover {
+    -fx-background-color: #2dd4a8;
+}
+.button-start-study:pressed {
+    -fx-background-color: #16a085;
+}
+.button-start-study:disabled {
+    -fx-background-color: #333355;
+    -fx-text-fill: #666677;
+    -fx-cursor: default;
+}

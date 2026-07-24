@@ -156,6 +156,45 @@ public class RoundState {
         return new RoundState(questions, true);
     }
 
+    /**
+     * Creates a due review round with a maximum question limit.
+     * Delegates to the existing logic, then truncates after shuffle.
+     */
+    public static RoundState createDueReviewRound(Theme theme, StatsService statsService, int maxQuestions) {
+        RoundState full = createDueReviewRound(theme, statsService);
+        if (maxQuestions > 0 && maxQuestions < full.getSelectedQuestionsCount()) {
+            List<RoundQuestion> truncated = new ArrayList<>(full.roundQuestions.subList(0, maxQuestions));
+            return new RoundState(truncated, true);
+        }
+        return full;
+    }
+
+    /**
+     * Creates a custom study round with questions from multiple selected themes.
+     * Each theme contributes up to {@code questionsPerTheme} shuffled questions.
+     * All questions from all themes are pooled and shuffled.
+     */
+    public static RoundState createCustomStudyRound(
+            List<Theme> selectedThemes, int questionsPerTheme, StatsService statsService) {
+        List<RoundQuestion> questions = new ArrayList<>();
+        for (Theme theme : selectedThemes) {
+            List<Question> themeQuestions = new ArrayList<>(theme.getQuestions());
+            Collections.shuffle(themeQuestions);
+            int take = Math.min(questionsPerTheme, themeQuestions.size());
+            for (int i = 0; i < take; i++) {
+                Question q = themeQuestions.get(i);
+                List<String> original = q.getOptions();
+                String correctText = original.get(q.getCorrect());
+                List<String> shuffled = new ArrayList<>(original);
+                Collections.shuffle(shuffled);
+                int newCorrect = shuffled.indexOf(correctText);
+                questions.add(new RoundQuestion(theme.getName(), q, shuffled, newCorrect));
+            }
+        }
+        Collections.shuffle(questions);
+        return new RoundState(questions, true);
+    }
+
     public boolean isComplete() {
         return currentIndex >= roundQuestions.size();
     }

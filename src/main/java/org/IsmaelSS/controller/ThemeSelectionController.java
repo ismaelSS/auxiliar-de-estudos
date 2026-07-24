@@ -2,6 +2,8 @@ package org.IsmaelSS.controller;
 
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.Dialog;
 import javafx.scene.control.Tab;
 import org.IsmaelSS.model.RoundState;
 import org.IsmaelSS.model.Theme;
@@ -13,6 +15,7 @@ import org.IsmaelSS.view.ReviewDashboardView;
 import org.IsmaelSS.view.StudyRoundView;
 import org.IsmaelSS.view.ThemeSelectionView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ThemeSelectionController {
@@ -50,14 +53,72 @@ public class ThemeSelectionController {
                 theme -> () -> handleReviewTheme(theme),
                 this::handleMarkAsDone
         );
+        dashboard.setOnCustomStudyStart(() -> handleCustomStudy());
         view.setDashboard(dashboard);
     }
 
     private void handleReviewTheme(Theme theme) {
-        RoundState roundState = RoundState.createDueReviewRound(theme, statsService);
+        int count = askQuestionCount();
+        if (count == 0) return;
+
+        RoundState roundState = RoundState.createDueReviewRound(theme, statsService, count);
         if (roundState.getSelectedQuestionsCount() == 0) {
             return;
         }
+        StudyRoundView studyRoundView = new StudyRoundView();
+        StudyRoundController studyRoundController = new StudyRoundController(
+                roundState, studyRoundView, screenController, statsService);
+        studyRoundController.setOnRoundEndCallback(() -> {
+            refreshDashboard();
+            screenController.switchTo("themeSelection");
+        });
+        studyRoundController.initialize();
+    }
+
+    private int askQuestionCount() {
+        Dialog<Integer> dialog = new Dialog<>();
+        dialog.setTitle("Número de questões");
+        dialog.setHeaderText("Quantas questões por tema?");
+
+        ComboBox<String> comboBox = new ComboBox<>();
+        comboBox.getItems().addAll("5", "10", "15", "20", "Todas");
+        comboBox.setValue("Todas");
+        comboBox.getStyleClass().add("combo-box");
+        dialog.getDialogPane().setContent(comboBox);
+
+        dialog.getDialogPane().getButtonTypes().addAll(ButtonType.OK, ButtonType.CANCEL);
+        dialog.setResultConverter(bt -> {
+            if (bt == ButtonType.OK) {
+                return "Todas".equals(comboBox.getValue()) ? Integer.MAX_VALUE : Integer.parseInt(comboBox.getValue());
+            }
+            return null;
+        });
+
+        return dialog.showAndWait().orElse(0);
+    }
+
+    private void handleCustomStudy() {
+        ReviewDashboardView dashboard = view.getDashboard();
+        if (dashboard == null || !dashboard.isCustomStudyMode()) return;
+
+        List<String> selectedNames = dashboard.getSelectedThemeNames();
+        if (selectedNames.isEmpty()) return;
+
+        int count = askQuestionCount();
+        if (count == 0) return;
+
+        List<Theme> selectedThemes = new ArrayList<>();
+        for (Theme theme : themes) {
+            if (selectedNames.contains(theme.getName())) {
+                selectedThemes.add(theme);
+            }
+        }
+
+        if (selectedThemes.isEmpty()) return;
+
+        RoundState roundState = RoundState.createCustomStudyRound(selectedThemes, count, statsService);
+        if (roundState.getSelectedQuestionsCount() == 0) return;
+
         StudyRoundView studyRoundView = new StudyRoundView();
         StudyRoundController studyRoundController = new StudyRoundController(
                 roundState, studyRoundView, screenController, statsService);

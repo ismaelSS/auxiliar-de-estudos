@@ -17,7 +17,7 @@ public class ThemeSelectionView {
     private ReviewDashboardView dashboardView;
 
     public ThemeSelectionView() {
-        jogarTab = new Tab("Treinar", new VBox());
+        jogarTab = new Tab("Estudar", new VBox());
         jogarTab.setClosable(false);
 
         relatoriosTab = new Tab("Relatórios");
