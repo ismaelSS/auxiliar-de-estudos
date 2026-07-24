@@ -115,7 +115,7 @@ public class ReviewDashboardView {
         countLabel.getStyleClass().add("label");
         questionCountField = new TextField();
         questionCountField.getStyleClass().add("text-field");
-        questionCountField.setPrefWidth(60);
+        questionCountField.setPrefWidth(70);
         questionCountField.setText("Todas");
         questionCountField.setPromptText("Todas");
         Label maxLabel = new Label("");
