@@ -189,6 +189,8 @@ public class ReviewDashboardView {
             modeToggleButton.getStyleClass().add("button-mode-toggle-active");
             customStudyControls.setVisible(true);
             customStudyControls.setManaged(true);
+            startStudyBtn.setVisible(true);
+            startStudyBtn.setManaged(true);
             startStudyBtn.setDisable(true);
             questionCountField.setText("Todas");
             selectAllCheckBox.setSelected(false);
@@ -202,6 +204,8 @@ public class ReviewDashboardView {
             modeToggleButton.getStyleClass().remove("button-mode-toggle-active");
             customStudyControls.setVisible(false);
             customStudyControls.setManaged(false);
+            startStudyBtn.setVisible(false);
+            startStudyBtn.setManaged(false);
             for (Node node : cardContainer.getChildren()) {
                 if (node instanceof ThemeCardNode card) {
                     card.setCustomStudyMode(false);
