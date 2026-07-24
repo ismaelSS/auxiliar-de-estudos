@@ -93,6 +93,7 @@ public class ReviewDashboardView {
         upcomingScrollPane.setFitToWidth(true);
         upcomingScrollPane.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
         upcomingScrollPane.setVbarPolicy(ScrollPane.ScrollBarPolicy.AS_NEEDED);
+        upcomingScrollPane.getStyleClass().add("section-panel");
 
         // Timeline section (right half of bottom 30%)
         Label timelineTitle = new Label("Histórico de Estudos");
@@ -102,6 +103,7 @@ public class ReviewDashboardView {
         timelineScrollPane.setFitToWidth(true);
         timelineScrollPane.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
         timelineScrollPane.setVbarPolicy(ScrollPane.ScrollBarPolicy.AS_NEEDED);
+        timelineScrollPane.getStyleClass().add("section-panel");
 
         // Bottom row: upcoming | timeline
         HBox bottomRow = new HBox(8, upcomingScrollPane, timelineScrollPane);
@@ -137,6 +139,7 @@ public class ReviewDashboardView {
         VBox customStudyControls = new VBox(8, buttonsRow, questionCountRow);
         customStudyControls.setAlignment(javafx.geometry.Pos.CENTER);
         customStudyControls.setPadding(new Insets(8, 16, 8, 16));
+        customStudyControls.getStyleClass().add("section-panel");
         this.customStudyControls = customStudyControls;
 
         // Root: no scroll

@@ -416,3 +416,12 @@
     -fx-text-fill: #666677;
     -fx-cursor: default;
 }
+
+/* Section panels */
+.section-panel {
+    -fx-border-color: #333355;
+    -fx-border-radius: 6;
+    -fx-background-color: #0a0a1a;
+    -fx-background-radius: 6;
+    -fx-padding: 8;
+}
