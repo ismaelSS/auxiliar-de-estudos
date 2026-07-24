@@ -109,11 +109,10 @@ public class ReviewDashboardView {
         HBox.setHgrow(upcomingScrollPane, Priority.ALWAYS);
         HBox.setHgrow(timelineScrollPane, Priority.ALWAYS);
 
-        // Actions row: start button hidden until custom mode
-        startStudyBtn.setVisible(false);
-        startStudyBtn.setManaged(false);
+        // Start button (always visible, disabled until selections made)
+        startStudyBtn.setDisable(true);
 
-        // Question count row (hidden until custom mode)
+        // Question count row
         Label countLabel = new Label("Questões por tema:");
         countLabel.getStyleClass().add("label");
         questionCountField = new TextField();
@@ -134,20 +133,18 @@ public class ReviewDashboardView {
             }
         });
         questionCountRow = new HBox(8, countLabel, questionCountField, maxLabel, selectAllCheckBox);
-        questionCountRow.setAlignment(javafx.geometry.Pos.CENTER_LEFT);
+        questionCountRow.setAlignment(javafx.geometry.Pos.CENTER);
 
-        // Custom study controls container (centered with padding, hidden until custom mode)
-        HBox startRow = new HBox(8, startStudyBtn);
-        startRow.setAlignment(javafx.geometry.Pos.CENTER);
-        VBox customStudyControls = new VBox(8, questionCountRow, startRow);
+        // Custom study controls container (always visible, centered)
+        HBox buttonsRow = new HBox(8, modeToggleButton, startStudyBtn);
+        buttonsRow.setAlignment(javafx.geometry.Pos.CENTER);
+        VBox customStudyControls = new VBox(8, buttonsRow, questionCountRow);
         customStudyControls.setAlignment(javafx.geometry.Pos.CENTER);
         customStudyControls.setPadding(new Insets(8, 16, 8, 16));
-        customStudyControls.setVisible(false);
-        customStudyControls.setManaged(false);
         this.customStudyControls = customStudyControls;
 
         // Root: no scroll
-        root = new VBox(0, title, searchField, cardScrollPane, modeToggleButton, customStudyControls, bottomRow);
+        root = new VBox(0, title, searchField, cardScrollPane, customStudyControls, bottomRow);
         root.getStyleClass().add("background");
         root.setPadding(new Insets(16));
 
@@ -187,10 +184,6 @@ public class ReviewDashboardView {
         customStudyMode = !customStudyMode;
         if (customStudyMode) {
             modeToggleButton.getStyleClass().add("button-mode-toggle-active");
-            customStudyControls.setVisible(true);
-            customStudyControls.setManaged(true);
-            startStudyBtn.setVisible(true);
-            startStudyBtn.setManaged(true);
             startStudyBtn.setDisable(true);
             questionCountField.setText("Todas");
             selectAllCheckBox.setSelected(false);
@@ -202,10 +195,6 @@ public class ReviewDashboardView {
             updateMaxQuestions();
         } else {
             modeToggleButton.getStyleClass().remove("button-mode-toggle-active");
-            customStudyControls.setVisible(false);
-            customStudyControls.setManaged(false);
-            startStudyBtn.setVisible(false);
-            startStudyBtn.setManaged(false);
             for (Node node : cardContainer.getChildren()) {
                 if (node instanceof ThemeCardNode card) {
                     card.setCustomStudyMode(false);
