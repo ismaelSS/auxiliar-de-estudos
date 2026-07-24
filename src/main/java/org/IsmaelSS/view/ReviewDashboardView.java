@@ -77,11 +77,10 @@ public class ReviewDashboardView {
         cardScrollPane.setVbarPolicy(ScrollPane.ScrollBarPolicy.AS_NEEDED);
         VBox.setVgrow(cardScrollPane, Priority.ALWAYS);
 
-        // Start study button (hidden by default)
+        // Start study button
         startStudyBtn = new Button("Iniciar Estudo");
         startStudyBtn.getStyleClass().add("button-start-study");
-        startStudyBtn.setVisible(false);
-        startStudyBtn.setManaged(false);
+        startStudyBtn.setDisable(true);
         startStudyBtn.setOnAction(e -> {
             if (onCustomStudyStart != null) onCustomStudyStart.run();
         });
@@ -108,9 +107,6 @@ public class ReviewDashboardView {
         HBox bottomRow = new HBox(8, upcomingScrollPane, timelineScrollPane);
         HBox.setHgrow(upcomingScrollPane, Priority.ALWAYS);
         HBox.setHgrow(timelineScrollPane, Priority.ALWAYS);
-
-        // Start button (always visible, disabled until selections made)
-        startStudyBtn.setDisable(true);
 
         // Question count row
         Label countLabel = new Label("Questões por tema:");
